@@ -725,39 +725,18 @@
       </article>
     </section>
 
-    <!-- VIDEO PRESENTATION & INSTAGRAM STORY SHOWCASE BAY -->
+    <!-- OFFICIAL 16:9 WEBSITE PRESENTATION FILM BAY (Story removed from website per user request) -->
     <section class="recessed-bay" style="margin-top: 24px; padding: 16px;">
       <div class="bay-header" style="margin-bottom: 8px;">
-        <span id="videoSectionTitle">LAUNCH FILM & INSTAGRAM STORY // KERBERG AUDIO</span>
+        <span id="videoSectionTitle">LAUNCH FILM // KERBERG AUDIO</span>
         <span>REV // 1.0 · 60 FPS HD</span>
       </div>
-      <div style="display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 16px; align-items: stretch;">
-        <!-- 16:9 Website Presentation Video (English by default per user preference) -->
-        <div style="background: #181715; border-radius: 6px; padding: 12px; border: 1px solid #484540; display: flex; flex-direction: column; justify-content: space-between; gap: 10px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: var(--crt-cream);">
-            <span><strong style="color: var(--te-orange);">FILM 01 //</strong> <span id="vid16x9Label">LAUNCH FILM (16:9 · EN)</span></span>
-            <a id="dl16x9Btn" href="videos/KERBERG-Presentation-16x9-EN.mp4" download class="dl-btn" style="padding: 5px 10px; font-size: 10px;">↓ MP4 (16:9)</a>
-          </div>
-          <video id="player16x9" src="videos/KERBERG-Presentation-16x9-EN.mp4" controls autoplay muted loop playsinline style="width: 100%; border-radius: 4px; border: 1px solid #34322e; background: #101110;"></video>
+      <div style="background: #181715; border-radius: 6px; padding: 14px; border: 1px solid #484540; display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: var(--crt-cream);">
+          <span><strong style="color: var(--te-orange);">FILM 01 //</strong> <span id="vid16x9Label">OFFICIAL WEBSITE PRESENTATION (16:9 · 1080P)</span></span>
+          <a id="dl16x9Btn" href="videos/KERBERG-Presentation-16x9-EN.mp4" download class="dl-btn" style="padding: 6px 12px; font-size: 10px;">↓ DOWNLOAD MP4 (16:9)</a>
         </div>
-
-        <!-- 9:16 Dieter Rams Editorial Exhibition Story Video (NEW!) -->
-        <div style="background: #181715; border-radius: 6px; padding: 12px; border: 1px solid #484540; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; align-items: center;">
-          <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: var(--crt-cream);">
-            <span><strong style="color: var(--te-orange);">STORY 02 //</strong> <span>DIETER RAMS EDITORIAL (9:16)</span></span>
-            <a href="videos/KERBERG-Dieter-Rams-Editorial-Story-9x16-EN.mp4" download class="dl-btn" style="padding: 5px 10px; font-size: 10px;">↓ EDITORIAL (9:16)</a>
-          </div>
-          <video src="videos/KERBERG-Dieter-Rams-Editorial-Story-9x16-EN.mp4" controls autoplay muted loop playsinline style="max-height: 360px; width: auto; max-width: 100%; border-radius: 4px; border: 1px solid #34322e; background: #101110;"></video>
-        </div>
-
-        <!-- 9:16 Vertical Hardware Rack Story Video -->
-        <div style="background: #181715; border-radius: 6px; padding: 12px; border: 1px solid #484540; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; align-items: center;">
-          <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: var(--crt-cream);">
-            <span><strong style="color: var(--te-amber);">STORY 03 //</strong> <span id="vid9x16Label">HARDWARE RACK (9:16 · EN)</span></span>
-            <a id="dl9x16Btn" href="videos/KERBERG-Instagram-Story-9x16-EN.mp4" download class="dl-btn" style="padding: 5px 10px; font-size: 10px;">↓ RACK (9:16)</a>
-          </div>
-          <video id="player9x16" src="videos/KERBERG-Instagram-Story-9x16-EN.mp4" controls autoplay muted loop playsinline style="max-height: 360px; width: auto; max-width: 100%; border-radius: 4px; border: 1px solid #34322e; background: #101110;"></video>
-        </div>
+        <video id="player16x9" src="videos/KERBERG-Presentation-16x9-EN.mp4" controls autoplay muted loop playsinline style="width: 100%; border-radius: 4px; border: 1px solid #34322e; background: #101110;"></video>
       </div>
     </section>
   </div>
@@ -941,7 +920,6 @@
     syncKnobsUI();
 
     document.getElementById('btnAudioDemo').addEventListener('click', () => {
-      const led = document.getElementById('audioLed');
       const txt = document.querySelector('#btnAudioDemo .keycap-inner');
       if (!isPlaying) {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -1143,7 +1121,6 @@
           ctx.fill();
         });
       } else if (currentUnit === 'prism') {
-        // PRISM 3-Beam Optical & Waveform View driven by knobs!
         const midY = H * 0.45;
         const px = W * 0.24;
         ctx.strokeStyle = '#f0ece0';
@@ -1183,7 +1160,6 @@
           ctx.font = '10px "JetBrains Mono"';
           ctx.fillText(b.lbl, b.x - 45, b.y - 12);
 
-          // Waveform trace at bottom scaled by knob gain
           ctx.beginPath();
           for (let x = 20; x < W - 20; x += 4) {
             const wy = H * 0.85 + Math.sin(x * 0.04 + tick * 0.08 * (bi + 1)) * (12 * b.gain) * Math.sin(x * 0.01);
@@ -1192,7 +1168,6 @@
           ctx.stroke();
         });
       } else {
-        // KELVIN Thermal Hysteresis Curve driven by HEAT DRV (norms[0]) & HYSTERESIS (norms[4])
         const cx = W * 0.5, cy = H * 0.48;
         const rad = Math.min(W, H) * 0.34;
         const drv = 1.0 + norms[0] * 4.5;
@@ -1285,13 +1260,9 @@
       });
       const suf = currentLang === 'en' ? 'EN' : 'FR';
       const p16 = document.getElementById('player16x9');
-      const p9 = document.getElementById('player9x16');
       if (p16) { p16.src = `videos/KERBERG-Presentation-16x9-${suf}.mp4`; p16.play().catch(()=>{}); }
-      if (p9) { p9.src = `videos/KERBERG-Instagram-Story-9x16-${suf}.mp4`; p9.play().catch(()=>{}); }
       document.getElementById('dl16x9Btn').href = `videos/KERBERG-Presentation-16x9-${suf}.mp4`;
-      document.getElementById('dl9x16Btn').href = `videos/KERBERG-Instagram-Story-9x16-${suf}.mp4`;
       document.getElementById('vid16x9Label').textContent = currentLang === 'en' ? 'OFFICIAL WEBSITE PRESENTATION (16:9 · 1080P)' : 'PRÉSENTATION OFFICIELLE SITE (16:9 · 1080P)';
-      document.getElementById('vid9x16Label').textContent = currentLang === 'en' ? 'INSTAGRAM STORY (9:16)' : 'INSTAGRAM STORY (9:16)';
     });
   </script>
 </body>
