@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" fill="none">
+  <!-- Matte Anodized Dark Badge -->
+  <rect x="4" y="4" width="112" height="112" rx="18" fill="#181715" stroke="#5A564E" stroke-width="2.5"/>
+  <!-- Outer Acoustic Calibration Ring -->
+  <circle cx="60" cy="60" r="42" stroke="#F0ECE0" stroke-width="2" stroke-dasharray="4 4" opacity="0.35"/>
+  <!-- Bauhaus Geometric K + Waveguide Monogram -->
+  <!-- Vertical Stem -->
+  <rect x="34" y="30" width="11" height="60" rx="2" fill="#F0ECE0"/>
+  <!-- International Orange Signal Node -->
+  <circle cx="39.5" cy="60" r="9" fill="#FF4A00"/>
+  <!-- Upper Refracted Beam -->
+  <path d="M48 56 L79 30 H91 L58 59 Z" fill="#F0ECE0"/>
+  <!-- Lower Harmonic Beam (International Orange) -->
+  <path d="M56 61 L91 90 H78 L47 64 Z" fill="#FF4A00"/>
+  <!-- Precision Right Calibration Dot -->
+  <circle cx="85" cy="60" r="4.5" fill="#FFAC26"/>
+</svg>
