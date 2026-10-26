@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="115" fill="#121212"/>
+
+  <!-- Calibration circle: center (256, 256), radius R = 130 -->
+  <path d="M 386 256 A 130 130 0 1 1 256 126" stroke="#8A8A8A" stroke-width="2.6" fill="none" opacity="0.75"/>
+  <path d="M 256 126 A 130 130 0 0 1 386 256" stroke="#FF6A1A" stroke-width="2.6" fill="none"/>
+
+  <!-- K Monogram Shapes -->
+  <rect x="126" y="126" width="91" height="260" fill="#E8E0D2"/>
+  <polygon points="256,126 386,126 256,256" fill="#FF6A1A"/>
+  <polygon points="256,256 386,386 308,386 217,295" fill="#E8E0D2"/>
+
+  <!-- Grid lines -->
+  <line x1="60" y1="126" x2="452" y2="126" stroke="#8A8A8A" stroke-width="1.4" opacity="0.75"/>
+  <line x1="60" y1="386" x2="452" y2="386" stroke="#8A8A8A" stroke-width="1.4" opacity="0.75"/>
+  <line x1="126" y1="60" x2="126" y2="452" stroke="#8A8A8A" stroke-width="1.4" opacity="0.75"/>
+  <line x1="386" y1="60" x2="386" y2="452" stroke="#8A8A8A" stroke-width="1.4" opacity="0.75"/>
+  <line x1="217" y1="60" x2="217" y2="452" stroke="#8A8A8A" stroke-width="1.4" opacity="0.75"/>
+
+  <!-- Crosshairs -->
+  <line x1="60" y1="256" x2="256" y2="256" stroke="#8A8A8A" stroke-width="2.4" opacity="0.75"/>
+  <line x1="256" y1="256" x2="452" y2="256" stroke="#FF6A1A" stroke-width="2.4"/>
+  <line x1="256" y1="60" x2="256" y2="256" stroke="#8A8A8A" stroke-width="2.4" opacity="0.75"/>
+  <line x1="256" y1="256" x2="256" y2="452" stroke="#FF6A1A" stroke-width="2.4"/>
+</svg>
