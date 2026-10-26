@@ -300,8 +300,6 @@
       background: var(--card-bg);
       border: 1px solid rgba(24, 23, 21, 0.08);
       transition: transform 0.3s ease;
-      max-width: 480px;
-      margin-left: auto;
     }
 
     .hero-visual-frame:hover {
@@ -317,15 +315,15 @@
 
     .hero-badge-floating {
       position: absolute;
-      top: 18px;
-      right: 18px;
+      bottom: 20px;
+      right: 20px;
       background: rgba(24, 23, 21, 0.88);
       backdrop-filter: blur(8px);
       color: var(--crt-cream);
-      padding: 8px 14px;
+      padding: 10px 16px;
       border-radius: 6px;
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 600;
       letter-spacing: 0.08em;
       border: 1px solid rgba(255,255,255,0.15);
@@ -1450,17 +1448,17 @@
         <form id="bespokeForm" onsubmit="event.preventDefault(); submitBespokeForm();">
           <div class="form-group">
             <label class="form-label" id="lblNom">Nom / Artiste / Studio</label>
-            <input type="text" class="form-input" id="inName" placeholder="Ex: Jean / Studio Miraval" required />
+            <input type="text" class="form-input" id="inName" name="name" placeholder="Ex: Jean / Studio Miraval" required />
           </div>
 
           <div class="form-group">
             <label class="form-label" id="lblEmail">Adresse Email</label>
-            <input type="email" class="form-input" id="inEmail" placeholder="jean@studio.com" required />
+            <input type="email" class="form-input" id="inEmail" name="email" placeholder="jean@studio.com" required />
           </div>
 
           <div class="form-group">
             <label class="form-label" id="lblType">Type d'Instrument / Effet</label>
-            <select class="form-select" id="inType">
+            <select class="form-select" id="inType" name="project_type">
               <option value="instrument">Instrument virtuel / Synthétiseur MIDI</option>
               <option value="transient">Traitement dynamique & Transitoires</option>
               <option value="saturation">Coloration analogique & Saturation</option>
@@ -1470,14 +1468,17 @@
 
           <div class="form-group">
             <label class="form-label" id="lblMsg">Description de votre idée</label>
-            <textarea class="form-textarea" id="inMsg" placeholder="Parlez-nous de l'ergonomie souhaitée, du son recherché ou de votre workflow..." required></textarea>
+            <textarea class="form-textarea" id="inMsg" name="message" placeholder="Parlez-nous de l'ergonomie souhaitée, du son recherché ou de votre workflow..." required></textarea>
           </div>
 
           <button type="submit" class="btn-submit-form" id="btnSubmit">
             Envoyer ma demande à l'Atelier →
           </button>
-          <div id="formSuccess" style="display:none; font-family:var(--font-mono); font-size:12px; color:var(--te-orange); font-weight:700; text-align:center; margin-top:14px;">
-            ✓ Votre demande a bien été envoyée à l'Atelier. Nous vous recontacterons très vite !
+          <div id="formSuccess" style="display:none; font-family:var(--font-mono); font-size:12px; color:var(--te-orange); font-weight:700; text-align:center; margin-top:14px; line-height:1.5;">
+            ✓ Votre demande a bien été transmise à l'Atelier ! Nous vous recontacterons sous 24 à 48 heures.
+          </div>
+          <div id="formError" style="display:none; font-family:var(--font-mono); font-size:12px; color:#e06a55; font-weight:700; text-align:center; margin-top:14px; line-height:1.5;">
+            Une erreur est survenue lors de l'envoi. Vous pouvez nous écrire directement à <a href="mailto:laurentcabon@gmail.com" style="color:var(--te-orange); text-decoration:underline;">laurentcabon@gmail.com</a>.
           </div>
         </form>
       </div>
@@ -1572,17 +1573,62 @@
     }
 
     // ----------------------------------------------------
-    // Bespoke Contact Form Feedback
+    // Bespoke Contact Form — Direct Submission to Atelier
     // ----------------------------------------------------
-    function submitBespokeForm() {
+    async function submitBespokeForm() {
       const btn = document.getElementById('btnSubmit');
       const succ = document.getElementById('formSuccess');
+      const err = document.getElementById('formError');
+      const name = document.getElementById('inName').value.trim();
+      const email = document.getElementById('inEmail').value.trim();
+      const typeSelect = document.getElementById('inType');
+      const type = typeSelect ? typeSelect.options[typeSelect.selectedIndex].text : '';
+      const message = document.getElementById('inMsg').value.trim();
+
+      if (!name || !email || !message) return;
+
+      btn.disabled = true;
       btn.style.opacity = '0.6';
-      btn.textContent = 'Envoi en cours...';
-      setTimeout(() => {
-        btn.style.display = 'none';
-        succ.style.display = 'block';
-      }, 700);
+      btn.textContent = (lang === 'fr') ? 'Transmission à l\'Atelier...' : 'Transmitting to Atelier...';
+      if (err) err.style.display = 'none';
+
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/laurentcabon@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `[KERBERG CUSTOM] Demande de projet — ${name}`,
+            _template: 'table',
+            _captcha: 'false',
+            'Nom / Artiste / Studio': name,
+            'Email de contact': email,
+            'Type de projet': type,
+            'Description du projet': message
+          })
+        });
+
+        const data = await response.json();
+        if (response.ok && (data.success === 'true' || data.success === true || (data.message && data.message.includes('Activation')))) {
+          btn.style.display = 'none';
+          succ.style.display = 'block';
+        } else {
+          throw new Error(data.message || 'Error submitting');
+        }
+      } catch (e) {
+        console.error('Submission error:', e);
+        // Fallback: If network blocks or fails, direct email prompt
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        btn.textContent = (lang === 'fr') ? 'Envoyer ma demande à l\'Atelier →' : 'Send Request to Atelier →';
+        if (err) {
+          err.style.display = 'block';
+        } else {
+          window.location.href = `mailto:laurentcabon@gmail.com?subject=${encodeURIComponent('[KERBERG CUSTOM] ' + name)}&body=${encodeURIComponent('Nom: ' + name + '\nEmail: ' + email + '\nType: ' + type + '\n\nMessage:\n' + message)}`;
+        }
+      }
     }
 
     // ----------------------------------------------------
