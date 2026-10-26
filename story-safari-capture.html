@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>KERBERG AUDIO — Safari Browser Capture</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #F4EFE6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    /* macOS Safari Window Bar */
+    .safari-chrome {
+      height: 56px;
+      background: #E8E2D5;
+      border-bottom: 1px solid rgba(18, 18, 18, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      position: relative;
+      z-index: 100;
+    }
+
+    .safari-dots {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 120px;
+    }
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 0.5px solid rgba(0,0,0,0.15);
+    }
+    .dot-close { background: #FF5F57; }
+    .dot-min { background: #FEB62D; }
+    .dot-max { background: #28C840; }
+
+    /* Centered Address Capsule */
+    .safari-address-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #FAF8F4;
+      border: 1px solid rgba(18, 18, 18, 0.12);
+      border-radius: 9px;
+      height: 36px;
+      padding: 0 24px;
+      min-width: 420px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .safari-lock {
+      width: 12px;
+      height: 12px;
+      fill: #635E54;
+      opacity: 0.8;
+    }
+    .safari-url {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: #121212;
+      letter-spacing: -0.01em;
+    }
+    .safari-url span.domain {
+      font-weight: 700;
+      color: #121212;
+    }
+
+    .safari-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 16px;
+      width: 120px;
+      color: #635E54;
+    }
+    .safari-icon {
+      width: 16px;
+      height: 16px;
+      stroke: #635E54;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Iframe holding the real website */
+    iframe {
+      width: 1080px;
+      height: 1864px;
+      border: none;
+      display: block;
+      background: #F4EFE6;
+    }
+  </style>
+</head>
+<body>
+  <!-- Safari Chrome Header -->
+  <div class="safari-chrome">
+    <div class="safari-dots">
+      <div class="dot dot-close"></div>
+      <div class="dot dot-min"></div>
+      <div class="dot dot-max"></div>
+    </div>
+
+    <div class="safari-address-bar">
+      <svg class="safari-lock" viewBox="0 0 24 24">
+        <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+      </svg>
+      <div class="safari-url"><span class="domain">kerberg-audio.com</span></div>
+    </div>
+
+    <div class="safari-actions">
+      <!-- Share Icon -->
+      <svg class="safari-icon" viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      <!-- Reload Icon -->
+      <svg class="safari-icon" viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+    </div>
+  </div>
+
+  <!-- Real Live Website Embed -->
+  <iframe src="index.html"></iframe>
+</body>
+</html>
