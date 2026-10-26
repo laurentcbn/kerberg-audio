@@ -3,1272 +3,2170 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KERBERG CUSTOM // L'atelier audio — Conception & Développement de Plugins Audio</title>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="KERBERG AUDIO">
-  <meta property="og:title" content="KERBERG AUDIO® — Tools for Sound">
-  <meta property="og:description" content="Something is taking shape.">
+  <meta property="og:title" content="KERBERG CUSTOM // L'atelier audio">
+  <meta property="og:description" content="Des plugins audio conçus et développés sur mesure, pour les musiciens et les producteurs. De la première idée au dernier réglage.">
   <meta property="og:url" content="https://kerberg-audio.com/">
   <meta property="og:image" content="https://kerberg-audio.com/og-image.png">
   <meta property="og:image:width" content="1734">
   <meta property="og:image:height" content="907">
   <meta name="twitter:card" content="summary_large_image">
-
-  <title>KERBERG AUDIO // INSTRUMENT SERIES (GV-01 · PR-02 · KV-03)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --alu-base: #e0dbd0;
-      --alu-bay: #d2ccc0;
-      --alu-header: #c2bcb0;
-      --bevel-hi: #f6f3ec;
-      --bevel-lo: #a29d91;
+      --bg-stone: #f5f3ef;
+      --bg-paper: #ece8e1;
+      --card-bg: #ffffff;
+      --card-inner: #f8f7f4;
       --ink-dark: #181715;
-      --ink-dim: #66625a;
-      --te-orange: #ff4a00;
-      --te-amber: #ffac26;
-      --crt-bg: #101110;
-      --crt-cream: #f0ece0;
+      --ink-dim: #6a655c;
+      --ink-light: #9c968c;
+      --line-subtle: #ddd7cd;
+      --line-strong: #c2bcb0;
+      --te-orange: #e05a36;
+      --te-orange-hover: #c94b29;
+      --te-amber: #e89830;
+      --te-dark-orange: #b83d1c;
+      --crt-cream: #f4f0e6;
+      --crt-dark: #161514;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      user-select: none;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      background-color: var(--alu-base);
-      background-image:
-        repeating-linear-gradient(
-          0deg,
-          rgba(255, 255, 255, 0.18) 0px,
-          rgba(255, 255, 255, 0.18) 1px,
-          transparent 1px,
-          transparent 4px
-        ),
-        radial-gradient(circle at 20% 10%, rgba(255,255,255,0.35), transparent 70%);
+      background-color: var(--bg-stone);
       color: var(--ink-dark);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--font-sans);
+      line-height: 1.6;
       min-height: 100vh;
-      padding: 24px;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(224, 90, 54, 0.03), transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(24, 23, 21, 0.03), transparent 50%);
     }
 
-    /* Outer Machined Sheet Metal Frame */
-    .chassis-wrapper {
-      max-width: 1320px;
+    /* Container */
+    .container {
+      max-width: 1240px;
       margin: 0 auto;
-      background: var(--alu-base);
-      border: 2px solid var(--bevel-hi);
-      outline: 1px solid var(--bevel-lo);
-      border-radius: 8px;
-      box-shadow:
-        0 24px 60px rgba(20, 18, 15, 0.22),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-      padding: 28px;
-      position: relative;
+      padding: 0 24px;
     }
 
-    .corner-bolt {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #b8b3a8;
-      border: 1px solid #736e66;
-      box-shadow: 1px 1px 0 var(--bevel-hi), inset 0 0 0 3px #b8b3a8, inset 0 0 0 6px #484540;
-      position: absolute;
+    /* Header Navigation */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(245, 243, 239, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line-subtle);
+      transition: all 0.2s ease;
     }
-    .bolt-tl { top: 12px; left: 12px; }
-    .bolt-tr { top: 12px; right: 12px; }
-    .bolt-bl { bottom: 12px; left: 12px; }
-    .bolt-br { bottom: 12px; right: 12px; }
 
-    /* Top Industrial Navigation Deck */
-    .top-deck {
+    .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
+      height: 80px;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
       gap: 16px;
-      padding-bottom: 20px;
-      border-bottom: 2px solid var(--bevel-lo);
-      box-shadow: 0 1px 0 var(--bevel-hi);
-    }
-
-    .brand-plate {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      background: var(--ink-dark);
-      color: var(--crt-cream);
-      padding: 10px 18px;
-      border-radius: 5px;
-      border: 1px solid #5a564e;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.18);
-    }
-
-    .brand-stripe {
-      width: 5px;
-      height: 32px;
-      background: var(--te-orange);
-      border-radius: 1px;
-    }
-
-    .brand-meta {
-      font-size: 10px;
-      color: #aca79b;
-      letter-spacing: 0.08em;
-    }
-
-    .brand-title {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-    }
-
-    /* Sculpted 3D Mechanical Keycaps */
-    .keycap-group {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .keycap {
-      background: #22211e;
-      padding: 3px;
-      border-radius: 5px;
-      cursor: pointer;
-      border: none;
-      font-family: 'JetBrains Mono', monospace;
-      transition: transform 0.06s ease;
-    }
-
-    .keycap-inner {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: #ece8de;
+      text-decoration: none;
       color: var(--ink-dark);
-      padding: 8px 14px;
-      border-radius: 3px;
-      font-size: 11px;
-      font-weight: 600;
-      border-top: 1px solid rgba(255,255,255,0.85);
-      border-bottom: 3px solid #b9b4a8;
-      box-shadow: 0 2px 3px rgba(0,0,0,0.35);
-      transform: translateY(-1px);
-      transition: all 0.08s ease;
     }
 
-    .keycap:hover .keycap-inner {
-      background: #f6f3ec;
+    .brand-emblem-wrap {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .keycap:active .keycap-inner,
-    .keycap.active .keycap-inner {
-      transform: translateY(1px);
-      border-bottom-width: 1px;
+    /* Blueprint crosshairs behind logo */
+    .crosshairs {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .crosshairs::before, .crosshairs::after {
+      content: '';
+      position: absolute;
+      background: var(--line-strong);
+    }
+    .crosshairs::before {
+      top: 50%;
+      left: -8px;
+      right: -8px;
+      height: 1px;
+      transform: translateY(-50%);
+    }
+    .crosshairs::after {
+      left: 50%;
+      top: -8px;
+      bottom: -8px;
+      width: 1px;
+      transform: translateX(-50%);
     }
 
-    .keycap.active .keycap-inner {
-      background: #262522;
-      color: var(--crt-cream);
-      border-top-color: rgba(255,255,255,0.18);
-      border-bottom-color: #121210;
-    }
-
-    .keycap.orange .keycap-inner {
-      background: var(--te-orange);
-      color: var(--crt-cream);
-      border-top-color: rgba(255,255,255,0.45);
-      border-bottom-color: #be3200;
-    }
-
-    .keycap.orange:hover .keycap-inner {
-      background: #ff5c16;
-    }
-
-    .jewel-led {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #383530;
-      border: 1px solid #55524a;
-      display: inline-block;
-    }
-
-    .keycap.active .jewel-led,
-    .jewel-led.on {
-      background: var(--te-orange);
-      box-shadow: 0 0 8px var(--te-orange), inset -1px -1px 2px rgba(255,255,255,0.8);
-    }
-
-    /* Hero Specification Banner */
-    .spec-banner {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 24px;
-      margin: 24px 0;
-      padding: 20px;
-      background: var(--alu-bay);
+    .logo-badge {
+      width: 36px;
+      height: 36px;
+      background: var(--ink-dark);
       border-radius: 6px;
-      border: 1px solid #989388;
-      box-shadow: inset 1.5px 1.5px 0 var(--bevel-lo), 1px 1px 0 var(--bevel-hi);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      border: 1px solid #3c3934;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
     }
 
-    .spec-headline {
-      font-family: 'Inter', sans-serif;
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin: 8px 0 12px;
-    }
-
-    .spec-sub {
-      font-size: 12px;
-      color: var(--ink-dim);
-      line-height: 1.6;
-      max-width: 620px;
-    }
-
-    .suite-download-box {
+    .brand-titles {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      background: #1a1917;
-      color: var(--crt-cream);
-      padding: 18px;
-      border-radius: 5px;
-      border: 2px solid #484540;
     }
 
-    .suite-download-row {
+    .brand-name {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .brand-sub {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      color: var(--ink-dim);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    nav.main-nav {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-top: 12px;
+      gap: 32px;
     }
 
-    .dl-btn {
+    nav.main-nav a {
+      text-decoration: none;
+      color: var(--ink-dim);
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: color 0.15s ease;
+    }
+
+    nav.main-nav a:hover, nav.main-nav a.active {
+      color: var(--ink-dark);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: 1px solid var(--line-strong);
+      color: var(--ink-dark);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .lang-btn:hover {
+      background: var(--ink-dark);
+      color: var(--bg-stone);
+      border-color: var(--ink-dark);
+    }
+
+    .btn-cta-primary {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      text-decoration: none;
       background: var(--te-orange);
-      color: var(--crt-cream);
-      font-size: 11px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 13px;
       font-weight: 700;
-      padding: 10px 16px;
+      padding: 10px 20px;
       border-radius: 4px;
-      border-top: 1px solid rgba(255,255,255,0.4);
-      border-bottom: 3px solid #b43000;
-      transition: transform 0.08s ease, background 0.1s ease;
+      box-shadow: 0 2px 8px rgba(224, 90, 54, 0.25);
+      transition: all 0.15s ease;
+      border: 1px solid rgba(255,255,255,0.2);
     }
 
-    .dl-btn:hover {
-      background: #ff5e1a;
+    .btn-cta-primary:hover {
+      background: var(--te-orange-hover);
       transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(224, 90, 54, 0.35);
     }
 
-    .dl-btn.secondary {
-      background: #2e2d29;
-      border-bottom-color: #141412;
+    .btn-cta-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--ink-dark);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 4px;
+      border: 1.5px solid var(--ink-dark);
+      transition: all 0.15s ease;
     }
 
-    /* Interactive Live Hardware Rack (The 3 VST Units) */
-    .unit-rack {
+    .btn-cta-outline:hover {
+      background: var(--ink-dark);
+      color: var(--bg-stone);
+    }
+
+    /* Hero Section (Faithful to uploaded poster) */
+    section.hero-atelier {
+      padding: 72px 0 96px;
+      border-bottom: 1px solid var(--line-subtle);
+      position: relative;
+    }
+
+    .hero-grid {
       display: grid;
-      grid-template-columns: 260px 1fr 260px;
-      gap: 16px;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    @media (max-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .hero-manifesto {
+      max-width: 560px;
+    }
+
+    .hero-eyebrow-line {
+      width: 38px;
+      height: 2px;
+      background: var(--ink-dark);
+      margin-bottom: 24px;
+    }
+
+    .hero-category {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--te-orange);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    h1.hero-headline {
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--ink-dark);
       margin-bottom: 28px;
     }
 
-    @media (max-width: 1024px) {
-      .spec-banner, .unit-rack {
+    @media (max-width: 600px) {
+      h1.hero-headline {
+        font-size: 46px;
+      }
+    }
+
+    .hero-headline span.dot {
+      color: var(--te-orange);
+    }
+
+    .hero-body-text {
+      font-size: 21px;
+      line-height: 1.5;
+      font-weight: 400;
+      color: #383530;
+      margin-bottom: 18px;
+    }
+
+    .hero-body-sub {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink-dim);
+      font-style: italic;
+      margin-bottom: 36px;
+    }
+
+    .hero-meta-block {
+      border-top: 1px solid var(--line-strong);
+      padding-top: 24px;
+      margin-bottom: 36px;
+    }
+
+    .hero-meta-tags {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      line-height: 1.8;
+      color: var(--ink-dim);
+      text-transform: uppercase;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+
+    /* Poster Visual Stage with Mockup Frame */
+    .hero-visual-frame {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow:
+        0 24px 60px -12px rgba(24, 23, 21, 0.18),
+        0 1px 3px rgba(0,0,0,0.06);
+      background: var(--card-bg);
+      border: 1px solid rgba(24, 23, 21, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .hero-visual-frame:hover {
+      transform: translateY(-4px);
+    }
+
+    .hero-visual-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .hero-badge-floating {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(24, 23, 21, 0.88);
+      backdrop-filter: blur(8px);
+      color: var(--crt-cream);
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--te-orange);
+      box-shadow: 0 0 8px var(--te-orange);
+    }
+
+    /* Section Headers */
+    .section-head {
+      margin-bottom: 48px;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--te-orange);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--ink-dark);
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 17px;
+      color: var(--ink-dim);
+      max-width: 680px;
+      line-height: 1.6;
+    }
+
+    /* INTERACTIVE PRISM STUDIO DISPLAY */
+    section.prism-showcase {
+      padding: 96px 0;
+      background: var(--bg-paper);
+      border-bottom: 1px solid var(--line-subtle);
+    }
+
+    .plugin-window-wrapper {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid var(--line-strong);
+      box-shadow:
+        0 20px 50px -10px rgba(0,0,0,0.12),
+        0 2px 6px rgba(0,0,0,0.04);
+      overflow: hidden;
+      margin-top: 32px;
+    }
+
+    .plugin-window-chrome {
+      background: #f0ece3;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line-subtle);
+    }
+
+    .chrome-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .chrome-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #cfc8ba;
+    }
+    .chrome-dot.close { background: #e06a55; }
+    .chrome-dot.min { background: #e0b055; }
+    .chrome-dot.max { background: #7ab36b; }
+
+    .chrome-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--ink-dim);
+      text-transform: uppercase;
+    }
+
+    .plugin-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      min-height: 520px;
+      background: #fbfaf8;
+    }
+
+    @media (max-width: 860px) {
+      .plugin-layout {
         grid-template-columns: 1fr;
       }
     }
 
-    .recessed-bay {
-      background: var(--alu-bay);
-      border-radius: 6px;
-      border: 1px solid #989388;
-      box-shadow: inset 1.5px 1.5px 0 var(--bevel-lo), 1px 1px 0 var(--bevel-hi);
-      padding: 8px;
+    /* Left Presets Sidebar */
+    .plugin-presets-sidebar {
+      background: #f4efe6;
+      border-right: 1px solid var(--line-subtle);
+      padding: 20px 16px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
     }
 
-    .bay-header {
-      background: var(--alu-header);
-      padding: 5px 10px;
-      border-radius: 3px;
-      display: flex;
-      justify-content: space-between;
+    .presets-label {
+      font-family: var(--font-mono);
       font-size: 10px;
       font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--ink-dim);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line-subtle);
     }
 
-    .knob-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      padding: 4px;
-    }
-
-    .knob-cell {
+    .preset-item {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 5px;
-      padding: 6px 4px;
-    }
-
-    .knob-label-row {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      font-size: 9px;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 5px;
+      font-family: var(--font-mono);
+      font-size: 11px;
       font-weight: 600;
+      color: var(--ink-dim);
+      cursor: pointer;
+      margin-bottom: 4px;
+      transition: all 0.1s ease;
+      background: transparent;
+      border: none;
+      width: 100%;
+      text-align: left;
     }
 
-    .pot-dial {
-      width: 58px;
-      height: 58px;
+    .preset-item:hover {
+      background: rgba(224, 90, 54, 0.08);
+      color: var(--ink-dark);
+    }
+
+    .preset-item.active {
+      background: var(--ink-dark);
+      color: #ffffff;
+    }
+
+    .preset-dot {
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #3a3834, #1e1d1b);
-      border: 3px solid #2b2926;
-      outline: 2px dashed #5e5a52;
-      box-shadow: 3px 5px 8px rgba(0,0,0,0.32), 0 0 0 4px #aea99d;
-      position: relative;
-      cursor: ns-resize;
+      background: var(--line-strong);
     }
-
-    .pot-dial.orange {
-      background: radial-gradient(circle at 35% 35%, #ff5c16, #d63a00);
-    }
-
-    .pot-dial.ceramic {
-      background: radial-gradient(circle at 35% 35%, #f5f2e8, #d5d0c4);
-    }
-
-    .pot-pointer {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 2px;
-      height: 22px;
+    .preset-item.active .preset-dot {
       background: var(--te-orange);
-      transform-origin: bottom center;
-      transform: translate(-50%, -100%) rotate(35deg);
-      border-radius: 2px;
+      box-shadow: 0 0 6px var(--te-orange);
     }
 
-    .pot-dial.orange .pot-pointer { background: var(--crt-cream); }
-    .pot-dial.ceramic .pot-pointer { background: var(--ink-dark); }
-
-    .pot-lcd {
-      background: #1a1b19;
-      color: var(--crt-cream);
-      border: 1px solid #8a857b;
-      border-radius: 2px;
-      font-size: 9.5px;
-      padding: 2px 8px;
-      width: 82%;
-      text-align: center;
-    }
-
-    /* Center Die-Cast CRT Vector Oscilloscope */
-    .crt-bezel {
-      background: #34322e;
-      border-radius: 8px;
-      padding: 7px;
-      box-shadow: 0 1px 0 var(--bevel-hi), inset 0 2px 5px rgba(0,0,0,0.6);
+    /* Center Main DSP Stage */
+    .plugin-main-stage {
+      padding: 24px 32px;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
     }
 
-    .crt-inner {
-      background: var(--crt-bg);
-      border-radius: 5px;
-      border: 2px solid #1a1917;
+    .prism-gui-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line-subtle);
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+    }
+
+    .prism-gui-brand {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .prism-gui-tabs {
+      display: flex;
+      gap: 20px;
+    }
+
+    .gui-tab {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      cursor: pointer;
       position: relative;
-      flex: 1;
-      min-height: 360px;
+      padding-bottom: 4px;
+    }
+
+    .gui-tab.active {
+      color: var(--te-orange);
+    }
+    .gui-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--te-orange);
+    }
+
+    .prism-gui-corp {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      color: var(--ink-light);
+    }
+
+    /* Refraction Display Box */
+    .prism-display-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 20px;
+      background: #f3efe6;
+      border-radius: 8px;
+      border: 1px solid var(--line-strong);
+      padding: 16px;
+      min-height: 230px;
+    }
+
+    @media (max-width: 680px) {
+      .prism-display-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .prism-canvas-wrap {
+      position: relative;
+      width: 100%;
+      height: 210px;
+      background: #f8f6f0;
+      border-radius: 6px;
+      border: 1px solid #ddd7cd;
       overflow: hidden;
     }
 
-    #scopeCanvas {
+    #prismCanvas {
       width: 100%;
       height: 100%;
       display: block;
       cursor: crosshair;
     }
 
-    /* 3 Plugin Catalog Cards */
-    .catalog-grid {
+    .wave-canvas-wrap {
+      position: relative;
+      width: 100%;
+      height: 210px;
+      background: #f8f6f0;
+      border-radius: 6px;
+      border: 1px solid #ddd7cd;
+      overflow: hidden;
+    }
+
+    #waveCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Bottom Rotary Dials Row */
+    .plugin-controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding-top: 24px;
+      margin-top: 16px;
+      border-top: 1px solid var(--line-subtle);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .dial-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dial-label {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--ink-dim);
+      text-transform: uppercase;
+    }
+
+    .knob-body {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #ffffff, #e5e0d3);
+      border: 2px solid #8e887a;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1), inset 0 1px 2px rgba(255,255,255,0.8);
+      position: relative;
+      cursor: ns-resize;
+      transition: transform 0.05s linear;
+    }
+
+    .knob-pointer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 2.5px;
+      height: 22px;
+      background: var(--ink-dark);
+      transform-origin: bottom center;
+      transform: translate(-50%, -100%) rotate(0deg);
+      border-radius: 2px;
+    }
+
+    .dial-unit.primary .knob-pointer {
+      background: var(--te-orange);
+    }
+
+    .dial-value {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink-dark);
+      background: #ede8dc;
+      padding: 2px 8px;
+      border-radius: 3px;
+      border: 1px solid #d4cebf;
+      min-width: 58px;
+      text-align: center;
+    }
+
+    /* Audio Live Test Bar */
+    .audio-test-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 24px;
+      padding: 16px 20px;
+      background: #ede8dc;
+      border-radius: 6px;
+      border: 1px solid var(--line-strong);
+    }
+
+    .audio-test-status {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--ink-dark);
+      font-weight: 600;
+    }
+
+    .btn-audio-toggle {
+      background: var(--ink-dark);
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-audio-toggle:hover {
+      background: var(--te-orange);
+    }
+
+    .btn-audio-toggle.active {
+      background: var(--te-orange);
+      box-shadow: 0 0 12px rgba(224, 90, 54, 0.4);
+    }
+
+    /* 3 Disciplines Section (Music Production / Sound Design / Mixing) */
+    section.disciplines-section {
+      padding: 96px 0;
+      border-bottom: 1px solid var(--line-subtle);
+    }
+
+    .disciplines-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 12px;
+      gap: 28px;
+      margin-top: 40px;
     }
 
     @media (max-width: 960px) {
-      .catalog-grid {
+      .disciplines-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    .unit-card {
-      background: var(--alu-bay);
-      border: 1px solid #989388;
-      border-radius: 6px;
-      padding: 18px;
-      box-shadow: inset 1.5px 1.5px 0 var(--bevel-lo), 1px 1px 0 var(--bevel-hi);
+    .discipline-card {
+      background: var(--card-bg);
+      border: 1px solid var(--line-subtle);
+      border-radius: 10px;
+      padding: 32px 28px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 14px;
+      transition: all 0.2s ease;
+      position: relative;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
     }
 
-    .unit-card-top {
+    .discipline-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      border-color: var(--line-strong);
+    }
+
+    .discipline-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--te-orange);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .discipline-title {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--ink-dark);
+      margin-bottom: 8px;
+    }
+
+    .discipline-plugin {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--ink-dim);
+      margin-bottom: 18px;
+    }
+
+    .discipline-text {
+      font-size: 14.5px;
+      color: var(--ink-dim);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .discipline-specs {
+      border-top: 1px solid var(--line-subtle);
+      padding-top: 18px;
+      margin-bottom: 24px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-dim);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .discipline-specs strong {
+      color: var(--ink-dark);
+    }
+
+    .btn-download-plugin {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--ink-dark);
+      color: #ffffff;
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 10px 16px;
+      border-radius: 4px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-download-plugin:hover {
+      background: var(--te-orange);
+    }
+
+    /* Research Notebook & Blueprint Section */
+    section.notebook-blueprint {
+      padding: 96px 0;
+      background: #f2eee6;
+      border-bottom: 1px solid var(--line-subtle);
+    }
+
+    .notebook-card {
+      background: #fffefb;
+      border-radius: 8px;
+      border: 1px solid #d4cdbf;
+      box-shadow:
+        0 12px 36px rgba(0,0,0,0.06),
+        inset 0 0 0 1px rgba(255,255,255,0.6);
+      padding: 48px;
+      position: relative;
+      background-image:
+        linear-gradient(to right, rgba(160, 150, 130, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(160, 150, 130, 0.08) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    .notebook-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--ink-dark);
+      padding-bottom: 16px;
+      margin-bottom: 32px;
+    }
+
+    .notebook-meta {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--te-orange);
+    }
+
+    .blueprint-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media (max-width: 820px) {
+      .blueprint-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .blueprint-schematic {
+      background: #f8f6f0;
+      border: 1.5px dashed var(--line-strong);
+      border-radius: 6px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .blueprint-notes {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .blueprint-bullet {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .bullet-marker {
+      font-size: 20px;
+      color: var(--te-orange);
+      line-height: 1;
+    }
+
+    .bullet-title {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--ink-dark);
+      margin-bottom: 4px;
+    }
+
+    .bullet-desc {
+      font-size: 14px;
+      color: var(--ink-dim);
+      line-height: 1.5;
+    }
+
+    /* Custom Bespoke Atelier Order Section */
+    section.custom-order {
+      padding: 96px 0;
+      border-bottom: 1px solid var(--line-subtle);
+    }
+
+    .custom-box-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 56px;
+    }
+
+    @media (max-width: 900px) {
+      .custom-box-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .custom-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 18px;
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--ink-dark);
+      color: var(--bg-stone);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink-dark);
+      margin-bottom: 4px;
+    }
+
+    .step-text {
+      font-size: 13.5px;
+      color: var(--ink-dim);
+      line-height: 1.5;
+    }
+
+    /* Contact Form Card */
+    .contact-atelier-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      border: 1px solid var(--line-strong);
+      padding: 36px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--ink-dark);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      background: #fbfaf7;
+      border: 1px solid var(--line-strong);
+      border-radius: 4px;
+      padding: 12px 14px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--ink-dark);
+      transition: all 0.15s ease;
+    }
+
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--te-orange);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(224, 90, 54, 0.15);
+    }
+
+    .form-textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .btn-submit-form {
+      width: 100%;
+      background: var(--te-orange);
+      color: #ffffff;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 3px 10px rgba(224, 90, 54, 0.3);
+      transition: all 0.15s ease;
+    }
+
+    .btn-submit-form:hover {
+      background: var(--te-orange-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Video Presentation Section */
+    section.film-section {
+      padding: 96px 0;
+      background: #181715;
+      color: var(--crt-cream);
+    }
+
+    .film-section .section-title {
+      color: var(--crt-cream);
+    }
+    .film-section .section-desc {
+      color: #a8a296;
+    }
+
+    .video-frame-wrap {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #3c3934;
+      background: #101110;
+      margin-top: 36px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .video-frame-wrap video {
+      width: 100%;
+      display: block;
+    }
+
+    /* Footer */
+    footer.site-footer {
+      background: #141312;
+      color: #8c867a;
+      padding: 64px 0 40px;
+      font-size: 12.5px;
+      border-top: 1px solid #2a2825;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 36px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid #262421;
+    }
+
+    .footer-brand h4 {
+      font-size: 16px;
+      color: var(--crt-cream);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .footer-brand p {
+      max-width: 340px;
+      line-height: 1.6;
+    }
+
+    .footer-links-col h5 {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--crt-cream);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .footer-links-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-links-col a {
+      color: #8c867a;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .footer-links-col a:hover {
+      color: var(--te-orange);
+    }
+
+    .footer-bottom {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #b5afa2;
-      padding-bottom: 10px;
-    }
-
-    .unit-badge {
-      background: var(--ink-dark);
-      color: var(--te-orange);
-      font-size: 10px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 2px;
-    }
-
-    .unit-name {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      margin-top: 6px;
-    }
-
-    .unit-desc {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      color: #363430;
-      line-height: 1.55;
-    }
-
-    .spec-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 10.5px;
-      background: #dad4c8;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .spec-table td {
-      padding: 6px 10px;
-      border-bottom: 1px solid #c5bfb2;
-    }
-
-    .spec-table td:first-child {
-      color: var(--ink-dim);
-    }
-
-    .spec-table td:last-child {
-      text-align: right;
-      font-weight: 600;
+      padding-top: 32px;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-family: var(--font-mono);
+      font-size: 11px;
     }
   </style>
 </head>
 <body>
-  <div class="chassis-wrapper">
-    <div class="corner-bolt bolt-tl"></div>
-    <div class="corner-bolt bolt-tr"></div>
-    <div class="corner-bolt bolt-bl"></div>
-    <div class="corner-bolt bolt-br"></div>
 
-    <!-- TOP HARDWARE NAVIGATION DECK -->
-    <header class="top-deck">
-      <div class="brand-plate">
-        <svg width="36" height="36" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
-          <rect x="4" y="4" width="112" height="112" rx="18" fill="#22211E" stroke="#6E6A60" stroke-width="4"/>
-          <circle cx="60" cy="60" r="42" stroke="#F0ECE0" stroke-width="2.5" stroke-dasharray="5 5" opacity="0.4"/>
-          <rect x="33" y="28" width="12" height="64" rx="2" fill="#F0ECE0"/>
-          <circle cx="39" cy="60" r="9.5" fill="#FF4A00"/>
-          <path d="M48 56 L80 28 H93 L59 59 Z" fill="#F0ECE0"/>
-          <path d="M56 61 L93 92 H79 L47 64 Z" fill="#FF4A00"/>
-          <circle cx="86" cy="60" r="5" fill="#FFAC26"/>
-        </svg>
-        <div class="brand-stripe"></div>
-        <div>
-          <div class="brand-meta" id="brandMeta">ACOUSTIC INSTRUMENT DIVISION // REV 1.0</div>
-          <div class="brand-title">KERBERG AUDIO</div>
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand-lockup">
+        <div class="brand-emblem-wrap">
+          <div class="crosshairs"></div>
+          <div class="logo-badge">
+            <svg width="22" height="22" viewBox="0 0 120 120" fill="none">
+              <circle cx="60" cy="60" r="46" stroke="#F0ECE0" stroke-width="3" stroke-dasharray="6 6" opacity="0.4"/>
+              <rect x="34" y="30" width="12" height="60" rx="2" fill="#F0ECE0"/>
+              <circle cx="40" cy="60" r="9" fill="#E05A36"/>
+              <path d="M48 56 L82 28 H94 L58 60 Z" fill="#F0ECE0"/>
+              <path d="M56 60 L94 92 H80 L46 64 Z" fill="#E05A36"/>
+            </svg>
+          </div>
+        </div>
+        <div class="brand-titles">
+          <span class="brand-name">KERBERG</span>
+          <span class="brand-sub">— AUDIO —</span>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="#atelier" id="navAtelier">L'Atelier</a>
+        <a href="#prism" id="navPrism">PRISM</a>
+        <a href="#catalogue" id="navPlugins">Instruments</a>
+        <a href="#recherche" id="navResearch">Recherche</a>
+        <a href="#sur-mesure" id="navBespoke">Sur-Mesure</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="lang-btn" id="langToggle">FR / EN</button>
+        <a href="#sur-mesure" class="btn-cta-primary" id="headerCta">Projet sur mesure →</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section: L'atelier audio (Faithful to the new poster) -->
+  <section class="hero-atelier" id="atelier">
+    <div class="container hero-grid">
+      <div class="hero-manifesto">
+        <div class="hero-eyebrow-line"></div>
+        <span class="hero-category">KERBERG CUSTOM</span>
+        <h1 class="hero-headline">
+          <span id="heroTitle">L’atelier audio</span><span class="dot">.</span>
+        </h1>
+        <p class="hero-body-text" id="heroLead">
+          Des plugins audio conçus et développés sur mesure, pour les musiciens et les producteurs.
+        </p>
+        <p class="hero-body-sub" id="heroSub">
+          De la première idée au dernier réglage.
+        </p>
+
+        <div class="hero-meta-block">
+          <div class="hero-meta-tags">
+            CONCEPTION<br/>
+            DÉVELOPPEMENT<br/>
+            PLUGINS AUDIO
+          </div>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#prism" class="btn-cta-primary" id="btnHeroPrism">Essayer PRISM en direct ↓</a>
+          <a href="#sur-mesure" class="btn-cta-outline" id="btnHeroCustom">Commander un plugin</a>
         </div>
       </div>
 
-      <div class="keycap-group" id="unitSelector">
-        <button class="keycap active" data-unit="graviton">
-          <span class="keycap-inner"><span class="jewel-led"></span>GV-01 // GRAVITON</span>
-        </button>
-        <button class="keycap" data-unit="prism">
-          <span class="keycap-inner"><span class="jewel-led"></span>PR-02 // PRISM</span>
-        </button>
-        <button class="keycap" data-unit="kelvin">
-          <span class="keycap-inner"><span class="jewel-led"></span>KV-03 // KELVIN</span>
-        </button>
-      </div>
-
-      <div class="keycap-group">
-        <button class="keycap" id="btnLangSwitch" title="Switch FR / EN">
-          <span class="keycap-inner"><span class="jewel-led on"></span><span id="langLabel">FR / EN : FR</span></span>
-        </button>
-        <button class="keycap" id="btnAudioDemo">
-          <span class="keycap-inner"><span class="jewel-led" id="audioLed"></span>LIVE AUDIO SYNTH: OFF</span>
-        </button>
-        <button class="keycap orange" id="btnTriggerPulse">
-          <span class="keycap-inner">TRIG IMPULSE</span>
-        </button>
-      </div>
-    </header>
-
-    <!-- SPECIFICATION & SUITE DOWNLOAD BANNER -->
-    <section class="spec-banner">
-      <div>
-        <div id="heroOverline" style="font-size: 10.5px; color: var(--te-orange); font-weight: 700; letter-spacing: 0.08em;">
-          INSTRUMENTS D'EXPRESSION TACTILES // VST3 · CLAP · STANDALONE MACOS
+      <div class="hero-visual-frame">
+        <img src="images/kerberg-atelier-hero.jpg" alt="KERBERG CUSTOM — L'atelier audio studio desk with laptop and PRISM plugin" />
+        <div class="hero-badge-floating">
+          <div class="pulse-dot"></div>
+          <span>MACOS UNIVERSAL (VST3 · CLAP · STANDALONE)</span>
         </div>
-        <h1 class="spec-headline" id="heroHeadline">Trois instruments d'expression sonore conçus pour les musiciens.</h1>
-        <p class="spec-sub" id="heroSub">
-          Bien plus que de simples effets de studio : trois véritables instruments de création et de scène, dessinés dans l'esprit du design industriel fonctionnel de <strong>Dieter Rams</strong>.
-          Transformez une simple note de synthé, une guitare, une voix ou une boucle de batterie en matière musicale vivante — jouable au clavier MIDI et sculptable du bout des doigts en <strong>VST3</strong>, <strong>CLAP</strong> et <strong>Application autonome macOS</strong>.
+      </div>
+    </div>
+  </section>
+
+  <!-- PRISM Interactive Display: Faithful to the laptop screen -->
+  <section class="prism-showcase" id="prism">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-eyebrow">INSTRUMENT 02 // PR-02</span>
+        <h2 class="section-title" id="prismSectionTitle">PRISM — Sculpteur de Groove Optique</h2>
+        <p class="section-desc" id="prismSectionDesc">
+          Manipulez directement l'interface de PRISM telle qu'affichée sur l'écran d'atelier.
+          Décomposez le signal acoustique en 3 faisceaux spectraux — <strong>Impact</strong>, <strong>Body</strong> et <strong>Air</strong> — et sculptez les transitoires en temps réel.
         </p>
       </div>
 
-      <div class="suite-download-box">
-        <div>
-          <div style="display:flex; justify-content:space-between; font-size:10px; color:#9e9a90;">
-            <span id="packEdition">COMPLETE STUDIO EDITION</span>
-            <span style="color:var(--te-amber);">ARM64 / UNIVERSAL MACOS</span>
+      <!-- Studio Window -->
+      <div class="plugin-window-wrapper">
+        <div class="plugin-window-chrome">
+          <div class="chrome-dots">
+            <div class="chrome-dot close"></div>
+            <div class="chrome-dot min"></div>
+            <div class="chrome-dot max"></div>
           </div>
-          <div style="font-size:18px; font-weight:700; margin-top:4px;" id="packTitle">KERBERG AUDIO // COMPLETE PACK</div>
-          <div style="font-size:11px; color:#b5b0a4; margin-top:4px;" id="packDesc">
-            Inclut les 3 instruments GRAVITON (GV-01), PRISM (PR-02) et KELVIN (KV-03) prêts à jouer en .vst3, .clap et .app autonome.
+          <div class="chrome-title">KERBERG CUSTOM // PRISM VST3/CLAP (64-BIT SIMD)</div>
+          <div style="font-family:var(--font-mono); font-size:11px; color:var(--ink-dim);">REV 1.0</div>
+        </div>
+
+        <div class="plugin-layout">
+          <!-- Left Presets Column -->
+          <div class="plugin-presets-sidebar">
+            <div class="presets-label">PRESETS ATELIER</div>
+            <button class="preset-item active" data-preset="presnap"><span class="preset-dot"></span> PRE-SNAP</button>
+            <button class="preset-item" data-preset="flam"><span class="preset-dot"></span> FLAM AIR</button>
+            <button class="preset-item" data-preset="subbody"><span class="preset-dot"></span> SUB BODY</button>
+            <button class="preset-item" data-preset="presuck"><span class="preset-dot"></span> PRE-SUCK</button>
+            <button class="preset-item" data-preset="razor"><span class="preset-dot"></span> RAZOR</button>
+            <button class="preset-item" data-preset="drumloop"><span class="preset-dot"></span> DRUM LOOP</button>
+            <button class="preset-item" data-preset="trighit"><span class="preset-dot"></span> TRIG HIT</button>
+          </div>
+
+          <!-- Main Stage -->
+          <div class="plugin-main-stage">
+            <div class="prism-gui-top">
+              <span class="prism-gui-brand">PRISM</span>
+              <div class="prism-gui-tabs">
+                <span class="gui-tab active">IMPACT</span>
+                <span class="gui-tab">BODY</span>
+                <span class="gui-tab">AIR</span>
+              </div>
+              <span class="prism-gui-corp">KERBERG AUDIO</span>
+            </div>
+
+            <!-- Optical Prism Canvas & Waveform -->
+            <div class="prism-display-grid">
+              <div class="prism-canvas-wrap">
+                <canvas id="prismCanvas"></canvas>
+              </div>
+              <div class="wave-canvas-wrap">
+                <canvas id="waveCanvas"></canvas>
+              </div>
+            </div>
+
+            <!-- Rotary Dials (Matching the laptop screen) -->
+            <div class="plugin-controls-row">
+              <div class="dial-unit primary">
+                <span class="dial-label">IMPACT</span>
+                <div class="knob-body" id="knobImpact" data-param="impact"><div class="knob-pointer"></div></div>
+                <span class="dial-value" id="valImpact">-6.0 ms</span>
+              </div>
+
+              <div class="dial-unit">
+                <span class="dial-label">BODY</span>
+                <div class="knob-body" id="knobBody" data-param="body"><div class="knob-pointer"></div></div>
+                <span class="dial-value" id="valBody">55 %</span>
+              </div>
+
+              <div class="dial-unit primary">
+                <span class="dial-label">AIR</span>
+                <div class="knob-body" id="knobAir" data-param="air"><div class="knob-pointer"></div></div>
+                <span class="dial-value" id="valAir">+16.0 ms</span>
+              </div>
+
+              <div class="dial-unit">
+                <span class="dial-label">MIX</span>
+                <div class="knob-body" id="knobMix" data-param="mix"><div class="knob-pointer"></div></div>
+                <span class="dial-value" id="valMix">80 %</span>
+              </div>
+
+              <div class="dial-unit">
+                <span class="dial-label">DRY / WET</span>
+                <div class="knob-body" id="knobDryWet" data-param="drywet"><div class="knob-pointer"></div></div>
+                <span class="dial-value" id="valDryWet">61 %</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="suite-download-row">
-          <span style="font-size:10px; color:var(--te-amber);">● ABLETON LIVE · LOGIC PRO · REAPER · BITWIG</span>
-          <a href="downloads/FIELD-SERIES-Complete-macOS.zip" download="KERBERG-AUDIO-Complete-macOS.zip" class="dl-btn" id="packBtn">
-            ↓ DOWNLOAD SUITE (.ZIP)
-          </a>
+
+        <!-- Live Audio Test Bar -->
+        <div class="audio-test-bar">
+          <div class="audio-test-status">
+            <span class="pulse-dot"></span>
+            <span id="audioStatusText">GÉNÉRATEUR WEBAUDIO : EN PAUSE</span>
+          </div>
+          <div style="display:flex; gap:12px;">
+            <button class="btn-audio-toggle" id="btnAudioToggle">
+              ▶ ÉCOUTER LE DSP EN DIRECT
+            </button>
+            <a href="downloads/PRISM-macOS-Universal.zip" download class="btn-cta-primary" style="padding:10px 16px; font-size:12px;">
+              ↓ TÉLÉCHARGER PRISM (.ZIP)
+            </a>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- INTERACTIVE HARDWARE SIMULATOR RACK -->
-    <section class="unit-rack">
-      <!-- LEFT MODULE BAY -->
-      <div class="recessed-bay">
-        <div class="bay-header">
-          <span id="leftBayTitle">ORBITAL FIELD</span>
-          <span>MOD // 01</span>
+  <!-- 3 Disciplines Section: Inspired by the books on the desk -->
+  <section class="disciplines-section" id="catalogue">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-eyebrow">SAVOIR-FAIRE ACOUSTIQUE</span>
+        <h2 class="section-title" id="discTitle">Les Trois Domaines de l’Atelier</h2>
+        <p class="section-desc" id="discDesc">
+          Chaque instrument que nous concevons répond à une exigence musicale précise, incarnée par les ouvrages de référence de notre atelier.
+        </p>
+      </div>
+
+      <div class="disciplines-grid">
+        <!-- Card 1: Music Production / GRAVITON -->
+        <div class="discipline-card">
+          <div>
+            <span class="discipline-badge">LIVRE I · MUSIC PRODUCTION</span>
+            <h3 class="discipline-title">GRAVITON</h3>
+            <div class="discipline-plugin">GV-01 // SYNTHÉTISEUR ORBITAL POLYPHONIQUE</div>
+            <p class="discipline-text" id="gvCardText">
+              Projetez vos accords au clavier MIDI en orbite autour de 3 pôles d'attraction gravitationnels. Naissance de nappes vivantes, résonateurs harmoniques et textures spatiales à 4 voix.
+            </p>
+          </div>
+          <div>
+            <div class="discipline-specs">
+              <span><strong>Moteur :</strong> Polyphonie 4 Voix & Gravité MIDI</span>
+              <span><strong>Formats :</strong> VST3 · CLAP · App Standalone</span>
+              <span><strong>Compatibilité :</strong> macOS Intel & Apple Silicon</span>
+            </div>
+            <a href="downloads/GRAVITON-macOS-Universal.zip" download class="btn-download-plugin">
+              ↓ Télécharger GRAVITON (.zip)
+            </a>
+          </div>
         </div>
-        <div class="knob-grid">
-          <div class="knob-cell">
-            <div class="knob-label-row"><span style="color:var(--ink-dim)">A1</span><span id="lblA1">GRAVITY</span></div>
-            <div class="pot-dial orange" data-param="p1"><div class="pot-pointer"></div></div>
-            <div class="pot-lcd" id="valA1">68%</div>
+
+        <!-- Card 2: Sound Design / PRISM -->
+        <div class="discipline-card" style="border-color: var(--te-orange); box-shadow: 0 8px 24px rgba(224,90,54,0.12);">
+          <div>
+            <span class="discipline-badge">LIVRE II · SOUND DESIGN</span>
+            <h3 class="discipline-title">PRISM</h3>
+            <div class="discipline-plugin">PR-02 // SCULPTEUR DE GROOVE OPTIQUE</div>
+            <p class="discipline-text" id="prCardText">
+              Séparez l'attaque percussive (Impact), le corps harmonique (Body) et l'air cristallin (Air) puis décalez-les dans le temps (-50 ms à +50 ms) pour faire rebondir vos pistes rythmiques.
+            </p>
           </div>
-          <div class="knob-cell">
-            <div class="knob-label-row"><span style="color:var(--ink-dim)">A2</span><span id="lblA2">CORIOLIS</span></div>
-            <div class="pot-dial" data-param="p2"><div class="pot-pointer"></div></div>
-            <div class="pot-lcd" id="valA2">55%</div>
+          <div>
+            <div class="discipline-specs">
+              <span><strong>Moteur :</strong> Décomposition Optique 3 Bandes</span>
+              <span><strong>Formats :</strong> VST3 · CLAP · App Standalone</span>
+              <span><strong>Compatibilité :</strong> macOS Intel & Apple Silicon</span>
+            </div>
+            <a href="downloads/PRISM-macOS-Universal.zip" download class="btn-download-plugin" style="background:var(--te-orange);">
+              ↓ Télécharger PRISM (.zip)
+            </a>
           </div>
-          <div class="knob-cell">
-            <div class="knob-label-row"><span style="color:var(--ink-dim)">A3</span><span id="lblA3">HORIZON</span></div>
-            <div class="pot-dial ceramic" data-param="p3"><div class="pot-pointer"></div></div>
-            <div class="pot-lcd" id="valA3">320 ms</div>
+        </div>
+
+        <!-- Card 3: Mixing & Warmth / KELVIN -->
+        <div class="discipline-card">
+          <div>
+            <span class="discipline-badge">LIVRE III · MIXING & AUDIO PLUGINS</span>
+            <h3 class="discipline-title">KELVIN</h3>
+            <div class="discipline-plugin">KV-03 // CHALEUR TUBE & SATURATION BANDE</div>
+            <p class="discipline-text" id="kvCardText">
+              Un circuit dynamique à mémoire d'hystérésis thermique qui épaissit les harmoniques en fonction de l'intensité de votre jeu. La rondeur imprévisible des consoles à lampes et bandes magnétiques.
+            </p>
           </div>
-          <div class="knob-cell">
-            <div class="knob-label-row"><span style="color:var(--ink-dim)">A4</span><span id="lblA4">FEEDBACK</span></div>
-            <div class="pot-dial" data-param="p4"><div class="pot-pointer"></div></div>
-            <div class="pot-lcd" id="valA4">64%</div>
+          <div>
+            <div class="discipline-specs">
+              <span><strong>Moteur :</strong> Hystérésis & Dynamique Thermique</span>
+              <span><strong>Formats :</strong> VST3 · CLAP · App Standalone</span>
+              <span><strong>Compatibilité :</strong> macOS Intel & Apple Silicon</span>
+            </div>
+            <a href="downloads/KELVIN-macOS-Universal.zip" download class="btn-download-plugin">
+              ↓ Télécharger KELVIN (.zip)
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research & Blueprint Section: The open notebook on the table -->
+  <section class="notebook-blueprint" id="recherche">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-eyebrow">RECHERCHE & DÉVELOPPEMENT</span>
+        <h2 class="section-title" id="bookTitle">Le Carnet de l’Atelier</h2>
+        <p class="section-desc" id="bookDesc">
+          Extrait des notes manuscrites et schémas d'architecture DSP posés sur notre table de travail.
+        </p>
+      </div>
+
+      <div class="notebook-card">
+        <div class="notebook-header">
+          <span class="notebook-meta">CAHIER DE RECHERCHE // PROJET PRISM · REV 1.0</span>
+          <span style="font-family:var(--font-mono); font-size:11px; color:var(--ink-dim);">MUNICH · PARIS</span>
+        </div>
+
+        <div class="blueprint-grid">
+          <div class="blueprint-schematic">
+            <svg width="280" height="200" viewBox="0 0 280 200" fill="none" style="margin:0 auto;">
+              <!-- Equilateral Prism Blueprint -->
+              <polygon points="120,30 60,150 180,150" stroke="#181715" stroke-width="2" fill="rgba(224,90,54,0.04)"/>
+              <!-- Incident Ray -->
+              <line x1="20" y1="95" x2="90" y2="90" stroke="#181715" stroke-width="1.8"/>
+              <!-- Impact Refracted Ray -->
+              <line x1="90" y1="90" x2="240" y2="45" stroke="#E05A36" stroke-width="2"/>
+              <circle cx="240" cy="45" r="4" fill="#E05A36"/>
+              <text x="248" y="49" font-family="JetBrains Mono" font-size="10" fill="#E05A36" font-weight="700">IMPACT (-6ms)</text>
+              <!-- Body Refracted Ray -->
+              <line x1="90" y1="90" x2="240" y2="90" stroke="#181715" stroke-width="1.8"/>
+              <circle cx="240" cy="90" r="4" fill="#181715"/>
+              <text x="248" y="94" font-family="JetBrains Mono" font-size="10" fill="#181715" font-weight="700">BODY (0ms REF)</text>
+              <!-- Air Refracted Ray -->
+              <line x1="90" y1="90" x2="240" y2="135" stroke="#E89830" stroke-width="1.8"/>
+              <circle cx="240" cy="135" r="4" fill="#E89830"/>
+              <text x="248" y="139" font-family="JetBrains Mono" font-size="10" fill="#E89830" font-weight="700">AIR (+16ms)</text>
+            </svg>
+            <div style="font-family:var(--font-mono); font-size:10px; color:var(--ink-dim); margin-top:12px;">
+              FIG 1.0 — DÉCOMPOSITION OPTIQUE & MICRO-DISPERSION TEMPORELLE
+            </div>
+          </div>
+
+          <div class="blueprint-notes">
+            <div class="blueprint-bullet">
+              <span class="bullet-marker">•</span>
+              <div>
+                <div class="bullet-title">TRANSIENT SHAPING</div>
+                <div class="bullet-desc" id="bpNote1">Extraction de l'attaque d'un son avec précision chirurgicale sans altérer la phase ni introduire d'artefacts audibles.</div>
+              </div>
+            </div>
+
+            <div class="blueprint-bullet">
+              <span class="bullet-marker">•</span>
+              <div>
+                <div class="bullet-title">MICRO DISPERSION</div>
+                <div class="bullet-desc" id="bpNote2">Glissement temporel microscopique des bandes d'harmoniques (-50ms à +50ms) pour faire respirer un arrangement saturé.</div>
+              </div>
+            </div>
+
+            <div class="blueprint-bullet">
+              <span class="bullet-marker">•</span>
+              <div>
+                <div class="bullet-title">TONE CONTROL</div>
+                <div class="bullet-desc" id="bpNote3">Génération analogique d'un sub-oscillateur à l'octave inférieure et brillance d'air naturelle pour un son fini et percutant.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bespoke Plugin Service (KERBERG CUSTOM) -->
+  <section class="custom-order" id="sur-mesure">
+    <div class="container custom-box-grid">
+      <div>
+        <span class="section-eyebrow">SERVICE SUR MESURE</span>
+        <h2 class="section-title" id="customTitle">Votre plugin propriétaire, forgé dans notre atelier.</h2>
+        <p class="section-desc" id="customDesc">
+          Vous êtes musicien, producteur ou studio d'enregistrement et vous cherchez une chaîne de traitement ou un instrument virtuel unique, introuvable sur le marché ?
+          Nous créons vos plugins sur-mesure en code Rust optimisé.
+        </p>
+
+        <div class="custom-steps">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div>
+              <div class="step-title" id="st1Title">Cahier des charges sonore</div>
+              <div class="step-text" id="st1Text">Échange autour de vos besoins d'artiste, de vos machines de référence et de votre chaîne idéale.</div>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div>
+              <div class="step-title" id="st2Title">Algorithmes DSP en Rust</div>
+              <div class="step-text" id="st2Text">Développement bas niveau 64-bit SIMD garantissant une latence nulle et une stabilité absolue en session.</div>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div>
+              <div class="step-title" id="st3Title">Design d'Interface Signature</div>
+              <div class="step-text" id="st3Text">Une interface épurée, tactile et lisible dessinée dans l'esprit du design industriel fonctionnel.</div>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div>
+              <div class="step-title" id="st4Title">Déploiement Universel</div>
+              <div class="step-text" id="st4Text">Livraison de vos installeurs VST3, CLAP, AU et applications autonomes compatibles macOS et Windows.</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- CENTER CRT VECTOR OSCILLOSCOPE -->
-      <div class="crt-bezel">
-        <div class="crt-inner">
-          <canvas id="scopeCanvas"></canvas>
-        </div>
+      <!-- Contact Form -->
+      <div class="contact-atelier-card">
+        <h3 style="font-size:22px; font-weight:800; margin-bottom:8px;" id="formTitle">Demander un projet sur mesure</h3>
+        <p style="font-size:13.5px; color:var(--ink-dim); margin-bottom:24px;" id="formSub">
+          Décrivez-nous votre vision. Nous vous répondrons sous 24 à 48 heures.
+        </p>
+
+        <form id="bespokeForm" onsubmit="event.preventDefault(); submitBespokeForm();">
+          <div class="form-group">
+            <label class="form-label" id="lblNom">Nom / Artiste / Studio</label>
+            <input type="text" class="form-input" id="inName" placeholder="Ex: Jean / Studio Miraval" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" id="lblEmail">Adresse Email</label>
+            <input type="email" class="form-input" id="inEmail" placeholder="jean@studio.com" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" id="lblType">Type d'Instrument / Effet</label>
+            <select class="form-select" id="inType">
+              <option value="instrument">Instrument virtuel / Synthétiseur MIDI</option>
+              <option value="transient">Traitement dynamique & Transitoires</option>
+              <option value="saturation">Coloration analogique & Saturation</option>
+              <option value="autre">Autre projet expérimental sur mesure</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" id="lblMsg">Description de votre idée</label>
+            <textarea class="form-textarea" id="inMsg" placeholder="Parlez-nous de l'ergonomie souhaitée, du son recherché ou de votre workflow..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit-form" id="btnSubmit">
+            Envoyer ma demande à l'Atelier →
+          </button>
+          <div id="formSuccess" style="display:none; font-family:var(--font-mono); font-size:12px; color:var(--te-orange); font-weight:700; text-align:center; margin-top:14px;">
+            ✓ Votre demande a bien été envoyée à l'Atelier. Nous vous recontacterons très vite !
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Presentation Film (16:9) -->
+  <section class="film-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-eyebrow" style="color:var(--te-orange);">FILM OFFICIEL D'ATELIER</span>
+        <h2 class="section-title" id="filmTitle">Découvrir l'univers sonore KERBERG</h2>
+        <p class="section-desc" id="filmDesc">
+          Présentation en vidéo 16:9 haute fidélité de nos architectures DSP et de la résonance des instruments.
+        </p>
       </div>
 
-      <!-- RIGHT MODULE BAY -->
-      <div class="recessed-bay">
-        <div class="bay-header">
-          <span id="rightBayTitle">RESONATOR & MORPH</span>
-          <span>MOD // 02</span>
-        </div>
-        <div class="knob-grid">
-          <div class="knob-cell">
-            <div class="knob-label-row"><span style="color:var(--ink-dim)">B1</span><span id="lblB1">HARMONICS</span></div>
-            <div class="pot-dial orange" data-param="p5"><div class="pot-pointer"></div></div>
-            <div class="pot-lcd" id="valB1">52%</div>
-          </div>
-          <div class="knob-cell">
-            <div class="knob-label-row"><span style="color:var(--ink-dim)">B2</span><span id="lblB2">FORMANT</span></div>
-            <div class="pot-dial" data-param="p6"><div class="pot-pointer"></div></div>
-            <div class="pot-lcd" id="valB2">40%</div>
-          </div>
-          <div class="knob-cell">
-            <div class="knob-label-row"><span style="color:var(--ink-dim)">B3</span><span id="lblB3">SHIMMER</span></div>
-            <div class="pot-dial ceramic" data-param="p7"><div class="pot-pointer"></div></div>
-            <div class="pot-lcd" id="valB3">35%</div>
-          </div>
-          <div class="knob-cell">
-            <div class="knob-label-row"><span style="color:var(--ink-dim)">B4</span><span id="lblB4">DRY/WET</span></div>
-            <div class="pot-dial orange" data-param="p8"><div class="pot-pointer"></div></div>
-            <div class="pot-lcd" id="valB4">75%</div>
-          </div>
-        </div>
+      <div class="video-frame-wrap">
+        <video controls playsinline preload="metadata" poster="images/kerberg-atelier-hero.jpg">
+          <source src="videos/KERBERG-Presentation-16x9-EN.mp4" type="video/mp4" />
+        </video>
       </div>
-    </section>
 
-    <!-- 3 INDIVIDUAL VST PRODUCT CARDS & DIRECT DOWNLOADS -->
-    <section class="catalog-grid">
-      <!-- UNIT 01: GRAVITON -->
-      <article class="unit-card">
-        <div>
-          <div class="unit-card-top">
-            <span class="unit-badge">KERBERG · GV 01</span>
-            <span style="font-size:10px; font-weight:500; letter-spacing:0.06em; color:var(--ink-dim);">VST3 · CLAP · APP</span>
-          </div>
-          <h2 class="unit-name">GRAVITON</h2>
-          <div id="gvSub" style="font-size:10.5px; color:var(--te-orange); font-weight:600; letter-spacing:0.05em; margin-bottom:10px;">
-            SYNTHÉTISEUR ORBITAL POLYPHONIQUE & RÉSONATEUR HARMONIQUE
-          </div>
-          <p class="unit-desc" id="gvDesc">
-            Un instrument spatial et harmonique conçu pour être joué au clavier MIDI. Projetez vos guitares, synthés ou voix
-            en orbite autour de 3 pôles d'attraction pour faire naître des nappes organiques, des chœurs célestes et des accords
-            polyphoniques à 4 voix qui respirent et évoluent sous vos doigts.
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px; flex-wrap:wrap; gap:16px;">
+        <span style="font-family:var(--font-mono); font-size:12px; color:#a8a296;">
+          SUITE COMPLÈTE // GRAVITON · PRISM · KELVIN (MACOS INTEL & APPLE SILICON)
+        </span>
+        <a href="downloads/KERBERG-Suite-macOS-Universal.zip" download class="btn-cta-primary">
+          ↓ Télécharger la Suite Complète (.zip 16 Mo)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h4>KERBERG CUSTOM</h4>
+          <p id="ftBio">
+            L'atelier de lutherie numérique et d'ingénierie audio sur mesure.<br/>
+            De la première idée au dernier réglage.
           </p>
         </div>
-        <div>
-          <table class="spec-table" style="margin-bottom:12px;">
-            <tr><td id="gvK1">JEU MUSICAL</td><td id="gvV1">Accords MIDI Polyphoniques 4 Voix</td></tr>
-            <tr><td id="gvK2">COULEUR SONORE</td><td id="gvV2">Nappes Orbitales, Shimmer & Chœurs</td></tr>
-            <tr><td id="gvK3">IDÉAL POUR</td><td id="gvV3">Synthés, Guitares, Voix & Ambient</td></tr>
-          </table>
-          <a href="downloads/GRAVITON-macOS-Universal.zip" download class="dl-btn" style="width:100%; justify-content:center;">
-            ↓ DOWNLOAD GRAVITON (.ZIP)
-          </a>
-        </div>
-      </article>
 
-      <!-- UNIT 02: PRISM -->
-      <article class="unit-card">
-        <div>
-          <div class="unit-card-top">
-            <span class="unit-badge">KERBERG · PR 02</span>
-            <span style="font-size:10px; font-weight:500; letter-spacing:0.06em; color:var(--ink-dim);">VST3 · CLAP · APP</span>
-          </div>
-          <h2 class="unit-name">PRISM</h2>
-          <div id="prSub" style="font-size:10.5px; color:var(--te-orange); font-weight:600; letter-spacing:0.05em; margin-bottom:10px;">
-            SCULPTEUR DE GROOVE OPTIQUE & INSTRUMENT SUB-HARMONIQUE
-          </div>
-          <p class="unit-desc" id="prDesc">
-            Redessinez le toucher et le rebond de n'importe quel instrument acoustique ou rythmique. Séparez votre son en 3 couches musicales —
-            l'attaque percussive (<strong>Impact</strong>), la note fondamentale enrichie d'un synthé sub-octave (<strong>Body</strong>)
-            et le souffle cristallin (<strong>Air</strong>) — puis décalez-les dans le temps pour sculpter un groove inédit.
-          </p>
+        <div class="footer-links-col">
+          <h5 id="ftColInst">Instruments</h5>
+          <ul>
+            <li><a href="#prism">PRISM (PR-02)</a></li>
+            <li><a href="#catalogue">GRAVITON (GV-01)</a></li>
+            <li><a href="#catalogue">KELVIN (KV-03)</a></li>
+            <li><a href="downloads/KERBERG-Suite-macOS-Universal.zip" download>Suite Complète (.zip)</a></li>
+          </ul>
         </div>
-        <div>
-          <table class="spec-table" style="margin-bottom:12px;">
-            <tr><td id="prK1">TOUCHER & GROOVE</td><td id="prV1">Micro-Décalage (-50 ms à +50 ms)</td></tr>
-            <tr><td id="prK2">ASSISE HARMONIQUE</td><td id="prV2">Générateur Sub-Octave Analogique</td></tr>
-            <tr><td id="prK3">IDÉAL POUR</td><td id="prV3">Batteries, Basses, Pianos & Plucks</td></tr>
-          </table>
-          <a href="downloads/PRISM-macOS-Universal.zip" download class="dl-btn" style="width:100%; justify-content:center;">
-            ↓ DOWNLOAD PRISM (.ZIP)
-          </a>
-        </div>
-      </article>
 
-      <!-- UNIT 03: KELVIN -->
-      <article class="unit-card">
-        <div>
-          <div class="unit-card-top">
-            <span class="unit-badge">KERBERG · KV 03</span>
-            <span style="font-size:10px; font-weight:500; letter-spacing:0.06em; color:var(--ink-dim);">VST3 · CLAP · APP</span>
-          </div>
-          <h2 class="unit-name">KELVIN</h2>
-          <div id="kvSub" style="font-size:10.5px; color:var(--te-orange); font-weight:600; letter-spacing:0.05em; margin-bottom:10px;">
-            CHALEUR ANALOGIQUE VIVANTE, SATURATION LAMPE & MÉMOIRE DYNAMIQUE
-          </div>
-          <p class="unit-desc" id="kvDesc">
-            Offrez à vos prises numériques le grain vivant et l'imprévisibilité d'une console à lampes et à bande poussée dans ses retranchements.
-            KELVIN réagit à l'intensité de votre jeu : plus vous attaquez fort, plus le circuit chauffe, épaissit les harmoniques paires
-            et soude vos pistes avec une compression musicale ultra-expressive.
-          </p>
+        <div class="footer-links-col">
+          <h5 id="ftColAtelier">L'Atelier</h5>
+          <ul>
+            <li><a href="#atelier">Notre Philosophie</a></li>
+            <li><a href="#recherche">Carnet de Recherche</a></li>
+            <li><a href="#sur-mesure">Projet Sur Mesure</a></li>
+            <li><a href="mailto:contact@kerberg-audio.com">contact@kerberg-audio.com</a></li>
+          </ul>
         </div>
-        <div>
-          <table class="spec-table" style="margin-bottom:12px;">
-            <tr><td id="kvK1">GRAIN & CARACTÈRE</td><td id="kvV1">Chaleur Lampe, Bande & Hystérésis</td></tr>
-            <tr><td id="kvK2">DYNAMIQUE MUSICALE</td><td id="kvV2">Réponse Vivante à l'Attaque du Jeu</td></tr>
-            <tr><td id="kvK3">IDÉAL POUR</td><td id="kvV3">Rhodes, Basses, Voix, Synthés & Master</td></tr>
-          </table>
-          <a href="downloads/KELVIN-macOS-Universal.zip" download class="dl-btn" style="width:100%; justify-content:center;">
-            ↓ DOWNLOAD KELVIN (.ZIP)
-          </a>
-        </div>
-      </article>
-    </section>
 
-    <!-- OFFICIAL 16:9 WEBSITE PRESENTATION FILM BAY (Story removed from website per user request) -->
-    <section class="recessed-bay" style="margin-top: 24px; padding: 16px;">
-      <div class="bay-header" style="margin-bottom: 8px;">
-        <span id="videoSectionTitle">LAUNCH FILM // KERBERG AUDIO</span>
-        <span>REV // 1.0 · 60 FPS HD</span>
+        <div class="footer-links-col">
+          <h5>Formats & Standards</h5>
+          <ul>
+            <li><span>VST3® (Steinberg)</span></li>
+            <li><span>CLAP (Open Audio)</span></li>
+            <li><span>macOS Universal (Apple Silicon & Intel)</span></li>
+          </ul>
+        </div>
       </div>
-      <div style="background: #181715; border-radius: 6px; padding: 14px; border: 1px solid #484540; display: flex; flex-direction: column; gap: 10px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: var(--crt-cream);">
-          <span><strong style="color: var(--te-orange);">FILM 01 //</strong> <span id="vid16x9Label">OFFICIAL WEBSITE PRESENTATION (16:9 · 1080P)</span></span>
-          <a id="dl16x9Btn" href="videos/KERBERG-Presentation-16x9-EN.mp4" download class="dl-btn" style="padding: 6px 12px; font-size: 10px;">↓ DOWNLOAD MP4 (16:9)</a>
-        </div>
-        <video id="player16x9" src="videos/KERBERG-Presentation-16x9-EN.mp4" controls autoplay muted loop playsinline style="width: 100%; border-radius: 4px; border: 1px solid #34322e; background: #101110;"></video>
-      </div>
-    </section>
-  </div>
 
+      <div class="footer-bottom">
+        <span>© 2026 KERBERG AUDIO · Tous droits réservés.</span>
+        <span>MUNICH · PARIS</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Scripts (WebAudio + Canvases + Presets + i18n) -->
   <script>
-    const canvas = document.getElementById('scopeCanvas');
-    const ctx = canvas.getContext('2d');
-    let currentUnit = 'graviton';
-    let tick = 0;
+    // ----------------------------------------------------
+    // Prism Optical Simulation Canvas
+    // ----------------------------------------------------
+    const prismCanvas = document.getElementById('prismCanvas');
+    const pCtx = prismCanvas.getContext('2d');
+    const waveCanvas = document.getElementById('waveCanvas');
+    const wCtx = waveCanvas.getContext('2d');
 
-    // Interactive state for the CRT simulator
-    const wells = [
-      { x: -0.36, y: 0.0, m: 1.0, code: 'NODE.A', col: '#ff4a00' },
-      { x: 0.36, y: 0.0, m: 0.8, code: 'NODE.B', col: '#f0ece0' },
-      { x: 0.0, y: 0.35, m: 0.65, code: 'NODE.C', col: '#ffac26' }
-    ];
-    let draggedWell = null;
-
-    const particles = Array.from({ length: 12 }, (_, i) => {
-      const ang = (i / 12) * Math.PI * 2;
-      const r = 0.28 + (i % 3) * 0.14;
-      return {
-        x: Math.cos(ang) * r,
-        y: Math.sin(ang) * r,
-        vx: -Math.sin(ang) * 0.015,
-        vy: Math.cos(ang) * 0.015,
-        trail: []
-      };
-    });
-
-    const unitConfigs = {
-      graviton: {
-        leftTitle: 'ORBITAL FIELD',
-        rightTitle: 'RESONATOR & MORPH',
-        labels: ['GRAVITY', 'CORIOLIS', 'HORIZON', 'FEEDBACK', 'HARMONICS', 'FORMANT', 'SHIMMER', 'DRY/WET'],
-        norms: [0.68, 0.55, 0.32, 0.64, 0.52, 0.40, 0.35, 0.75],
-        format: [
-          v => `${Math.round(v * 100)}%`,
-          v => `${Math.round((v * 2 - 1) * 100)}%`,
-          v => `${Math.round(20 + v * 980)} ms`,
-          v => `${Math.round(v * 100)}%`,
-          v => `${Math.round(v * 100)}%`,
-          v => `${Math.round(v * 100)}%`,
-          v => `${Math.round(v * 100)}%`,
-          v => `${Math.round(v * 100)}%`
-        ]
-      },
-      prism: {
-        leftTitle: 'IMPACT & BODY',
-        rightTitle: 'AIR & REFRACTION',
-        labels: ['IMP GAIN', 'IMP SNAP', 'IMP SLIP', 'BODY GAIN', 'SUB OCT', 'AIR GAIN', 'AIR SLIP', 'DRY/WET'],
-        norms: [0.68, 0.55, 0.36, 0.58, 0.45, 0.60, 0.58, 0.85],
-        format: [
-          v => `${Math.round(v * 200)}%`,
-          v => `${Math.round(v * 100)}%`,
-          v => `${((v * 2 - 1) * 50).toFixed(1)} ms`,
-          v => `${Math.round(v * 200)}%`,
-          v => `${Math.round(v * 100)}%`,
-          v => `${Math.round(v * 200)}%`,
-          v => `${((v * 2 - 1) * 50).toFixed(1)} ms`,
-          v => `${Math.round(v * 100)}%`
-        ]
-      },
-      kelvin: {
-        leftTitle: 'THERMAL INERTIA',
-        rightTitle: 'HYSTERESIS & OXIDE',
-        labels: ['HEAT DRV', 'INERTIA', 'COOLING', 'ELASTIC', 'HYSTERESIS', 'OXIDE LPF', 'MAKEUP', 'DRY/WET'],
-        norms: [0.62, 0.55, 0.42, 0.58, 0.48, 0.28, 0.58, 0.85],
-        format: [
-          v => `${Math.round(v * 100)}%`,
-          v => `${Math.round(v * 100)}%`,
-          v => `${Math.round(v * 100)}%`,
-          v => `${Math.round(v * 100)}%`,
-          v => `${Math.round(v * 100)}%`,
-          v => `${Math.round(v * 100)}%`,
-          v => `${Math.round(50 + v * 150)}%`,
-          v => `${Math.round(v * 100)}%`
-        ]
-      }
+    let currentPreset = 'presnap';
+    let params = {
+      impact: -6.0,
+      body: 55,
+      air: 16.0,
+      mix: 80,
+      drywet: 61
     };
 
-    const slotIds = ['A1','A2','A3','A4','B1','B2','B3','B4'];
-    const knobEls = Array.from(document.querySelectorAll('.pot-dial'));
+    const presetConfigs = {
+      presnap: { impact: -6.0, body: 55, air: 16.0, mix: 80, drywet: 61 },
+      flam:    { impact: -18.0, body: 40, air: 24.0, mix: 90, drywet: 75 },
+      subbody: { impact: 0.0, body: 95, air: 8.0, mix: 85, drywet: 70 },
+      presuck: { impact: -35.0, body: 60, air: -10.0, mix: 75, drywet: 80 },
+      razor:   { impact: -4.0, body: 25, air: 38.0, mix: 95, drywet: 85 },
+      drumloop:{ impact: -10.0, body: 70, air: 14.0, mix: 80, drywet: 65 },
+      trighit: { impact: -2.0, body: 80, air: 20.0, mix: 100, drywet: 90 }
+    };
 
-    function syncKnobsUI() {
-      const cfg = unitConfigs[currentUnit];
-      document.getElementById('leftBayTitle').textContent = cfg.leftTitle;
-      document.getElementById('rightBayTitle').textContent = cfg.rightTitle;
-      slotIds.forEach((id, i) => {
-        const norm = cfg.norms[i];
-        document.getElementById('lbl' + id).textContent = cfg.labels[i];
-        document.getElementById('val' + id).textContent = cfg.format[i](norm);
-        const deg = -135 + norm * 270;
-        const ptr = knobEls[i].querySelector('.pot-pointer');
-        if (ptr) {
-          ptr.style.transform = `translate(-50%, -100%) rotate(${deg}deg)`;
-        }
-      });
-      syncWebAudioParams();
-    }
+    let tick = 0;
 
-    // Interactive Drag & Double-Click on all 8 Rotary Knobs
-    let activeKnobIdx = null;
-    let startY = 0;
-    let startNorm = 0;
-
-    knobEls.forEach((el, idx) => {
-      el.addEventListener('mousedown', e => {
-        e.preventDefault();
-        activeKnobIdx = idx;
-        startY = e.clientY;
-        startNorm = unitConfigs[currentUnit].norms[idx];
-      });
-      el.addEventListener('dblclick', () => {
-        unitConfigs[currentUnit].norms[idx] = 0.5;
-        syncKnobsUI();
-      });
-    });
-
-    window.addEventListener('mousemove', e => {
-      if (activeKnobIdx === null) return;
-      const dy = (startY - e.clientY) / 130;
-      const cfg = unitConfigs[currentUnit];
-      cfg.norms[activeKnobIdx] = Math.max(0, Math.min(1, startNorm + dy));
-      syncKnobsUI();
-    });
-
-    window.addEventListener('mouseup', () => {
-      activeKnobIdx = null;
-    });
-
-    document.querySelectorAll('#unitSelector .keycap').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('#unitSelector .keycap').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentUnit = btn.dataset.unit;
-        syncKnobsUI();
-      });
-    });
-
-    // WebAudio API Live Synthesizer Preview
-    let audioCtx = null;
-    let isPlaying = false;
-    let masterGain = null;
-    let delayNode = null;
-    let fbGainNode = null;
-    let filterNode = null;
-    let shaperNode = null;
-
-    function makeDistortionCurve(amount) {
-      const n = 512, curve = new Float32Array(n);
-      const k = 1 + amount * 12;
-      for (let i = 0; i < n; i++) {
-        const x = (i * 2) / n - 1;
-        curve[i] = Math.tanh(x * k);
-      }
-      return curve;
-    }
-
-    function syncWebAudioParams() {
-      if (!isPlaying || !audioCtx) return;
-      const n = unitConfigs[currentUnit].norms;
-      if (filterNode) {
-        filterNode.frequency.setTargetAtTime(220 + n[0] * 3400, audioCtx.currentTime, 0.04);
-        filterNode.Q.setTargetAtTime(1.0 + n[4] * 12.0, audioCtx.currentTime, 0.04);
-      }
-      if (delayNode) {
-        delayNode.delayTime.setTargetAtTime(0.03 + n[2] * 0.55, audioCtx.currentTime, 0.05);
-      }
-      if (fbGainNode) {
-        fbGainNode.gain.setTargetAtTime(n[3] * 0.85, audioCtx.currentTime, 0.04);
-      }
-      if (shaperNode) {
-        shaperNode.curve = makeDistortionCurve(n[0] * 0.7 + n[4] * 0.5);
-      }
-      if (masterGain) {
-        masterGain.gain.setTargetAtTime(0.05 + n[7] * 0.22, audioCtx.currentTime, 0.04);
-      }
-    }
-
-    syncKnobsUI();
-
-    document.getElementById('btnAudioDemo').addEventListener('click', () => {
-      const txt = document.querySelector('#btnAudioDemo .keycap-inner');
-      if (!isPlaying) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        masterGain = audioCtx.createGain();
-        masterGain.gain.value = 0.18;
-
-        filterNode = audioCtx.createBiquadFilter();
-        filterNode.type = 'lowpass';
-        filterNode.frequency.value = 1800;
-        filterNode.Q.value = 4.5;
-
-        delayNode = audioCtx.createDelay(1.0);
-        delayNode.delayTime.value = 0.24;
-        fbGainNode = audioCtx.createGain();
-        fbGainNode.gain.value = 0.55;
-        delayNode.connect(fbGainNode);
-        fbGainNode.connect(delayNode);
-
-        shaperNode = audioCtx.createWaveShaper();
-        shaperNode.curve = makeDistortionCurve(0.4);
-
-        // Create chord oscillators (C3, G3, C4, G4)
-        [130.81, 196.0, 261.63, 392.0].forEach((freq, idx) => {
-          const osc = audioCtx.createOscillator();
-          osc.type = idx % 2 === 0 ? 'sawtooth' : 'triangle';
-          osc.frequency.value = freq;
-          const g = audioCtx.createGain();
-          g.gain.value = 0.18;
-          osc.connect(g);
-          g.connect(shaperNode);
-          osc.start();
-        });
-
-        shaperNode.connect(filterNode);
-        filterNode.connect(masterGain);
-        filterNode.connect(delayNode);
-        delayNode.connect(masterGain);
-        masterGain.connect(audioCtx.destination);
-        syncWebAudioParams();
-
-        isPlaying = true;
-        document.getElementById('btnAudioDemo').classList.add('active');
-        txt.innerHTML = '<span class="jewel-led on" id="audioLed"></span>LIVE AUDIO SYNTH: ON';
-      } else {
-        if (audioCtx) audioCtx.close();
-        isPlaying = false;
-        document.getElementById('btnAudioDemo').classList.remove('active');
-        txt.innerHTML = '<span class="jewel-led" id="audioLed"></span>LIVE AUDIO SYNTH: OFF';
-      }
-    });
-
-    document.getElementById('btnTriggerPulse').addEventListener('click', () => {
-      particles.forEach(p => {
-        p.vx *= 2.4;
-        p.vy *= 2.4;
-      });
-      if (filterNode && audioCtx) {
-        filterNode.frequency.setValueAtTime(4200, audioCtx.currentTime);
-        filterNode.frequency.exponentialRampToValueAtTime(1400, audioCtx.currentTime + 0.6);
-      }
-    });
-
-    canvas.addEventListener('mousedown', e => {
-      const r = canvas.getBoundingClientRect();
-      const sc = Math.min(r.width, r.height) * 0.42;
-      const nx = (e.clientX - r.left - r.width * 0.5) / sc;
-      const ny = (e.clientY - r.top - r.height * 0.5) / sc;
-      wells.forEach((w, idx) => {
-        if (Math.hypot(w.x - nx, w.y - ny) < 0.18) draggedWell = idx;
-      });
-    });
-    window.addEventListener('mousemove', e => {
-      if (draggedWell === null) return;
-      const r = canvas.getBoundingClientRect();
-      const sc = Math.min(r.width, r.height) * 0.42;
-      wells[draggedWell].x = Math.max(-0.85, Math.min(0.85, (e.clientX - r.left - r.width * 0.5) / sc));
-      wells[draggedWell].y = Math.max(-0.85, Math.min(0.85, (e.clientY - r.top - r.height * 0.5) / sc));
-      if (filterNode && audioCtx) {
-        filterNode.frequency.value = 600 + (1.0 - wells[draggedWell].y) * 1800;
-      }
-    });
-    window.addEventListener('mouseup', () => { draggedWell = null; });
-
-    function renderScope() {
+    function renderPrismGraphic() {
       tick++;
+      const rect = prismCanvas.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
-      const rect = canvas.getBoundingClientRect();
-      if (canvas.width !== Math.round(rect.width * dpr) || canvas.height !== Math.round(rect.height * dpr)) {
-        canvas.width = Math.round(rect.width * dpr);
-        canvas.height = Math.round(rect.height * dpr);
+      if (prismCanvas.width !== Math.round(rect.width * dpr) || prismCanvas.height !== Math.round(rect.height * dpr)) {
+        prismCanvas.width = Math.round(rect.width * dpr);
+        prismCanvas.height = Math.round(rect.height * dpr);
       }
-      ctx.save();
-      ctx.scale(dpr, dpr);
+      pCtx.save();
+      pCtx.scale(dpr, dpr);
       const W = rect.width;
       const H = rect.height;
 
-      ctx.fillStyle = '#101110';
-      ctx.fillRect(0, 0, W, H);
+      pCtx.clearRect(0, 0, W, H);
 
-      // Subtle CRT scanlines
-      ctx.fillStyle = 'rgba(0,0,0,0.22)';
-      for (let y = 0; y < H; y += 3) {
-        ctx.fillRect(0, y, W, 1);
+      // Fine millimeter background grid
+      pCtx.strokeStyle = 'rgba(140, 134, 122, 0.12)';
+      pCtx.lineWidth = 1;
+      for (let x = 0; x < W; x += 18) {
+        pCtx.beginPath(); pCtx.moveTo(x, 0); pCtx.lineTo(x, H); pCtx.stroke();
+      }
+      for (let y = 0; y < H; y += 18) {
+        pCtx.beginPath(); pCtx.moveTo(0, y); pCtx.lineTo(W, y); pCtx.stroke();
       }
 
-      const norms = unitConfigs[currentUnit].norms;
+      // Prism Triangle
+      const px = W * 0.32;
+      const py = H * 0.52;
+      const size = 38;
 
-      if (currentUnit === 'graviton') {
-        const cx = W * 0.5;
-        const cy = H * 0.5;
-        const sc = Math.min(W, H) * 0.42;
-        const grav = 0.2 + norms[0] * 1.6;
-        const spin = (norms[1] * 2 - 1) * 1.5;
+      pCtx.fillStyle = 'rgba(120, 115, 105, 0.18)';
+      pCtx.beginPath();
+      pCtx.moveTo(px, py - size * 1.1);
+      pCtx.lineTo(px - size, py + size * 0.7);
+      pCtx.lineTo(px + size, py + size * 0.7);
+      pCtx.closePath();
+      pCtx.fill();
+      pCtx.strokeStyle = '#5a554a';
+      pCtx.lineWidth = 2;
+      pCtx.stroke();
 
-        // Warped grid
-        ctx.strokeStyle = 'rgba(240, 236, 224, 0.11)';
-        ctx.lineWidth = 1;
-        const steps = 12;
-        const warp = (gx, gy) => {
-          let wx = gx, wy = gy;
-          wells.forEach(w => {
-            const dx = w.x - gx, dy = w.y - gy;
-            const d2 = dx*dx + dy*dy + 0.09;
-            const pull = (w.m * grav * 0.045) / Math.sqrt(d2);
-            wx += dx * pull;
-            wy += dy * pull;
-          });
-          return [cx + wx * sc, cy + wy * sc];
-        };
-        for (let i = 0; i < steps; i++) {
-          const t = (i / (steps - 1)) * 2 - 1;
-          ctx.beginPath();
-          for (let j = 0; j < steps; j++) {
-            const u = (j / (steps - 1)) * 2 - 1;
-            const [x, y] = warp(u, t);
-            j === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-          }
-          ctx.stroke();
-          ctx.beginPath();
-          for (let j = 0; j < steps; j++) {
-            const u = (j / (steps - 1)) * 2 - 1;
-            const [x, y] = warp(t, u);
-            j === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-          }
-          ctx.stroke();
-        }
+      // Incoming white/dark ray
+      pCtx.strokeStyle = '#181715';
+      pCtx.lineWidth = 2.5;
+      pCtx.beginPath();
+      pCtx.moveTo(14, py);
+      pCtx.lineTo(px - 14, py);
+      pCtx.stroke();
 
-        // Wells
-        wells.forEach(w => {
-          const sx = cx + w.x * sc;
-          const sy = cy + w.y * sc;
-          ctx.strokeStyle = w.col;
-          ctx.lineWidth = 1.6;
-          ctx.beginPath();
-          ctx.arc(sx, sy, 9 * (0.6 + grav * 0.4), 0, Math.PI * 2);
-          ctx.stroke();
-          ctx.fillStyle = w.col;
-          ctx.font = '10px "JetBrains Mono"';
-          ctx.fillText(`${w.code} [${w.x.toFixed(2)},${w.y.toFixed(2)}]`, sx + 12, sy - 8);
-        });
+      // Refracted Rays
+      // Impact (Orange)
+      const impY = py - 40 - (params.impact * 0.6);
+      pCtx.strokeStyle = '#e05a36';
+      pCtx.lineWidth = 2.5;
+      pCtx.beginPath();
+      pCtx.moveTo(px + 14, py);
+      pCtx.lineTo(W - 24, impY);
+      pCtx.stroke();
+      pCtx.fillStyle = '#e05a36';
+      pCtx.beginPath();
+      pCtx.arc(W - 24, impY, 5, 0, Math.PI * 2);
+      pCtx.fill();
 
-        // Particles
-        particles.forEach((p, idx) => {
-          let ax = 0, ay = 0;
-          wells.forEach(w => {
-            const dx = w.x - p.x, dy = w.y - p.y;
-            const d2 = dx*dx + dy*dy + 0.04;
-            const d = Math.sqrt(d2);
-            ax += (dx / d) * (w.m * grav * 0.0011) / d2;
-            ay += (dy / d) * (w.m * grav * 0.0011) / d2;
-            ax += (-dy / d) * (0.0005 * spin);
-            ay += (dx / d) * (0.0005 * spin);
-          });
-          const r2 = p.x * p.x + p.y * p.y;
-          if (r2 > 0.65) {
-            ax -= p.x * (r2 - 0.65) * 0.02;
-            ay -= p.y * (r2 - 0.65) * 0.02;
-          }
-          p.vx = (p.vx + ax) * 0.992;
-          p.vy = (p.vy + ay) * 0.992;
-          p.x += p.vx;
-          p.y += p.vy;
-          p.trail.push([p.x, p.y]);
-          if (p.trail.length > 18) p.trail.shift();
+      // Body (Dark/Center)
+      const bodyY = py;
+      pCtx.strokeStyle = '#181715';
+      pCtx.lineWidth = 2.2;
+      pCtx.beginPath();
+      pCtx.moveTo(px + 14, py);
+      pCtx.lineTo(W - 24, bodyY);
+      pCtx.stroke();
+      pCtx.fillStyle = '#181715';
+      pCtx.beginPath();
+      pCtx.arc(W - 24, bodyY, 5, 0, Math.PI * 2);
+      pCtx.fill();
 
-          const col = idx % 3 === 0 ? '#ff4a00' : idx % 3 === 1 ? '#f0ece0' : '#ffac26';
-          ctx.strokeStyle = col;
-          ctx.lineWidth = 1.5;
-          ctx.beginPath();
-          p.trail.forEach(([tx, ty], ti) => {
-            const sx = cx + tx * sc, sy = cy + ty * sc;
-            ti === 0 ? ctx.moveTo(sx, sy) : ctx.lineTo(sx, sy);
-          });
-          ctx.stroke();
+      // Air (Amber)
+      const airY = py + 40 + (params.air * 0.6);
+      pCtx.strokeStyle = '#e89830';
+      pCtx.lineWidth = 2.2;
+      pCtx.beginPath();
+      pCtx.moveTo(px + 14, py);
+      pCtx.lineTo(W - 24, airY);
+      pCtx.stroke();
+      pCtx.fillStyle = '#e89830';
+      pCtx.beginPath();
+      pCtx.arc(W - 24, airY, 5, 0, Math.PI * 2);
+      pCtx.fill();
 
-          ctx.fillStyle = col;
-          ctx.beginPath();
-          ctx.arc(cx + p.x * sc, cy + p.y * sc, 3.2, 0, Math.PI * 2);
-          ctx.fill();
-        });
-      } else if (currentUnit === 'prism') {
-        const midY = H * 0.45;
-        const px = W * 0.24;
-        ctx.strokeStyle = '#f0ece0';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(px, midY - 38);
-        ctx.lineTo(px - 34, midY + 28);
-        ctx.lineTo(px + 34, midY + 28);
-        ctx.closePath();
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(20, midY + 5);
-        ctx.lineTo(px - 18, midY);
-        ctx.stroke();
-
-        const impMs = ((norms[2] * 2 - 1) * 50).toFixed(1);
-        const airMs = ((norms[6] * 2 - 1) * 50).toFixed(1);
-        const impX = W * (0.52 + norms[2] * 0.35);
-        const airX = W * (0.52 + norms[6] * 0.35);
-
-        const beams = [
-          { x: impX, y: H * 0.22, gain: norms[0] * 1.8, col: '#ff4a00', lbl: `I. IMPACT [${impMs}ms]` },
-          { x: W * 0.70, y: H * 0.45, gain: norms[3] * 1.8, col: '#f0ece0', lbl: 'II. BODY [0.0ms REF]' },
-          { x: airX, y: H * 0.68, gain: norms[5] * 1.8, col: '#ffac26', lbl: `III. AIR [${airMs}ms]` }
-        ];
-        beams.forEach((b, bi) => {
-          ctx.strokeStyle = b.col;
-          ctx.beginPath();
-          ctx.moveTo(px + 18, midY);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-          ctx.fillStyle = b.col;
-          ctx.beginPath();
-          ctx.arc(b.x, b.y, 6, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.font = '10px "JetBrains Mono"';
-          ctx.fillText(b.lbl, b.x - 45, b.y - 12);
-
-          ctx.beginPath();
-          for (let x = 20; x < W - 20; x += 4) {
-            const wy = H * 0.85 + Math.sin(x * 0.04 + tick * 0.08 * (bi + 1)) * (12 * b.gain) * Math.sin(x * 0.01);
-            x === 20 ? ctx.moveTo(x, wy) : ctx.lineTo(x, wy);
-          }
-          ctx.stroke();
-        });
-      } else {
-        const cx = W * 0.5, cy = H * 0.48;
-        const rad = Math.min(W, H) * 0.34;
-        const drv = 1.0 + norms[0] * 4.5;
-        const hyst = norms[4] * 0.55;
-        const tempK = Math.round(293 + norms[0] * 580 + Math.sin(tick * 0.04) * 35);
-        ctx.strokeStyle = '#ff4a00';
-        ctx.lineWidth = 2.2;
-        [-1, 1].forEach(branch => {
-          ctx.beginPath();
-          for (let i = 0; i <= 50; i++) {
-            const x = (i / 50) * 2 - 1;
-            const loop = (1 - x*x) * hyst * branch;
-            const y = Math.tanh((x + loop) * drv);
-            const sx = cx + x * rad, sy = cy - y * rad;
-            i === 0 ? ctx.moveTo(sx, sy) : ctx.lineTo(sx, sy);
-          }
-          ctx.stroke();
-        });
-        ctx.fillStyle = '#ffac26';
-        ctx.font = '12px "JetBrains Mono"';
-        ctx.fillText(`CORE TEMPERATURE: ${tempK} K (${tempK - 273} °C)  |  DRIVE: ${Math.round(norms[0]*100)}%`, 18, H - 18);
-      }
-
-      ctx.fillStyle = '#8a857b';
-      ctx.font = '10px "JetBrains Mono"';
-      ctx.fillText(`KERBERG CRT SCOPE // ${currentUnit.toUpperCase()} LIVE TELEMETRY`, 14, 20);
-      ctx.restore();
-      requestAnimationFrame(renderScope);
+      pCtx.restore();
     }
-    requestAnimationFrame(renderScope);
 
-    // Mechanical FR / EN Bilingual Toggle
-    let currentLang = 'fr';
+    function renderWaveGraphic() {
+      const rect = waveCanvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      if (waveCanvas.width !== Math.round(rect.width * dpr) || waveCanvas.height !== Math.round(rect.height * dpr)) {
+        waveCanvas.width = Math.round(rect.width * dpr);
+        waveCanvas.height = Math.round(rect.height * dpr);
+      }
+      wCtx.save();
+      wCtx.scale(dpr, dpr);
+      const W = rect.width;
+      const H = rect.height;
+
+      wCtx.clearRect(0, 0, W, H);
+
+      // Grid
+      wCtx.strokeStyle = 'rgba(140, 134, 122, 0.12)';
+      wCtx.lineWidth = 1;
+      for (let x = 0; x < W; x += 18) {
+        wCtx.beginPath(); wCtx.moveTo(x, 0); wCtx.lineTo(x, H); wCtx.stroke();
+      }
+      for (let y = 0; y < H; y += 18) {
+        wCtx.beginPath(); wCtx.moveTo(0, y); wCtx.lineTo(W, y); wCtx.stroke();
+      }
+
+      // Center baseline
+      wCtx.strokeStyle = 'rgba(24, 23, 21, 0.2)';
+      wCtx.lineWidth = 1;
+      wCtx.beginPath();
+      wCtx.moveTo(0, H * 0.5);
+      wCtx.lineTo(W, H * 0.5);
+      wCtx.stroke();
+
+      // 0.0 ms marker
+      wCtx.fillStyle = '#8c867a';
+      wCtx.font = '10px "JetBrains Mono"';
+      wCtx.fillText('0.0 ms', W * 0.5 - 20, H - 10);
+
+      // Transient Waveform Envelope
+      wCtx.strokeStyle = '#e05a36';
+      wCtx.lineWidth = 2.2;
+      wCtx.beginPath();
+
+      const impShift = params.impact * 1.5;
+      for (let x = 0; x < W; x += 2) {
+        const normX = (x - W * 0.5) / (W * 0.5);
+        // Synthesize transient peak + body decay
+        const peakX = normX - impShift * 0.01;
+        const env = Math.exp(-peakX * peakX * 18.0) * (params.mix * 0.01);
+        const sub = Math.sin(x * 0.08 + tick * 0.1) * (params.body * 0.005) * Math.exp(-Math.abs(normX) * 2.0);
+        const y = H * 0.5 - (env * 55.0) - (sub * 30.0);
+        x === 0 ? wCtx.moveTo(x, y) : wCtx.lineTo(x, y);
+      }
+      wCtx.stroke();
+
+      wCtx.restore();
+      requestAnimationFrame(renderWaveGraphic);
+      renderPrismGraphic();
+    }
+    requestAnimationFrame(renderWaveGraphic);
+
+    // ----------------------------------------------------
+    // Preset Selection
+    // ----------------------------------------------------
+    const presetButtons = document.querySelectorAll('.preset-item');
+    presetButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        presetButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const pKey = btn.getAttribute('data-preset');
+        if (presetConfigs[pKey]) {
+          params = { ...presetConfigs[pKey] };
+          updateKnobsUI();
+          syncAudioParams();
+        }
+      });
+    });
+
+    function updateKnobsUI() {
+      document.getElementById('valImpact').textContent = (params.impact > 0 ? '+' : '') + params.impact.toFixed(1) + ' ms';
+      document.getElementById('valBody').textContent = Math.round(params.body) + ' %';
+      document.getElementById('valAir').textContent = (params.air > 0 ? '+' : '') + params.air.toFixed(1) + ' ms';
+      document.getElementById('valMix').textContent = Math.round(params.mix) + ' %';
+      document.getElementById('valDryWet').textContent = Math.round(params.drywet) + ' %';
+
+      // Rotate pointer needles
+      const degImpact = (params.impact / 50.0) * 120;
+      const degBody = ((params.body / 100.0) * 2 - 1) * 120;
+      const degAir = (params.air / 50.0) * 120;
+      const degMix = ((params.mix / 100.0) * 2 - 1) * 120;
+      const degDryWet = ((params.drywet / 100.0) * 2 - 1) * 120;
+
+      document.querySelector('#knobImpact .knob-pointer').style.transform = `translate(-50%, -100%) rotate(${degImpact}deg)`;
+      document.querySelector('#knobBody .knob-pointer').style.transform = `translate(-50%, -100%) rotate(${degBody}deg)`;
+      document.querySelector('#knobAir .knob-pointer').style.transform = `translate(-50%, -100%) rotate(${degAir}deg)`;
+      document.querySelector('#knobMix .knob-pointer').style.transform = `translate(-50%, -100%) rotate(${degMix}deg)`;
+      document.querySelector('#knobDryWet .knob-pointer').style.transform = `translate(-50%, -100%) rotate(${degDryWet}deg)`;
+    }
+    updateKnobsUI();
+
+    // Knob drag interaction
+    let activeKnob = null;
+    let startY = 0;
+    let startVal = 0;
+
+    document.querySelectorAll('.knob-body').forEach(knob => {
+      knob.addEventListener('mousedown', e => {
+        activeKnob = knob.getAttribute('data-param');
+        startY = e.clientY;
+        startVal = params[activeKnob];
+        e.preventDefault();
+      });
+    });
+
+    window.addEventListener('mousemove', e => {
+      if (!activeKnob) return;
+      const dy = startY - e.clientY;
+      if (activeKnob === 'impact' || activeKnob === 'air') {
+        params[activeKnob] = Math.max(-50, Math.min(50, startVal + dy * 0.4));
+      } else {
+        params[activeKnob] = Math.max(0, Math.min(100, startVal + dy * 0.5));
+      }
+      updateKnobsUI();
+      syncAudioParams();
+    });
+
+    window.addEventListener('mouseup', () => { activeKnob = null; });
+
+    // ----------------------------------------------------
+    // WebAudio Live DSP Engine
+    // ----------------------------------------------------
+    let audioCtx = null;
+    let isPlaying = false;
+    let loopTimer = null;
+    let masterGain = null;
+    let delayNode = null;
+    let filterNode = null;
+
+    function initWebAudio() {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      masterGain = audioCtx.createGain();
+      masterGain.gain.value = 0.22;
+
+      delayNode = audioCtx.createDelay(1.0);
+      filterNode = audioCtx.createBiquadFilter();
+      filterNode.type = 'lowpass';
+      filterNode.frequency.value = 3200;
+
+      delayNode.connect(filterNode);
+      filterNode.connect(masterGain);
+      masterGain.connect(audioCtx.destination);
+    }
+
+    function syncAudioParams() {
+      if (!audioCtx || !isPlaying) return;
+      if (delayNode) {
+        const dTime = Math.max(0.005, 0.05 + Math.abs(params.impact) * 0.004);
+        delayNode.delayTime.setTargetAtTime(dTime, audioCtx.currentTime, 0.04);
+      }
+      if (filterNode) {
+        const fCut = 1200 + (params.air + 50) * 45;
+        filterNode.frequency.setTargetAtTime(fCut, audioCtx.currentTime, 0.04);
+      }
+    }
+
+    function playAcousticTransient() {
+      if (!audioCtx || !isPlaying) return;
+      const now = audioCtx.currentTime;
+
+      // 1. Kick / Body Transient (Sine pitch drop)
+      const osc = audioCtx.createOscillator();
+      const oscGain = audioCtx.createGain();
+      osc.frequency.setValueAtTime(140, now);
+      osc.frequency.exponentialRampToValueAtTime(45, now + 0.12);
+      oscGain.gain.setValueAtTime(0.8 * (params.body * 0.01), now);
+      oscGain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+      osc.connect(oscGain);
+      oscGain.connect(masterGain);
+      osc.start(now);
+      osc.stop(now + 0.25);
+
+      // 2. Impact Click / Snap (White Noise Burst through Delay)
+      const bSize = audioCtx.sampleRate * 0.035;
+      const bBuf = audioCtx.createBuffer(1, bSize, audioCtx.sampleRate);
+      const bData = bBuf.getChannelData(0);
+      for (let i = 0; i < bSize; i++) {
+        bData[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bSize * 0.25));
+      }
+      const noise = audioCtx.createBufferSource();
+      noise.buffer = bBuf;
+      const nGain = audioCtx.createGain();
+      nGain.gain.value = 0.5 * (params.mix * 0.01);
+      noise.connect(nGain);
+      nGain.connect(delayNode);
+      nGain.connect(masterGain);
+      noise.start(now);
+    }
+
+    const btnAudioToggle = document.getElementById('btnAudioToggle');
+    const audioStatusText = document.getElementById('audioStatusText');
+
+    btnAudioToggle.addEventListener('click', () => {
+      if (!isPlaying) {
+        if (!audioCtx) initWebAudio();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        isPlaying = true;
+        btnAudioToggle.classList.add('active');
+        btnAudioToggle.textContent = '■ ARRÊTER LE DSP';
+        audioStatusText.textContent = 'GÉNÉRATEUR WEBAUDIO : EN LECTURE (GROOVE ACTIF)';
+        loopTimer = setInterval(playAcousticTransient, 650);
+        playAcousticTransient();
+      } else {
+        isPlaying = false;
+        clearInterval(loopTimer);
+        btnAudioToggle.classList.remove('active');
+        btnAudioToggle.textContent = '▶ ÉCOUTER LE DSP EN DIRECT';
+        audioStatusText.textContent = 'GÉNÉRATEUR WEBAUDIO : EN PAUSE';
+      }
+    });
+
+    // ----------------------------------------------------
+    // Bespoke Contact Form Feedback
+    // ----------------------------------------------------
+    function submitBespokeForm() {
+      const btn = document.getElementById('btnSubmit');
+      const succ = document.getElementById('formSuccess');
+      btn.style.opacity = '0.6';
+      btn.textContent = 'Envoi en cours...';
+      setTimeout(() => {
+        btn.style.display = 'none';
+        succ.style.display = 'block';
+      }, 700);
+    }
+
+    // ----------------------------------------------------
+    // Bilingual Switcher (FR / EN)
+    // ----------------------------------------------------
+    let lang = 'fr';
+    const langToggle = document.getElementById('langToggle');
+
     const i18n = {
       fr: {
-        langLabel: 'FR / EN : FR',
-        heroOverline: "INSTRUMENTS D'EXPRESSION TACTILES // VST3 · CLAP · STANDALONE MACOS",
-        heroHeadline: "Trois instruments d'expression sonore conçus pour les musiciens.",
-        heroSub: "Bien plus que de simples effets de studio : trois véritables instruments de création et de scène, dessinés dans l'esprit du design industriel fonctionnel de <strong>Dieter Rams</strong>. Transformez une simple note de synthé, une guitare, une voix ou une boucle de batterie en matière musicale vivante — jouable au clavier MIDI et sculptable du bout des doigts en <strong>VST3</strong>, <strong>CLAP</strong> et <strong>Application autonome macOS</strong>.",
-        packTitle: "KERBERG AUDIO // COMPLETE PACK",
-        packDesc: "Inclut les 3 instruments GRAVITON (GV-01), PRISM (PR-02) et KELVIN (KV-03) prêts à jouer en .vst3, .clap et .app autonome.",
-        gvSub: "SYNTHÉTISEUR ORBITAL POLYPHONIQUE & RÉSONATEUR HARMONIQUE",
-        gvDesc: "Un instrument spatial et harmonique conçu pour être joué au clavier MIDI. Projetez vos guitares, synthés ou voix en orbite autour de 3 pôles d'attraction pour faire naître des nappes organiques, des chœurs célestes et des accords polyphoniques à 4 voix qui respirent et évoluent sous vos doigts.",
-        gvK1: "JEU MUSICAL", gvV1: "Accords MIDI Polyphoniques 4 Voix",
-        gvK2: "COULEUR SONORE", gvV2: "Nappes Orbitales, Shimmer & Chœurs",
-        gvK3: "IDÉAL POUR", gvV3: "Synthés, Guitares, Voix & Ambient",
-        prSub: "SCULPTEUR DE GROOVE OPTIQUE & INSTRUMENT SUB-HARMONIQUE",
-        prDesc: "Redessinez le toucher et le rebond de n'importe quel instrument acoustique ou rythmique. Séparez votre son en 3 couches musicales — l'attaque percussive (<strong>Impact</strong>), la note fondamentale enrichie d'un synthé sub-octave (<strong>Body</strong>) et le souffle cristallin (<strong>Air</strong>) — puis décalez-les dans le temps pour sculpter un groove inédit.",
-        prK1: "TOUCHER & GROOVE", prV1: "Micro-Décalage (-50 ms à +50 ms)",
-        prK2: "ASSISE HARMONIQUE", prV2: "Générateur Sub-Octave Analogique",
-        prK3: "IDÉAL POUR", prV3: "Batteries, Basses, Pianos & Plucks",
-        kvSub: "CHALEUR ANALOGIQUE VIVANTE, SATURATION LAMPE & MÉMOIRE DYNAMIQUE",
-        kvDesc: "Offrez à vos prises numériques le grain vivant et l'imprévisibilité d'une console à lampes et à bande poussée dans ses retranchements. KELVIN réagit à l'intensité de votre jeu : plus vous attaquez fort, plus le circuit chauffe, épaissit les harmoniques paires et soude vos pistes avec une compression musicale ultra-expressive.",
-        kvK1: "GRAIN & CARACTÈRE", kvV1: "Chaleur Lampe, Bande & Hystérésis",
-        kvK2: "DYNAMIQUE MUSICALE", kvV2: "Réponse Vivante à l'Attaque du Jeu",
-        kvK3: "IDÉAL POUR", kvV3: "Rhodes, Basses, Voix, Synthés & Master"
+        navAtelier: "L'Atelier",
+        navPrism: "PRISM",
+        navPlugins: "Instruments",
+        navResearch: "Recherche",
+        navBespoke: "Sur-Mesure",
+        headerCta: "Projet sur mesure →",
+        heroTitle: "L’atelier audio",
+        heroLead: "Des plugins audio conçus et développés sur mesure, pour les musiciens et les producteurs.",
+        heroSub: "De la première idée au dernier réglage.",
+        btnHeroPrism: "Essayer PRISM en direct ↓",
+        btnHeroCustom: "Commander un plugin",
+        prismSectionTitle: "PRISM — Sculpteur de Groove Optique",
+        prismSectionDesc: "Manipulez directement l'interface de PRISM telle qu'affichée sur l'écran d'atelier. Décomposez le signal acoustique en 3 faisceaux spectraux — Impact, Body et Air — et sculptez les transitoires en temps réel.",
+        discTitle: "Les Trois Domaines de l’Atelier",
+        discDesc: "Chaque instrument que nous concevons répond à une exigence musicale précise, incarnée par les ouvrages de référence de notre atelier.",
+        bookTitle: "Le Carnet de l’Atelier",
+        bookDesc: "Extrait des notes manuscrites et schémas d'architecture DSP posés sur notre table de travail.",
+        customTitle: "Votre plugin propriétaire, forgé dans notre atelier.",
+        customDesc: "Vous êtes musicien, producteur ou studio d'enregistrement et vous cherchez une chaîne de traitement ou un instrument virtuel unique, introuvable sur le marché ? Nous créons vos plugins sur-mesure en code Rust optimisé.",
+        filmTitle: "Découvrir l'univers sonore KERBERG",
+        filmDesc: "Présentation en vidéo 16:9 haute fidélité de nos architectures DSP et de la résonance des instruments.",
+        st1Title: "Cahier des charges sonore",
+        st1Text: "Échange autour de vos besoins d'artiste, de vos machines de référence et de votre chaîne idéale.",
+        st2Title: "Algorithmes DSP en Rust",
+        st2Text: "Développement bas niveau 64-bit SIMD garantissant une latence nulle et une stabilité absolue en session.",
+        st3Title: "Design d'Interface Signature",
+        st3Text: "Une interface épurée, tactile et lisible dessinée dans l'esprit du design industriel fonctionnel.",
+        st4Title: "Déploiement Universel",
+        st4Text: "Livraison de vos installeurs VST3, CLAP, AU et applications autonomes compatibles macOS et Windows."
       },
       en: {
-        langLabel: 'FR / EN : EN',
-        heroOverline: "TACTILE EXPRESSIVE INSTRUMENTS // VST3 · CLAP · STANDALONE MACOS",
-        heroHeadline: "Three expressive sonic instruments crafted for musicians.",
-        heroSub: "Far beyond standard mixing utilities: three tactile studio and stage instruments inspired by the functional industrial design philosophy of <strong>Dieter Rams</strong>. Turn any synth line, guitar, vocal, or drum loop into living musical matter — playable via MIDI chords and sculpted hands-on in <strong>VST3</strong>, <strong>CLAP</strong>, and <strong>macOS Standalone</strong> formats.",
-        packTitle: "KERBERG AUDIO // COMPLETE PACK",
-        packDesc: "Includes all 3 instruments — GRAVITON (GV-01), PRISM (PR-02), and KELVIN (KV-03) — ready to play as .vst3, .clap, and standalone .app.",
-        gvSub: "POLYPHONIC ORBITAL SYNTHESIZER & HARMONIC RESONATOR",
-        gvDesc: "A spatial and harmonic instrument built to be played from a MIDI keyboard. Launch your guitars, synths, or vocals into orbit around 3 gravitational poles to bloom organic pads, celestial choirs, and 4-voice polyphonic chords that breathe and evolve beneath your fingers.",
-        gvK1: "PLAYABILITY", gvV1: "4-Voice Polyphonic MIDI Chords",
-        gvK2: "SONIC PALETTE", gvV2: "Orbital Pads, Shimmer & Moving Choirs",
-        gvK3: "MADE FOR", gvV3: "Synths, Guitars, Vocals & Ambient Scoring",
-        prSub: "OPTICAL GROOVE SCULPTOR & SUB-HARMONIC INSTRUMENT",
-        prDesc: "Reshape the feel, articulation, and pocket of any acoustic or rhythmic instrument. Split your sound into 3 musical layers — percussive attack (<strong>Impact</strong>), fundamental tone reinforced by an analog sub-octave synth (<strong>Body</strong>), and crystalline breath (<strong>Air</strong>) — then slip them in time to craft an unmistakable groove.",
-        prK1: "FEEL & POCKET", prV1: "Micro-Time Slip (-50 ms to +50 ms)",
-        prK2: "LOW-END WEIGHT", prV2: "Built-in Analog Sub-Octave Generator",
-        prK3: "MADE FOR", prV3: "Drums, Bass, Acoustic Pianos & Plucks",
-        kvSub: "LIVING ANALOG WARMTH, TUBE DRIVE & DYNAMIC MEMORY",
-        kvDesc: "Infuse digital recordings with the living grain and organic unpredictability of an overdriven tube console and tape machine. KELVIN responds to your playing intensity: the harder you dig into the notes, the hotter the circuit runs — thickening even harmonics and gluing tracks with deeply musical compression.",
-        kvK1: "TONE & CHARACTER", kvV1: "Tube Warmth, Magnetic Tape & Hysteresis",
-        kvK2: "MUSICAL DYNAMICS", kvV2: "Living Response to Playing Velocity",
-        kvK3: "MADE FOR", kvV3: "Rhodes, Bass, Vocals, Synths & Master Bus"
+        navAtelier: "The Workshop",
+        navPrism: "PRISM",
+        navPlugins: "Instruments",
+        navResearch: "Research",
+        navBespoke: "Custom Shop",
+        headerCta: "Bespoke Project →",
+        heroTitle: "The audio workshop",
+        heroLead: "Custom-crafted audio plugins designed and engineered for musicians and producers.",
+        heroSub: "From the initial sketch to the final knob adjustment.",
+        btnHeroPrism: "Test PRISM live ↓",
+        btnHeroCustom: "Commission a plugin",
+        prismSectionTitle: "PRISM — Optical Groove Sculptor",
+        prismSectionDesc: "Directly interact with the PRISM interface as displayed on the workshop desk. Separate any acoustic transient into 3 optical spectral beams — Impact, Body and Air — and shape your groove in real time.",
+        discTitle: "The Three Workshop Disciplines",
+        discDesc: "Every instrument we forge responds to a distinct musical requirement, inspired by the foundational books on our studio desk.",
+        bookTitle: "The Workshop Notebook",
+        bookDesc: "An excerpt of handwritten formulas and DSP blueprints resting on our drafting desk.",
+        customTitle: "Your bespoke plugin, forged in our atelier.",
+        customDesc: "Are you an artist, producer, or recording studio looking for a proprietary virtual instrument or signature processor? We engineer bespoke audio plugins in ultra-optimized Rust DSP.",
+        filmTitle: "Explore the KERBERG Sonic Universe",
+        filmDesc: "High-fidelity 16:9 presentation film detailing our DSP architectures and acoustic resonance.",
+        st1Title: "Sonic Blueprint & Vision",
+        st1Text: "A thorough dialogue on your artist signature, reference hardware, and desired signal chain.",
+        st2Title: "Low-Level Rust DSP",
+        st2Text: "64-bit SIMD real-time algorithms ensuring zero-latency performance and unbreakable stability.",
+        st3Title: "Signature Industrial UI",
+        st3Text: "Clean, tactile, high-contrast layouts inspired by Braun and functional German industrial design.",
+        st4Title: "Universal Multi-Format Delivery",
+        st4Text: "Signed VST3, CLAP, and standalone installers tailored for modern macOS and Windows DAWs."
       }
     };
 
-    document.getElementById('btnLangSwitch').addEventListener('click', () => {
-      currentLang = currentLang === 'fr' ? 'en' : 'fr';
-      document.documentElement.lang = currentLang;
-      const t = i18n[currentLang];
-      Object.keys(t).forEach(id => {
+    langToggle.addEventListener('click', () => {
+      lang = lang === 'fr' ? 'en' : 'fr';
+      langToggle.textContent = lang === 'fr' ? 'FR / EN' : 'EN / FR';
+      const t = i18n[lang];
+      for (const [id, val] of Object.entries(t)) {
         const el = document.getElementById(id);
-        if (el) el.innerHTML = t[id];
-      });
-      document.getElementById('vid16x9Label').textContent = currentLang === 'en' ? 'OFFICIAL BRAG LAUNCH FILM (16:9 · 1080P)' : 'FILM DE LANCEMENT BRAG (16:9 · 1080P)';
+        if (el) el.textContent = val;
+      }
     });
   </script>
   <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d9f689dc59cf4d98b24e63bce5ec077e"}'></script><!-- End Cloudflare Web Analytics -->
