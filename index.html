@@ -87,6 +87,13 @@
       height: 80px;
     }
 
+    .brand-lockup-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-right: 32px;
+      flex-shrink: 0;
+    }
     .brand-lockup {
       display: flex;
       align-items: center;
@@ -100,6 +107,23 @@
       height: 38px;
       width: auto;
       display: block;
+    }
+    .brand-cities {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--ink-dim);
+      padding-left: 16px;
+      padding-right: 8px;
+      border-left: 1px solid var(--line-strong);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    @media (max-width: 1080px) {
+      .brand-cities {
+        display: none;
+      }
     }
 
     nav.main-nav {
@@ -1128,9 +1152,12 @@
   <!-- Site Header -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#" class="brand-lockup" aria-label="KERBERG AUDIO">
-        <img src="kerberg-nav-logo.svg" alt="KERBERG AUDIO" width="210" height="38" />
-      </a>
+      <div class="brand-lockup-wrap">
+        <a href="#" class="brand-lockup" aria-label="KERBERG AUDIO">
+          <img src="kerberg-nav-logo.svg" alt="KERBERG AUDIO" width="210" height="38" />
+        </a>
+        <span class="brand-cities">RENNES · PARIS · BREST</span>
+      </div>
 
       <nav class="main-nav">
         <a href="#atelier" id="navAtelier">L'Atelier</a>
@@ -1152,7 +1179,7 @@
     <div class="container hero-grid">
       <div class="hero-manifesto">
         <div class="hero-eyebrow-line"></div>
-        <span class="hero-category">KERBERG CUSTOM</span>
+        <span class="hero-category">KERBERG CUSTOM // RENNES · PARIS · BREST</span>
         <h1 class="hero-headline">
           <span id="heroTitle">L’atelier audio</span><span class="dot">.</span>
         </h1>
@@ -1165,7 +1192,8 @@
 
         <div class="hero-meta-block">
           <div class="hero-meta-tags" id="heroMetaTags">
-            CONCEPTION · DÉVELOPPEMENT · FABRICATION
+            CONCEPTION · DÉVELOPPEMENT · FABRICATION<br/>
+            RENNES · PARIS · BREST
           </div>
         </div>
 
@@ -1334,7 +1362,7 @@
       <div class="notebook-card">
         <div class="notebook-header">
           <span class="notebook-meta">CAHIER DE RECHERCHE // PROJET PRISM · REV 1.0</span>
-          <span style="font-family:var(--font-mono); font-size:11px; color:var(--ink-dim);">MUNICH · PARIS</span>
+          <span style="font-family:var(--font-mono); font-size:11px; color:var(--ink-dim);">RENNES · PARIS · BREST</span>
         </div>
 
         <div class="blueprint-grid">
@@ -1530,7 +1558,7 @@
 
       <div class="footer-bottom">
         <span>© 2026 KERBERG AUDIO · Tous droits réservés.</span>
-        <span>MUNICH · PARIS</span>
+        <span>RENNES · PARIS · BREST</span>
       </div>
     </div>
   </footer>
@@ -1648,7 +1676,7 @@
         heroTitle: "L’atelier audio",
         heroLead: "Des plugins audio conçus et développés sur mesure, pour les musiciens et les producteurs.",
         heroSub: "De la première idée au dernier réglage.",
-        heroMetaTags: "CONCEPTION · DÉVELOPPEMENT · FABRICATION",
+        heroMetaTags: "CONCEPTION · DÉVELOPPEMENT · FABRICATION<br/>RENNES · PARIS · BREST",
         btnHeroShowcase: "Voir la démonstration ↓",
         btnHeroCustom: "Commander un plugin",
         filmTitle: "Les Instruments en Action",
@@ -1678,7 +1706,7 @@
         heroTitle: "The audio workshop",
         heroLead: "Custom-crafted audio plugins designed and engineered for musicians and producers.",
         heroSub: "From the initial sketch to the final knob adjustment.",
-        heroMetaTags: "DESIGN · ENGINEERING · CRAFTSMANSHIP",
+        heroMetaTags: "DESIGN · ENGINEERING · CRAFTSMANSHIP<br/>RENNES · PARIS · BREST",
         btnHeroShowcase: "Watch demonstration ↓",
         btnHeroCustom: "Commission a plugin",
         filmTitle: "Instruments in Action",
@@ -1706,7 +1734,10 @@
       const t = i18n[lang];
       for (const [id, val] of Object.entries(t)) {
         const el = document.getElementById(id);
-        if (el) el.textContent = val;
+        if (el) {
+          if (val.includes('<br/>')) el.innerHTML = val;
+          else el.textContent = val;
+        }
       }
     });
   </script>
