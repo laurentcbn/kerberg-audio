@@ -300,6 +300,8 @@
       background: var(--card-bg);
       border: 1px solid rgba(24, 23, 21, 0.08);
       transition: transform 0.3s ease;
+      max-width: 480px;
+      margin-left: auto;
     }
 
     .hero-visual-frame:hover {
@@ -315,15 +317,15 @@
 
     .hero-badge-floating {
       position: absolute;
-      bottom: 20px;
-      right: 20px;
+      top: 18px;
+      right: 18px;
       background: rgba(24, 23, 21, 0.88);
       backdrop-filter: blur(8px);
       color: var(--crt-cream);
-      padding: 10px 16px;
+      padding: 8px 14px;
       border-radius: 6px;
       font-family: var(--font-mono);
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 600;
       letter-spacing: 0.08em;
       border: 1px solid rgba(255,255,255,0.15);
@@ -1164,10 +1166,8 @@
         </p>
 
         <div class="hero-meta-block">
-          <div class="hero-meta-tags">
-            CONCEPTION<br/>
-            DÉVELOPPEMENT<br/>
-            PLUGINS AUDIO
+          <div class="hero-meta-tags" id="heroMetaTags">
+            CONCEPTION · DÉVELOPPEMENT · FABRICATION
           </div>
         </div>
 
@@ -1602,6 +1602,7 @@
         heroTitle: "L’atelier audio",
         heroLead: "Des plugins audio conçus et développés sur mesure, pour les musiciens et les producteurs.",
         heroSub: "De la première idée au dernier réglage.",
+        heroMetaTags: "CONCEPTION · DÉVELOPPEMENT · FABRICATION",
         btnHeroShowcase: "Voir la démonstration ↓",
         btnHeroCustom: "Commander un plugin",
         filmTitle: "Les Instruments en Action",
@@ -1631,6 +1632,7 @@
         heroTitle: "The audio workshop",
         heroLead: "Custom-crafted audio plugins designed and engineered for musicians and producers.",
         heroSub: "From the initial sketch to the final knob adjustment.",
+        heroMetaTags: "DESIGN · ENGINEERING · CRAFTSMANSHIP",
         btnHeroShowcase: "Watch demonstration ↓",
         btnHeroCustom: "Commission a plugin",
         filmTitle: "Instruments in Action",
