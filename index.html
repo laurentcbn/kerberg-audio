@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KERBERG CUSTOM // L'atelier audio — Conception & Développement de Plugins Audio</title>
+  <title>KERBERG CUSTOM // L’atelier audio — Conception & Développement de Plugins Audio</title>
   <meta name="description" content="KERBERG AUDIO — Custom audio plugin development (VST3, CLAP, AU) & bespoke DSP engineering for musicians, sound designers, and audio software companies. De la première idée au dernier réglage." />
   <meta name="keywords" content="custom audio plugin development, bespoke audio software, custom VST3 plugin development, CLAP audio plugin development, audio plugin developer, DSP engineering, plugins audio sur mesure, développement audio" />
   <meta name="author" content="KERBERG AUDIO" />
@@ -16,20 +16,20 @@
   <meta property="og:site_name" content="KERBERG AUDIO">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:locale:alternate" content="en_US">
-  <meta property="og:title" content="KERBERG CUSTOM // L'atelier audio · Rennes — Paris">
-  <meta property="og:description" content="Des plugins audio conçus et développés sur mesure, pour les musiciens et les producteurs. Recherche · Conception · Développement.">
+  <meta property="og:title" content="KERBERG CUSTOM // L’atelier audio · Rennes — Paris">
+  <meta property="og:description" content="Des plugins audio conçus et développés sur mesure, pour les musiciens et les producteurs. Recherche, conception et développement.">
   <meta property="og:url" content="https://kerberg-audio.com/">
   <meta property="og:image" content="https://kerberg-audio.com/og-image.png?v=2">
   <meta property="og:image:secure_url" content="https://kerberg-audio.com/og-image.png?v=2">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="KERBERG CUSTOM // L'atelier audio — Plugins audio sur mesure">
+  <meta property="og:image:alt" content="KERBERG CUSTOM // L’atelier audio — Plugins audio sur mesure">
   
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="KERBERG CUSTOM // L'atelier audio · Rennes — Paris">
-  <meta name="twitter:description" content="Des plugins audio conçus et développés sur mesure, pour les musiciens et les producteurs. Recherche · Conception · Développement.">
+  <meta name="twitter:title" content="KERBERG CUSTOM // L’atelier audio · Rennes — Paris">
+  <meta name="twitter:description" content="Des plugins audio conçus et développés sur mesure, pour les musiciens et les producteurs. Recherche, conception et développement.">
   <meta name="twitter:image" content="https://kerberg-audio.com/og-image.png?v=2">
   
   <!-- Structured Data (Schema.org JSON-LD) -->
@@ -55,7 +55,7 @@
       {
         "@type": "ProfessionalService",
         "@id": "https://kerberg-audio.com/#service",
-        "name": "KERBERG CUSTOM // L'atelier audio",
+        "name": "KERBERG CUSTOM // L’atelier audio",
         "url": "https://kerberg-audio.com/",
         "provider": {
           "@id": "https://kerberg-audio.com/#organization"
@@ -92,26 +92,31 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <style>
+    /* Hallmark · genre: modern-minimal · philosophy: Braun / Dieter Rams / Bauhaus industrial audio design · restrained posture · copy: verbatim */
     :root {
-      --bg-stone: #f5f3ef;
-      --bg-paper: #ece8e1;
-      --card-bg: #ffffff;
-      --card-inner: #f8f7f4;
-      --ink-dark: #181715;
-      --ink-dim: #6a655c;
-      --ink-light: #9c968c;
-      --line-subtle: #ddd7cd;
-      --line-strong: #c2bcb0;
-      --te-orange: #e05a36;
-      --te-orange-hover: #c94b29;
-      --te-amber: #e89830;
-      --te-dark-orange: #b83d1c;
-      --crt-cream: #f4f0e6;
-      --crt-dark: #161514;
+      --color-paper: #F6F3EC;
+      --color-paper-subtle: #ECE6DA;
+      --color-surface: #FCFAF6;
+      --color-ink-primary: #121212;
+      --color-ink-secondary: #58534A;
+      --color-ink-tertiary: #8A8A8A;
+      --color-line-subtle: #DDD6C9;
+      --color-line-strong: #121212;
+      --color-accent: #FF6A1A;
+      --color-accent-hover: #E85A09;
+      --color-accent-ink: #121212;
+      --color-error: #C62828;
+      --color-dark-panel: #161514;
+      --color-dark-surface: #201E1C;
+      --color-dark-border: #322F2B;
+      --color-dark-text: #E8E2D6;
+      --color-dark-muted: #9E9689;
       --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+      --container-max: 1200px;
+      --grid-gap: 32px;
     }
 
     * {
@@ -120,90 +125,91 @@
       padding: 0;
     }
 
+    ::selection {
+      background-color: var(--color-accent);
+      color: var(--color-accent-ink);
+    }
+
     html {
       scroll-behavior: smooth;
-      overflow-x: hidden;
+      overflow-x: clip;
       width: 100%;
-      max-width: 100vw;
+      scrollbar-color: var(--color-line-subtle) var(--color-paper);
     }
 
     body {
-      background-color: var(--bg-stone);
-      color: var(--ink-dark);
+      background-color: var(--color-paper);
+      color: var(--color-ink-primary);
       font-family: var(--font-sans);
       line-height: 1.6;
       min-height: 100vh;
-      overflow-x: hidden;
+      overflow-x: clip;
       width: 100%;
-      max-width: 100vw;
-      background-image:
-        radial-gradient(circle at 10% 20%, rgba(224, 90, 54, 0.03), transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(24, 23, 21, 0.03), transparent 50%);
+      caret-color: var(--color-accent);
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
     }
 
     /* Container */
     .container {
-      max-width: 1240px;
+      max-width: var(--container-max);
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 32px;
       width: 100%;
     }
-    @media (max-width: 600px) {
+
+    @media (max-width: 640px) {
       .container {
-        padding: 0 16px;
+        padding: 0 20px;
       }
     }
 
-    /* Header Navigation */
+    /* Site Header */
     header.site-header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(245, 243, 239, 0.94);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line-subtle);
-      transition: all 0.2s ease;
+      background: var(--color-paper);
+      border-bottom: 1px solid var(--color-line-subtle);
     }
 
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 80px;
+      height: 72px;
     }
 
     .brand-lockup-wrap {
       display: flex;
       align-items: center;
       gap: 16px;
-      margin-right: 32px;
       flex-shrink: 0;
     }
+
     .brand-lockup {
       display: flex;
       align-items: center;
       text-decoration: none;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.15s ease;
     }
+
     .brand-lockup:hover {
-      opacity: 0.85;
+      opacity: 0.75;
     }
+
     .brand-lockup img {
-      height: 38px;
+      height: 32px;
       width: auto;
       display: block;
     }
+
     .brand-cities {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      color: var(--ink-dim);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-ink-secondary);
       padding-left: 16px;
-      padding-right: 8px;
-      border-left: 1px solid var(--line-strong);
-      text-transform: uppercase;
+      border-left: 1px solid var(--color-line-subtle);
       white-space: nowrap;
     }
 
@@ -215,15 +221,14 @@
 
     nav.main-nav a {
       text-decoration: none;
-      color: var(--ink-dim);
+      color: var(--color-ink-secondary);
       font-size: 13.5px;
       font-weight: 600;
-      letter-spacing: 0.02em;
       transition: color 0.15s ease;
     }
 
-    nav.main-nav a:hover, nav.main-nav a.active {
-      color: var(--ink-dark);
+    nav.main-nav a:hover {
+      color: var(--color-ink-primary);
     }
 
     .header-actions {
@@ -233,28 +238,101 @@
       flex-shrink: 0;
     }
 
+    .lang-btn {
+      background: transparent;
+      border: 1px solid var(--color-line-subtle);
+      color: var(--color-ink-primary);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .lang-btn:hover {
+      background: var(--color-paper-subtle);
+      border-color: var(--color-ink-primary);
+    }
+
+    .lang-btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-accent);
+      color: var(--color-accent-ink);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: 4px;
+      border: 1px solid var(--color-accent);
+      white-space: nowrap;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-cta-primary:hover {
+      background: var(--color-accent-hover);
+      border-color: var(--color-accent-hover);
+    }
+
+    .btn-cta-primary:active {
+      transform: translateY(1px);
+    }
+
+    .btn-cta-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--color-ink-primary);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: 4px;
+      border: 1.5px solid var(--color-ink-primary);
+      white-space: nowrap;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-cta-outline:hover {
+      background: var(--color-ink-primary);
+      color: var(--color-surface);
+    }
+
+    .btn-cta-outline:active {
+      transform: translateY(1px);
+    }
+
     .mobile-menu-btn {
       display: none;
       background: transparent;
-      border: 1px solid var(--line-strong);
+      border: 1px solid var(--color-line-subtle);
       border-radius: 4px;
       width: 40px;
       height: 36px;
-      padding: 8px 9px;
+      padding: 8px 8px;
       cursor: pointer;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      transition: all 0.2s ease;
     }
+
     .mobile-menu-btn span {
       display: block;
       width: 100%;
       height: 2px;
-      background: var(--ink-dark);
+      background: var(--color-ink-primary);
       border-radius: 2px;
-      transition: all 0.25s ease;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
+
     .mobile-menu-btn.active span:nth-child(1) {
       transform: translateY(7px) rotate(45deg);
     }
@@ -266,22 +344,21 @@
     }
 
     body.menu-open {
-      overflow: hidden !important;
+      overflow: hidden;
     }
 
     .mobile-menu-drawer {
       position: fixed;
-      top: 67px;
+      top: 73px;
       left: 0;
       right: 0;
       bottom: 0;
-      width: 100vw;
-      height: calc(100vh - 67px);
-      height: calc(100dvh - 67px);
-      background: var(--bg-paper);
-      border-top: 1px solid var(--line-subtle);
-      padding: 28px 24px 36px;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+      width: 100%;
+      height: calc(100vh - 73px);
+      height: calc(100dvh - 73px);
+      background: var(--color-paper);
+      border-top: 1px solid var(--color-line-subtle);
+      padding: 24px 20px 32px;
       z-index: 9999;
       display: flex;
       flex-direction: column;
@@ -289,107 +366,47 @@
       opacity: 0;
       visibility: hidden;
       transform: translateY(-8px);
-      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
       overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      box-sizing: border-box;
       pointer-events: none;
     }
+
     .mobile-menu-drawer.open {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
       pointer-events: auto;
     }
+
     .mobile-nav-links {
       display: flex;
       flex-direction: column;
-      gap: 2px;
-      margin-bottom: 24px;
+      gap: 4px;
     }
+
     .mobile-nav-links a {
       font-size: 20px;
       font-weight: 700;
-      letter-spacing: -0.01em;
-      color: var(--ink-dark);
+      color: var(--color-ink-primary);
       text-decoration: none;
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(18, 18, 18, 0.08);
+      padding: 16px 0;
+      border-bottom: 1px solid var(--color-line-subtle);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: color 0.15s ease, padding-left 0.15s ease;
     }
-    .mobile-nav-links a::after {
-      content: "→";
-      font-size: 16px;
-      color: var(--ink-dim);
-      opacity: 0.5;
-      transition: transform 0.15s ease, opacity 0.15s ease;
-    }
-    .mobile-nav-links a:hover,
-    .mobile-nav-links a:active {
-      color: var(--te-orange);
-      padding-left: 6px;
-    }
-    .mobile-nav-links a:hover::after,
-    .mobile-nav-links a:active::after {
-      opacity: 1;
-      color: var(--te-orange);
-      transform: translateX(4px);
-    }
+
     .mobile-menu-brand-meta {
-      font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-dim);
-      margin-top: 18px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(18, 18, 18, 0.08);
+      color: var(--color-ink-secondary);
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-line-subtle);
       text-align: center;
-      line-height: 1.6;
     }
 
-    @media (min-width: 993px) {
-      .mobile-menu-drawer {
-        display: none !important;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .header-inner {
-        height: 60px;
-      }
-      .brand-lockup img {
-        height: 25px;
-      }
-      .header-actions {
-        gap: 8px;
-      }
-      .lang-btn {
-        padding: 5px 8px;
-        font-size: 10.5px;
-      }
-      .mobile-menu-btn {
-        width: 36px;
-        height: 32px;
-        padding: 6px 7px;
-      }
-      .mobile-menu-drawer {
-        top: 61px;
-        height: calc(100vh - 61px);
-        height: calc(100dvh - 61px);
-        padding: 24px 20px 28px;
-      }
-      .mobile-nav-links a {
-        font-size: 18px;
-        padding: 12px 0;
-      }
-    }
-
-    @media (max-width: 992px) {
+    @media (max-width: 960px) {
       nav.main-nav {
         display: none;
       }
@@ -397,162 +414,79 @@
         display: flex;
       }
       .header-actions .header-cta-desktop {
-        display: none !important;
-      }
-      .header-inner {
-        height: 66px;
-      }
-      .brand-lockup img {
-        height: 30px;
-      }
-      .brand-lockup-wrap {
-        margin-right: 0;
+        display: none;
       }
       .brand-cities {
         display: none;
       }
     }
 
-    .lang-btn {
-      background: transparent;
-      border: 1px solid var(--line-strong);
-      color: var(--ink-dark);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      padding: 6px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    .lang-btn:hover {
-      background: var(--ink-dark);
-      color: var(--bg-stone);
-      border-color: var(--ink-dark);
-    }
-
-    .btn-cta-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--te-orange);
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-      padding: 10px 20px;
-      border-radius: 4px;
-      box-shadow: 0 2px 8px rgba(224, 90, 54, 0.25);
-      transition: all 0.15s ease;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-
-    .btn-cta-primary:hover {
-      background: var(--te-orange-hover);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 14px rgba(224, 90, 54, 0.35);
-    }
-
-    .btn-cta-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: var(--ink-dark);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-      padding: 10px 20px;
-      border-radius: 4px;
-      border: 1.5px solid var(--ink-dark);
-      transition: all 0.15s ease;
-    }
-
-    .btn-cta-outline:hover {
-      background: var(--ink-dark);
-      color: var(--bg-stone);
-    }
-
-    /* Hero Section (Faithful to uploaded poster) */
+    /* Hero Section */
     section.hero-atelier {
-      padding: 72px 0 96px;
-      border-bottom: 1px solid var(--line-subtle);
-      position: relative;
+      padding: 80px 0 112px;
+      border-bottom: 1px solid var(--color-line-subtle);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr 1fr;
-      gap: 56px;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: var(--grid-gap);
       align-items: center;
     }
 
-    .hero-manifesto {
-      max-width: 560px;
-    }
-
     .hero-eyebrow-line {
-      width: 38px;
+      width: 40px;
       height: 2px;
-      background: var(--ink-dark);
+      background: var(--color-ink-primary);
       margin-bottom: 24px;
     }
 
-    .hero-category {
-      font-family: var(--font-mono);
+    .hero-origin {
       font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--te-orange);
+      font-weight: 600;
+      color: var(--color-accent);
       margin-bottom: 16px;
       display: block;
     }
 
     h1.hero-headline {
-      font-size: 64px;
+      font-size: clamp(38px, 5.5vw, 64px);
       font-weight: 800;
-      line-height: 1.08;
+      line-height: 1.05;
       letter-spacing: -0.03em;
-      color: var(--ink-dark);
-      margin-bottom: 28px;
-    }
-
-    .hero-headline span.dot {
-      color: var(--te-orange);
+      color: var(--color-ink-primary);
+      margin-bottom: 24px;
+      text-wrap: balance;
     }
 
     .hero-body-text {
-      font-size: 21px;
+      font-size: 20px;
       line-height: 1.5;
-      font-weight: 400;
-      color: #383530;
-      margin-bottom: 18px;
+      font-weight: 500;
+      color: var(--color-ink-primary);
+      margin-bottom: 12px;
+      max-width: 44ch;
+      text-wrap: pretty;
     }
 
     .hero-body-sub {
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.6;
-      color: var(--ink-dim);
-      font-style: italic;
-      margin-bottom: 36px;
+      color: var(--color-ink-secondary);
+      margin-bottom: 32px;
     }
 
     .hero-meta-block {
-      border-top: 1px solid var(--line-strong);
-      padding-top: 24px;
-      margin-bottom: 36px;
+      border-top: 1px solid var(--color-line-subtle);
+      padding-top: 20px;
+      margin-bottom: 32px;
     }
 
     .hero-meta-tags {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
+      font-size: 12px;
+      font-weight: 500;
       line-height: 1.8;
-      color: var(--ink-dim);
-      text-transform: uppercase;
+      color: var(--color-ink-secondary);
     }
 
     .hero-buttons {
@@ -562,21 +496,12 @@
       align-items: center;
     }
 
-    /* Poster Visual Stage with Mockup Frame */
     .hero-visual-frame {
       position: relative;
-      border-radius: 12px;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow:
-        0 24px 60px -12px rgba(24, 23, 21, 0.18),
-        0 1px 3px rgba(0,0,0,0.06);
-      background: var(--card-bg);
-      border: 1px solid rgba(24, 23, 21, 0.08);
-      transition: transform 0.3s ease;
-    }
-
-    .hero-visual-frame:hover {
-      transform: translateY(-4px);
+      border: 1px solid var(--color-line-subtle);
+      background: var(--color-paper-subtle);
     }
 
     .hero-visual-frame img {
@@ -588,318 +513,232 @@
 
     .hero-badge-floating {
       position: absolute;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(24, 23, 21, 0.88);
-      backdrop-filter: blur(8px);
-      color: var(--crt-cream);
-      padding: 10px 16px;
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      border: 1px solid rgba(255,255,255,0.15);
+      bottom: 16px;
+      right: 16px;
+      background: var(--color-dark-panel);
+      color: var(--color-dark-text);
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      border: 1px solid var(--color-dark-border);
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    @media (max-width: 992px) {
+    .meter-indicator {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-accent);
+    }
+
+    @media (max-width: 960px) {
       .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 36px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 40px;
       }
       section.hero-atelier {
-        padding: 40px 0 60px;
-      }
-      .hero-manifesto {
-        max-width: 100%;
+        padding: 48px 0 64px;
       }
     }
 
-    @media (max-width: 600px) {
-      h1.hero-headline {
-        font-size: clamp(32px, 8.5vw, 42px);
-        margin-bottom: 18px;
-        line-height: 1.1;
-      }
-      .hero-body-text {
-        font-size: 16px;
-        line-height: 1.5;
-        margin-bottom: 14px;
-      }
-      .hero-body-sub {
-        font-size: 13.5px;
-        margin-bottom: 20px;
-      }
-      .hero-meta-block {
-        padding-top: 16px;
-        margin-bottom: 20px;
-      }
-      .hero-meta-tags {
-        font-size: 10px;
-        letter-spacing: 0.12em;
-        line-height: 1.6;
-      }
-      .hero-buttons {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 12px;
-        width: 100%;
-      }
-      .hero-buttons .btn-cta-primary,
-      .hero-buttons .btn-cta-outline {
-        width: 100%;
-        justify-content: center;
-        text-align: center;
-        padding: 13px 18px;
-        font-size: 13.5px;
-      }
-      .hero-badge-floating {
-        bottom: 10px;
-        right: 10px;
-        font-size: 8.5px;
-        padding: 5px 8px;
-        letter-spacing: 0.04em;
-      }
-    }
-
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--te-orange);
-      box-shadow: 0 0 8px var(--te-orange);
-    }
-
-    /* Section Headers */
+    /* Section Headings */
     .section-head {
       margin-bottom: 48px;
     }
 
-    .section-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--te-orange);
-      display: block;
-      margin-bottom: 10px;
-    }
-
     .section-title {
-      font-size: 38px;
+      font-size: clamp(28px, 3.8vw, 42px);
       font-weight: 800;
       letter-spacing: -0.02em;
-      color: var(--ink-dark);
+      color: var(--color-ink-primary);
       margin-bottom: 16px;
+      line-height: 1.15;
+      text-wrap: balance;
     }
 
     .section-desc {
       font-size: 17px;
-      color: var(--ink-dim);
-      max-width: 680px;
+      color: var(--color-ink-secondary);
+      max-width: 64ch;
       line-height: 1.6;
+      text-wrap: pretty;
     }
 
-    /* INTERACTIVE PRISM STUDIO DISPLAY */
-    section.prism-showcase {
-      padding: 96px 0;
-      background: var(--bg-paper);
-      border-bottom: 1px solid var(--line-subtle);
+    /* Showcase Video Section */
+    section.film-section {
+      padding: 96px 0 112px;
+      background: var(--color-dark-panel);
+      color: var(--color-dark-text);
+      border-bottom: 1px solid var(--color-dark-border);
     }
 
-    .plugin-window-wrapper {
-      background: #ffffff;
-      border-radius: 12px;
-      border: 1px solid var(--line-strong);
-      box-shadow:
-        0 20px 50px -10px rgba(0,0,0,0.12),
-        0 2px 6px rgba(0,0,0,0.04);
+    .film-section .section-title {
+      color: var(--color-dark-text);
+    }
+    .film-section .section-desc {
+      color: var(--color-dark-muted);
+    }
+
+    .video-container-card {
+      background: var(--color-dark-surface);
+      border: 1px solid var(--color-dark-border);
+      border-radius: 8px;
       overflow: hidden;
-      margin-top: 32px;
+      margin-top: 36px;
+      color: var(--color-dark-text);
     }
 
-    .plugin-window-chrome {
-      background: #f0ece3;
+    .video-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 12px 20px;
+      background: var(--color-dark-surface);
+      border-bottom: 1px solid var(--color-dark-border);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .video-meta-tag {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--line-subtle);
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-dark-muted);
     }
 
-    .chrome-dots {
+    .video-lang-toggles {
       display: flex;
       gap: 8px;
     }
-    .chrome-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #cfc8ba;
-    }
-    .chrome-dot.close { background: #e06a55; }
-    .chrome-dot.min { background: #e0b055; }
-    .chrome-dot.max { background: #7ab36b; }
 
-    .chrome-title {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: var(--ink-dim);
-      text-transform: uppercase;
-    }
-
-    .plugin-layout {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      min-height: 520px;
-      background: #fbfaf8;
-    }
-
-    @media (max-width: 860px) {
-      .plugin-layout {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Left Presets Sidebar */
-    .plugin-presets-sidebar {
-      background: #f4efe6;
-      border-right: 1px solid var(--line-subtle);
-      padding: 20px 16px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .presets-label {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      color: var(--ink-dim);
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--line-subtle);
-    }
-
-    .preset-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 5px;
+    .v-lang-btn {
+      background: transparent;
+      border: 1px solid var(--color-dark-border);
+      color: var(--color-dark-muted);
+      padding: 8px 12px;
+      border-radius: 4px;
       font-family: var(--font-mono);
       font-size: 11px;
       font-weight: 600;
-      color: var(--ink-dim);
       cursor: pointer;
-      margin-bottom: 4px;
-      transition: all 0.1s ease;
-      background: transparent;
-      border: none;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .v-lang-btn:hover {
+      border-color: var(--color-accent);
+      color: var(--color-dark-text);
+    }
+
+    .v-lang-btn.active {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: var(--color-accent-ink);
+    }
+
+    .v-lang-btn:active {
+      transform: translateY(1px);
+    }
+
+    .video-frame-wrap {
+      position: relative;
+      background: var(--color-dark-panel);
       width: 100%;
-      text-align: left;
+      aspect-ratio: 16 / 9;
     }
 
-    .preset-item:hover {
-      background: rgba(224, 90, 54, 0.08);
-      color: var(--ink-dark);
+    .video-frame-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
-    .preset-item.active {
-      background: var(--ink-dark);
-      color: #ffffff;
-    }
-
-    .preset-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--line-strong);
-    }
-    .preset-item.active .preset-dot {
-      background: var(--te-orange);
-      box-shadow: 0 0 6px var(--te-orange);
-    }
-
-    /* Center Main DSP Stage */
-    .plugin-main-stage {
-      padding: 24px 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .prism-gui-top {
+    .video-chapters-bar {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--line-subtle);
-      padding-bottom: 14px;
-      margin-bottom: 20px;
+      padding: 12px 20px;
+      background: var(--color-dark-surface);
+      border-top: 1px solid var(--color-dark-border);
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    .prism-gui-brand {
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
+    .chapters-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-dark-muted);
     }
 
-    .prism-gui-tabs {
+    .chapters-pills {
       display: flex;
-      gap: 20px;
+      flex-wrap: wrap;
+      gap: 8px;
     }
 
-    .gui-tab {
+    .ch-pill {
+      background: var(--color-dark-panel);
+      border: 1px solid var(--color-dark-border);
+      color: var(--color-dark-text);
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .ch-pill:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    .ch-pill:active {
+      transform: translateY(1px);
+    }
+
+    .suite-download-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 28px;
+      background: var(--color-dark-surface);
+      border: 1px solid var(--color-dark-border);
+      border-radius: 8px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .suite-dl-title {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-dark-text);
+    }
+
+    .suite-dl-meta {
+      display: block;
       font-family: var(--font-mono);
       font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      cursor: pointer;
-      position: relative;
-      padding-bottom: 4px;
+      color: var(--color-dark-muted);
+      margin-top: 4px;
     }
 
-    .gui-tab.active {
-      color: var(--te-orange);
-    }
-    .gui-tab.active::after {
-      content: '';
-      position: absolute;
-      bottom: -15px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--te-orange);
-    }
-
-    .prism-gui-corp {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      color: var(--ink-light);
-    }
-
-    /* 3 Disciplines Section (Music Production / Sound Design / Mixing) */
+    /* Catalogue Disciplines */
     section.disciplines-section {
-      padding: 96px 0;
-      border-bottom: 1px solid var(--line-subtle);
+      padding: 112px 0;
+      border-bottom: 1px solid var(--color-line-subtle);
     }
 
     .disciplines-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      gap: var(--grid-gap);
       margin-top: 40px;
     }
 
@@ -910,73 +749,56 @@
     }
 
     .discipline-card {
-      background: var(--card-bg);
-      border: 1px solid var(--line-subtle);
-      border-radius: 10px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-line-subtle);
+      border-radius: 6px;
       padding: 32px 28px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.2s ease;
-      position: relative;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      transition: border-color 0.15s ease;
     }
 
     .discipline-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-      border-color: var(--line-strong);
-    }
-
-    .discipline-badge {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      color: var(--te-orange);
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      display: block;
+      border-color: var(--color-line-strong);
     }
 
     .discipline-title {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 800;
       letter-spacing: -0.01em;
-      color: var(--ink-dark);
+      color: var(--color-ink-primary);
       margin-bottom: 8px;
     }
 
     .discipline-plugin {
       font-family: var(--font-mono);
       font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--ink-dim);
-      margin-bottom: 18px;
+      font-weight: 600;
+      color: var(--color-ink-secondary);
+      margin-bottom: 20px;
     }
 
     .discipline-text {
       font-size: 14.5px;
-      color: var(--ink-dim);
+      color: var(--color-ink-secondary);
       line-height: 1.6;
       margin-bottom: 24px;
     }
 
     .discipline-specs {
-      border-top: 1px solid var(--line-subtle);
-      padding-top: 18px;
+      border-top: 1px solid var(--color-line-subtle);
+      padding-top: 20px;
       margin-bottom: 24px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--ink-dim);
+      font-size: 12px;
+      color: var(--color-ink-secondary);
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
     }
 
     .discipline-specs strong {
-      color: var(--ink-dark);
+      color: var(--color-ink-primary);
     }
 
     .btn-download-plugin {
@@ -984,79 +806,78 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      background: var(--ink-dark);
-      color: #ffffff;
+      background: transparent;
+      color: var(--color-ink-primary);
       text-decoration: none;
-      font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
-      padding: 10px 16px;
+      padding: 12px 16px;
       border-radius: 4px;
-      transition: all 0.15s ease;
+      border: 1px solid var(--color-line-strong);
+      white-space: nowrap;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
     }
 
     .btn-download-plugin:hover {
-      background: var(--te-orange);
+      background: var(--color-ink-primary);
+      color: var(--color-surface);
+      border-color: var(--color-ink-primary);
     }
 
-    /* Research Notebook & Blueprint Section */
+    .btn-download-plugin:active {
+      transform: translateY(1px);
+    }
+
+    /* Notebook & Blueprint */
     section.notebook-blueprint {
-      padding: 96px 0;
-      background: #f2eee6;
-      border-bottom: 1px solid var(--line-subtle);
+      padding: 112px 0;
+      background: var(--color-paper-subtle);
+      border-bottom: 1px solid var(--color-line-subtle);
     }
 
     .notebook-card {
-      background: #fffefb;
-      border-radius: 8px;
-      border: 1px solid #d4cdbf;
-      box-shadow:
-        0 12px 36px rgba(0,0,0,0.06),
-        inset 0 0 0 1px rgba(255,255,255,0.6);
-      padding: 48px;
-      position: relative;
-      background-image:
-        linear-gradient(to right, rgba(160, 150, 130, 0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(160, 150, 130, 0.08) 1px, transparent 1px);
-      background-size: 24px 24px;
+      background: var(--color-surface);
+      border-radius: 6px;
+      border: 1px solid var(--color-line-subtle);
+      padding: 40px;
     }
 
     .notebook-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 2px solid var(--ink-dark);
+      border-bottom: 2px solid var(--color-ink-primary);
       padding-bottom: 16px;
       margin-bottom: 32px;
     }
 
     .notebook-meta {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--te-orange);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-accent);
     }
 
     .blueprint-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      gap: var(--grid-gap);
       align-items: center;
     }
 
-    @media (max-width: 820px) {
+    @media (max-width: 840px) {
       .blueprint-grid {
         grid-template-columns: 1fr;
+      }
+      .notebook-card {
+        padding: 24px;
       }
     }
 
     .blueprint-schematic {
-      background: #f8f6f0;
-      border: 1.5px dashed var(--line-strong);
-      border-radius: 6px;
-      padding: 32px;
+      background: var(--color-paper);
+      border: 1px dashed var(--color-line-subtle);
+      border-radius: 4px;
+      padding: 32px 20px;
       text-align: center;
     }
 
@@ -1073,39 +894,38 @@
     }
 
     .bullet-marker {
-      font-size: 20px;
-      color: var(--te-orange);
+      font-size: 18px;
+      color: var(--color-accent);
       line-height: 1;
+      font-weight: 700;
     }
 
     .bullet-title {
-      font-family: var(--font-mono);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.08em;
-      color: var(--ink-dark);
+      color: var(--color-ink-primary);
       margin-bottom: 4px;
     }
 
     .bullet-desc {
       font-size: 14px;
-      color: var(--ink-dim);
-      line-height: 1.5;
+      color: var(--color-ink-secondary);
+      line-height: 1.55;
     }
 
-    /* Custom Bespoke Atelier Order Section */
+    /* Custom Bespoke Section */
     section.custom-order {
-      padding: 96px 0;
-      border-bottom: 1px solid var(--line-subtle);
+      padding: 112px 0;
+      border-bottom: 1px solid var(--color-line-subtle);
     }
 
     .custom-box-grid {
       display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 56px;
+      grid-template-columns: 1fr 1.05fr;
+      gap: var(--grid-gap);
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       .custom-box-grid {
         grid-template-columns: 1fr;
       }
@@ -1115,21 +935,20 @@
       display: flex;
       flex-direction: column;
       gap: 24px;
-      margin-top: 24px;
+      margin-top: 32px;
     }
 
     .step-item {
       display: flex;
-      gap: 18px;
+      gap: 16px;
     }
 
     .step-num {
       width: 32px;
       height: 32px;
-      border-radius: 50%;
-      background: var(--ink-dark);
-      color: var(--bg-stone);
-      font-family: var(--font-mono);
+      border-radius: 4px;
+      background: var(--color-ink-primary);
+      color: var(--color-surface);
       font-size: 13px;
       font-weight: 700;
       display: flex;
@@ -1139,25 +958,23 @@
     }
 
     .step-title {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
-      color: var(--ink-dark);
+      color: var(--color-ink-primary);
       margin-bottom: 4px;
     }
 
     .step-text {
       font-size: 13.5px;
-      color: var(--ink-dim);
+      color: var(--color-ink-secondary);
       line-height: 1.5;
     }
 
-    /* Contact Form Card */
     .contact-atelier-card {
-      background: var(--card-bg);
-      border-radius: 10px;
-      border: 1px solid var(--line-strong);
-      padding: 36px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      background: var(--color-surface);
+      border-radius: 6px;
+      border: 1px solid var(--color-line-subtle);
+      padding: 36px 32px;
     }
 
     .form-group {
@@ -1166,233 +983,93 @@
 
     .form-label {
       display: block;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--ink-dark);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-ink-primary);
       margin-bottom: 8px;
-      text-transform: uppercase;
     }
 
     .form-input, .form-textarea, .form-select {
       width: 100%;
-      background: #fbfaf7;
-      border: 1px solid var(--line-strong);
+      background: var(--color-paper);
+      border: 1px solid var(--color-line-subtle);
       border-radius: 4px;
-      padding: 12px 14px;
+      padding: 12px 16px;
       font-family: var(--font-sans);
       font-size: 14px;
-      color: var(--ink-dark);
-      transition: all 0.15s ease;
+      color: var(--color-ink-primary);
+      transition: border-color 0.15s ease, background-color 0.15s ease;
     }
 
     .form-input:focus, .form-textarea:focus, .form-select:focus {
       outline: none;
-      border-color: var(--te-orange);
-      background: #ffffff;
-      box-shadow: 0 0 0 3px rgba(224, 90, 54, 0.15);
+      border-color: var(--color-ink-primary);
+      background: var(--color-surface);
     }
 
     .form-textarea {
-      min-height: 110px;
+      min-height: 112px;
       resize: vertical;
     }
 
     .btn-submit-form {
       width: 100%;
-      background: var(--te-orange);
-      color: #ffffff;
+      background: var(--color-accent);
+      color: var(--color-accent-ink);
       border: none;
-      padding: 14px 20px;
+      padding: 12px 20px;
       border-radius: 4px;
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 700;
-      letter-spacing: 0.05em;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      box-shadow: 0 3px 10px rgba(224, 90, 54, 0.3);
-      transition: all 0.15s ease;
+      gap: 8px;
+      white-space: nowrap;
+      transition: background-color 0.15s ease;
     }
 
     .btn-submit-form:hover {
-      background: var(--te-orange-hover);
-      transform: translateY(-1px);
+      background: var(--color-accent-hover);
     }
 
-    /* Video Presentation Section */
-    section.film-section {
-      padding: 80px 0;
-      background: #181715;
-      color: var(--crt-cream);
-      position: relative;
+    .btn-submit-form:active {
+      transform: translateY(1px);
     }
 
-    .film-section .section-title {
-      color: var(--crt-cream);
-    }
-    .film-section .section-desc {
-      color: #a8a296;
+    .btn-submit-form:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
 
-    .video-container-card {
-      background: #1c1a17;
-      border: 1px solid #332f29;
-      border-radius: 12px;
-      overflow: hidden;
-      margin-top: 36px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    }
-
-    .video-toolbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 20px;
-      background: #23201c;
-      border-bottom: 1px solid #2e2b25;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .video-meta-tag {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 600;
-      color: #b5afa4;
-      letter-spacing: 0.08em;
-    }
-
-    .video-lang-toggles {
-      display: flex;
-      gap: 8px;
-    }
-
-    .v-lang-btn {
-      background: transparent;
-      border: 1px solid #4a453c;
-      color: #c4beaf;
-      padding: 6px 14px;
-      border-radius: 4px;
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      font-weight: 700;
-      cursor: pointer;
-      letter-spacing: 0.1em;
-      transition: all 0.2s ease;
-    }
-
-    .v-lang-btn:hover {
-      border-color: var(--te-orange);
-      color: #ffffff;
-    }
-
-    .v-lang-btn.active {
-      background: var(--te-orange);
-      border-color: var(--te-orange);
-      color: #ffffff;
-    }
-
-    .video-frame-wrap {
-      position: relative;
-      background: #000000;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-    }
-
-    .video-frame-wrap video {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-
-    .video-chapters-bar {
-      display: flex;
-      align-items: center;
-      padding: 14px 20px;
-      background: #1c1a17;
-      border-top: 1px solid #2e2b25;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .chapters-label {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 700;
-      color: #8c867a;
-      letter-spacing: 0.12em;
-    }
-
-    .chapters-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .ch-pill {
-      background: #262420;
-      border: 1px solid #3d3932;
-      color: #d6d0c2;
-      padding: 6px 12px;
-      border-radius: 4px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .ch-pill:hover {
-      border-color: var(--te-orange);
-      color: var(--te-orange);
-      background: #2e2a24;
-    }
-
-    .suite-download-banner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 24px;
-      background: #23201c;
-      border: 1px solid #3d3932;
-      border-radius: 8px;
-      margin-top: 24px;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .suite-dl-title {
-      display: block;
-      font-family: var(--font-mono);
+    .form-feedback-success {
+      display: none;
       font-size: 12px;
+      color: var(--color-accent);
       font-weight: 700;
-      color: #ffffff;
-      letter-spacing: 0.05em;
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.5;
     }
 
-    .suite-dl-meta {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: #a8a296;
-      margin-top: 2px;
+    .form-feedback-error {
+      display: none;
+      font-size: 12px;
+      color: var(--color-error);
+      font-weight: 700;
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.5;
     }
 
     /* Footer */
     footer.site-footer {
-      background: #141312;
-      color: #8c867a;
-      padding: 64px 0 40px;
-      font-size: 12.5px;
-      border-top: 1px solid #2a2825;
+      background: var(--color-dark-panel);
+      color: var(--color-dark-muted);
+      padding: 80px 0 40px;
+      font-size: 13px;
+      border-top: 1px solid var(--color-dark-border);
     }
 
     .footer-top {
@@ -1402,29 +1079,22 @@
       flex-wrap: wrap;
       gap: 36px;
       padding-bottom: 48px;
-      border-bottom: 1px solid #262421;
-    }
-
-    .footer-brand h4 {
-      font-size: 16px;
-      color: var(--crt-cream);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
+      border-bottom: 1px solid var(--color-dark-border);
     }
 
     .footer-brand p {
-      max-width: 340px;
+      max-width: 320px;
       line-height: 1.6;
+      color: var(--color-dark-muted);
     }
 
-    .footer-links-col h5 {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--crt-cream);
-      letter-spacing: 0.15em;
+    .footer-links-col h4 {
+      font-size: 12px;
+      color: var(--color-dark-text);
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
+      font-weight: 700;
     }
 
     .footer-links-col ul {
@@ -1435,13 +1105,13 @@
     }
 
     .footer-links-col a {
-      color: #8c867a;
+      color: var(--color-dark-muted);
       text-decoration: none;
       transition: color 0.15s ease;
     }
 
     .footer-links-col a:hover {
-      color: var(--te-orange);
+      color: var(--color-accent);
     }
 
     .footer-bottom {
@@ -1451,105 +1121,15 @@
       padding-top: 32px;
       flex-wrap: wrap;
       gap: 16px;
-      font-family: var(--font-mono);
       font-size: 11px;
+      color: var(--color-dark-muted);
     }
 
-    /* Comprehensive Mobile & Tablet Responsive Engine */
-    @media (max-width: 900px) {
-      .section-head {
-        margin-bottom: 32px;
-      }
-      .section-title {
-        font-size: clamp(24px, 6.5vw, 36px);
-      }
-      .section-desc {
-        font-size: 15px;
-        line-height: 1.55;
-      }
-      .custom-order-grid {
-        grid-template-columns: 1fr;
-        gap: 36px;
-      }
-      .contact-atelier-card {
-        padding: 28px 20px;
-      }
-      .steps-list {
-        padding-right: 0;
-      }
-      .form-input, .form-textarea, .form-select {
-        font-size: 16px !important;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .video-toolbar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-        padding: 12px 16px;
-      }
-      .video-meta-tag {
-        font-size: 10px;
-        letter-spacing: 0.05em;
-      }
-      .video-chapters-bar {
-        padding: 12px 14px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-      .chapters-pills {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 6px;
-        width: 100%;
-      }
-      .ch-pill {
-        width: 100%;
-        text-align: center;
-        padding: 8px 6px;
-        font-size: 10px;
-      }
-      .suite-download-banner {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 16px;
-        padding: 18px 16px;
-      }
-      .suite-download-banner .btn-cta-primary {
-        width: 100%;
-        justify-content: center;
-        text-align: center;
-      }
-      .blueprint-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-      .notebook-card {
-        padding: 24px 18px;
-      }
-      .notebook-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-      }
-      .blueprint-schematic svg {
-        max-width: 100%;
-        height: auto;
-      }
-      footer.site-footer {
-        padding: 48px 0 32px;
-      }
-      .footer-top {
-        flex-direction: column;
-        gap: 28px;
-        padding-bottom: 32px;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
+    /* Reduced motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
       }
     }
   </style>
@@ -1563,11 +1143,11 @@
         <a href="#" class="brand-lockup" aria-label="KERBERG AUDIO">
           <img src="kerberg-nav-logo.svg" alt="KERBERG AUDIO" width="210" height="38" />
         </a>
-        <span class="brand-cities">RENNES · PARIS</span>
+        <span class="brand-cities">Rennes / Paris</span>
       </div>
 
       <nav class="main-nav">
-        <a href="#atelier" id="navAtelier">L'Atelier</a>
+        <a href="#atelier" id="navAtelier">L’Atelier</a>
         <a href="#showcase" id="navShowcase">Démonstration</a>
         <a href="#catalogue" id="navPlugins">Instruments</a>
         <a href="#recherche" id="navResearch">Recherche</a>
@@ -1576,7 +1156,7 @@
 
       <div class="header-actions">
         <button class="lang-btn" id="langToggle">FR / EN</button>
-        <a href="#sur-mesure" class="btn-cta-primary header-cta-desktop" id="headerCta">Projet sur mesure →</a>
+        <a href="#sur-mesure" class="btn-cta-primary header-cta-desktop" id="headerCta">Projet sur mesure</a>
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu" onclick="toggleMobileMenu()">
           <span></span>
           <span></span>
@@ -1585,33 +1165,33 @@
       </div>
     </div>
 
-    <!-- Mobile Drawer Menu (Full Viewport Overlay) -->
+    <!-- Mobile Drawer Menu -->
     <div class="mobile-menu-drawer" id="mobileMenuDrawer" role="dialog" aria-modal="true" aria-label="Menu principal">
       <nav class="mobile-nav-links">
-        <a href="#atelier" onclick="closeMobileMenu()" id="mNavAtelier">L'Atelier</a>
+        <a href="#atelier" onclick="closeMobileMenu()" id="mNavAtelier">L’Atelier</a>
         <a href="#showcase" onclick="closeMobileMenu()" id="mNavShowcase">Démonstration</a>
         <a href="#catalogue" onclick="closeMobileMenu()" id="mNavPlugins">Instruments</a>
         <a href="#recherche" onclick="closeMobileMenu()" id="mNavResearch">Recherche</a>
         <a href="#sur-mesure" onclick="closeMobileMenu()" id="mNavBespoke">Sur-Mesure</a>
       </nav>
       <div class="mobile-menu-footer">
-        <a href="#sur-mesure" class="btn-cta-primary" onclick="closeMobileMenu()" id="mHeaderCta" style="width:100%; justify-content:center; text-align:center;">Projet sur mesure →</a>
+        <a href="#sur-mesure" class="btn-cta-primary" onclick="closeMobileMenu()" id="mHeaderCta" style="width:100%; justify-content:center; text-align:center;">Projet sur mesure</a>
         <div class="mobile-menu-brand-meta">
-          KERBERG // RENNES · PARIS<br>
-          <span style="font-size: 9.5px; opacity: 0.7;">RECHERCHE · CONCEPTION · DÉVELOPPEMENT</span>
+          KERBERG / Rennes & Paris<br>
+          <span style="font-size: 10px; opacity: 0.75;">Recherche, conception et développement</span>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section: L'atelier audio (Faithful to the new poster) -->
+  <!-- Hero Section: L'atelier audio -->
   <section class="hero-atelier" id="atelier">
     <div class="container hero-grid">
       <div class="hero-manifesto">
         <div class="hero-eyebrow-line"></div>
-        <span class="hero-category">KERBERG CUSTOM // RENNES · PARIS</span>
+        <span class="hero-origin">Kerberg Custom / Rennes & Paris</span>
         <h1 class="hero-headline">
-          <span id="heroTitle">L’atelier audio</span><span class="dot">.</span>
+          <span id="heroTitle">L’atelier audio</span>
         </h1>
         <p class="hero-body-text" id="heroLead">
           Des plugins audio conçus et développés sur mesure, pour les musiciens et les producteurs.
@@ -1622,22 +1202,22 @@
 
         <div class="hero-meta-block">
           <div class="hero-meta-tags" id="heroMetaTags">
-            RECHERCHE · CONCEPTION · DÉVELOPPEMENT<br/>
-            RENNES · PARIS
+            Recherche, conception et développement<br/>
+            Rennes / Paris
           </div>
         </div>
 
         <div class="hero-buttons">
-          <a href="#showcase" class="btn-cta-primary" id="btnHeroShowcase">Voir la démonstration ↓</a>
+          <a href="#showcase" class="btn-cta-primary" id="btnHeroShowcase">Voir la démonstration</a>
           <a href="#sur-mesure" class="btn-cta-outline" id="btnHeroCustom">Commander un plugin</a>
         </div>
       </div>
 
       <div class="hero-visual-frame">
-        <img src="images/kerberg-atelier-hero.jpg" alt="KERBERG CUSTOM — L'atelier audio studio desk with laptop and PRISM plugin" />
+        <img src="images/kerberg-atelier-hero.jpg" alt="KERBERG CUSTOM — L’atelier audio studio desk with laptop and PRISM plugin" width="800" height="600" />
         <div class="hero-badge-floating">
-          <div class="pulse-dot"></div>
-          <span>MACOS UNIVERSAL (VST3 · CLAP · STANDALONE)</span>
+          <div class="meter-indicator"></div>
+          <span>macOS Universal (VST3, CLAP, Standalone)</span>
         </div>
       </div>
     </div>
@@ -1647,7 +1227,6 @@
   <section class="film-section" id="showcase">
     <div class="container">
       <div class="section-head">
-        <span class="section-eyebrow" style="color:var(--te-orange);">DÉMONSTRATION OFFICIELLE D'ATELIER</span>
         <h2 class="section-title" id="filmTitle">Les Instruments en Action</h2>
         <p class="section-desc" id="filmDesc">
           Visionnez la présentation haute fidélité de notre suite d’instruments audio : architecture gravitationnelle, shaper de transitoires et saturation analogique.
@@ -1655,15 +1234,14 @@
       </div>
 
       <div class="video-container-card">
-        <!-- Video Language Bar -->
         <div class="video-toolbar">
           <div class="video-meta-tag">
-            <span class="pulse-dot"></span>
-            <span id="videoLangStatus">AUDIO : FRANÇAIS (1080P HD · STÉRÉO 48 KHZ)</span>
+            <span class="meter-indicator"></span>
+            <span id="videoLangStatus">Audio : Français (1080p HD, stéréo 48 kHz)</span>
           </div>
           <div class="video-lang-toggles">
-            <button class="v-lang-btn active" id="btnVidFR" onclick="switchVideoLang('fr')">FRANÇAIS</button>
-            <button class="v-lang-btn" id="btnVidEN" onclick="switchVideoLang('en')">ENGLISH</button>
+            <button class="v-lang-btn active" id="btnVidFR" onclick="switchVideoLang('fr')">Français</button>
+            <button class="v-lang-btn" id="btnVidEN" onclick="switchVideoLang('en')">English</button>
           </div>
         </div>
 
@@ -1673,104 +1251,99 @@
           </video>
         </div>
 
-        <!-- Video Chapter Navigation -->
         <div class="video-chapters-bar">
-          <span class="chapters-label">CHAPITRES :</span>
+          <span class="chapters-label">Chapitres :</span>
           <div class="chapters-pills">
-            <button class="ch-pill" onclick="seekVideo(0)">00:00 · L'Atelier Audio</button>
-            <button class="ch-pill" onclick="seekVideo(4)">00:04 · GRAVITON (GV-01)</button>
-            <button class="ch-pill" onclick="seekVideo(8)">00:08 · PRISM (PR-02)</button>
-            <button class="ch-pill" onclick="seekVideo(12)">00:12 · KELVIN (KV-03)</button>
+            <button class="ch-pill" onclick="seekVideo(0)">00:00 L’Atelier Audio</button>
+            <button class="ch-pill" onclick="seekVideo(4)">00:04 Graviton (GV-01)</button>
+            <button class="ch-pill" onclick="seekVideo(8)">00:08 Prism (PR-02)</button>
+            <button class="ch-pill" onclick="seekVideo(12)">00:12 Kelvin (KV-03)</button>
           </div>
         </div>
       </div>
 
       <div class="suite-download-banner">
-        <div class="suite-dl-text">
-          <span class="suite-dl-title">SUITE KERBERG COMPLÈTE // GRAVITON · PRISM · KELVIN</span>
-          <span class="suite-dl-meta">MACOS INTEL & APPLE SILICON (VST3 · CLAP · STANDALONE) — 16 MO</span>
+        <div>
+          <span class="suite-dl-title">Suite Kerberg Complète (Graviton, Prism, Kelvin)</span>
+          <span class="suite-dl-meta">macOS Intel & Apple Silicon (VST3, CLAP, Standalone) · 16 Mo</span>
         </div>
         <a href="downloads/KERBERG-Suite-macOS-Universal.zip" download class="btn-cta-primary">
-          ↓ Télécharger la Suite Complète (.zip)
+          Télécharger la Suite (.zip)
         </a>
       </div>
     </div>
   </section>
 
-  <!-- 3 Disciplines Section: Inspired by the books on the desk -->
+  <!-- 3 Disciplines Section -->
   <section class="disciplines-section" id="catalogue">
     <div class="container">
       <div class="section-head">
-        <span class="section-eyebrow">SAVOIR-FAIRE ACOUSTIQUE</span>
         <h2 class="section-title" id="discTitle">Les Trois Domaines de l’Atelier</h2>
         <p class="section-desc" id="discDesc">
-          Chaque instrument que nous concevons répond à une exigence musicale précise, incarnée par les ouvrages de référence de notre atelier.
+          Chaque instrument que nous concevons répond à une exigence musicale précise, incarnée par les principes fonctionnels de notre atelier.
         </p>
       </div>
 
       <div class="disciplines-grid">
-        <!-- Card 1: Music Production / GRAVITON -->
+        <!-- Card 1: GRAVITON -->
         <div class="discipline-card">
           <div>
-            <span class="discipline-badge">LIVRE I · MUSIC PRODUCTION</span>
             <h3 class="discipline-title">GRAVITON</h3>
-            <div class="discipline-plugin">GV-01 // SYNTHÉTISEUR ORBITAL POLYPHONIQUE</div>
+            <div class="discipline-plugin">GV-01 // Synthétiseur orbital / Production</div>
             <p class="discipline-text" id="gvCardText">
-              Projetez vos accords au clavier MIDI en orbite autour de 3 pôles d'attraction gravitationnels. Naissance de nappes vivantes, résonateurs harmoniques et textures spatiales à 4 voix.
+              Projetez vos accords au clavier MIDI en orbite autour de 3 pôles d’attraction gravitationnels. Naissance de nappes vivantes, résonateurs harmoniques et textures spatiales à 4 voix.
             </p>
           </div>
           <div>
             <div class="discipline-specs">
               <span><strong>Moteur :</strong> Polyphonie 4 Voix & Gravité MIDI</span>
-              <span><strong>Formats :</strong> VST3 · CLAP · App Standalone</span>
+              <span><strong>Formats :</strong> VST3, CLAP, App Standalone</span>
               <span><strong>Compatibilité :</strong> macOS Intel & Apple Silicon</span>
             </div>
             <a href="downloads/GRAVITON-macOS-Universal.zip" download class="btn-download-plugin">
-              ↓ Télécharger GRAVITON (.zip)
+              Télécharger GRAVITON (.zip)
             </a>
           </div>
         </div>
 
-        <!-- Card 2: Sound Design / PRISM -->
-        <div class="discipline-card" style="border-color: var(--te-orange); box-shadow: 0 8px 24px rgba(224,90,54,0.12);">
+        <!-- Card 2: PRISM -->
+        <div class="discipline-card">
           <div>
-            <span class="discipline-badge">LIVRE II · SOUND DESIGN</span>
             <h3 class="discipline-title">PRISM</h3>
-            <div class="discipline-plugin">PR-02 // SCULPTEUR DE GROOVE OPTIQUE</div>
+            <div class="discipline-plugin">PR-02 // Sculpteur de groove / Sound design</div>
             <p class="discipline-text" id="prCardText">
-              Séparez l'attaque percussive (Impact), le corps harmonique (Body) et l'air cristallin (Air) puis décalez-les dans le temps (-50 ms à +50 ms) pour faire rebondir vos pistes rythmiques.
+              Séparez l’attaque percussive (Impact), le corps harmonique (Body) et l’air cristallin (Air) puis décalez-les dans le temps (-50 ms à +50 ms) pour faire respirer vos pistes rythmiques.
             </p>
           </div>
           <div>
             <div class="discipline-specs">
               <span><strong>Moteur :</strong> Décomposition Optique 3 Bandes</span>
-              <span><strong>Formats :</strong> VST3 · CLAP · App Standalone</span>
+              <span><strong>Formats :</strong> VST3, CLAP, App Standalone</span>
               <span><strong>Compatibilité :</strong> macOS Intel & Apple Silicon</span>
             </div>
-            <a href="downloads/PRISM-macOS-Universal.zip" download class="btn-download-plugin" style="background:var(--te-orange);">
-              ↓ Télécharger PRISM (.zip)
+            <a href="downloads/PRISM-macOS-Universal.zip" download class="btn-download-plugin">
+              Télécharger PRISM (.zip)
             </a>
           </div>
         </div>
 
-        <!-- Card 3: Mixing & Warmth / KELVIN -->
+        <!-- Card 3: KELVIN -->
         <div class="discipline-card">
           <div>
-            <span class="discipline-badge">LIVRE III · MIXING & AUDIO PLUGINS</span>
             <h3 class="discipline-title">KELVIN</h3>
-            <div class="discipline-plugin">KV-03 // CHALEUR TUBE & SATURATION BANDE</div>
+            <div class="discipline-plugin">KV-03 // Chaleur analogique / Saturation</div>
             <p class="discipline-text" id="kvCardText">
-              Un circuit dynamique à mémoire d'hystérésis thermique qui épaissit les harmoniques en fonction de l'intensité de votre jeu. La rondeur imprévisible des consoles à lampes et bandes magnétiques.
+              Un circuit dynamique à mémoire d’hystérésis thermique qui épaissit les harmoniques en fonction de l’intensité du jeu. La rondeur imprévisible des consoles à lampes et bandes magnétiques.
             </p>
           </div>
           <div>
             <div class="discipline-specs">
               <span><strong>Moteur :</strong> Hystérésis & Dynamique Thermique</span>
-              <span><strong>Formats :</strong> VST3 · CLAP · App Standalone</span>
+              <span><strong>Formats :</strong> VST3, CLAP, App Standalone</span>
               <span><strong>Compatibilité :</strong> macOS Intel & Apple Silicon</span>
             </div>
             <a href="downloads/KELVIN-macOS-Universal.zip" download class="btn-download-plugin">
-              ↓ Télécharger KELVIN (.zip)
+              Télécharger KELVIN (.zip)
             </a>
           </div>
         </div>
@@ -1778,45 +1351,39 @@
     </div>
   </section>
 
-  <!-- Research & Blueprint Section: The open notebook on the table -->
+  <!-- Research & Blueprint Section -->
   <section class="notebook-blueprint" id="recherche">
     <div class="container">
       <div class="section-head">
-        <span class="section-eyebrow">RECHERCHE & DÉVELOPPEMENT</span>
         <h2 class="section-title" id="bookTitle">Le Carnet de l’Atelier</h2>
         <p class="section-desc" id="bookDesc">
-          Extrait des notes manuscrites et schémas d'architecture DSP posés sur notre table de travail.
+          Extrait des notes manuscrites et schémas d’architecture DSP posés sur notre table de travail.
         </p>
       </div>
 
       <div class="notebook-card">
         <div class="notebook-header">
-          <span class="notebook-meta">CAHIER DE RECHERCHE // PROJET PRISM · REV 1.0</span>
-          <span style="font-family:var(--font-mono); font-size:11px; color:var(--ink-dim);">RENNES · PARIS</span>
+          <span class="notebook-meta">Cahier de recherche / Projet PRISM (Rév. 1.0)</span>
+          <span style="font-size:12px; color:var(--color-ink-secondary); font-weight:600;">Rennes & Paris</span>
         </div>
 
         <div class="blueprint-grid">
           <div class="blueprint-schematic">
-            <svg width="280" height="200" viewBox="0 0 280 200" fill="none" style="margin:0 auto;">
-              <!-- Equilateral Prism Blueprint -->
-              <polygon points="120,30 60,150 180,150" stroke="#181715" stroke-width="2" fill="rgba(224,90,54,0.04)"/>
-              <!-- Incident Ray -->
-              <line x1="20" y1="95" x2="90" y2="90" stroke="#181715" stroke-width="1.8"/>
-              <!-- Impact Refracted Ray -->
-              <line x1="90" y1="90" x2="240" y2="45" stroke="#E05A36" stroke-width="2"/>
-              <circle cx="240" cy="45" r="4" fill="#E05A36"/>
-              <text x="248" y="49" font-family="JetBrains Mono" font-size="10" fill="#E05A36" font-weight="700">IMPACT (-6ms)</text>
-              <!-- Body Refracted Ray -->
-              <line x1="90" y1="90" x2="240" y2="90" stroke="#181715" stroke-width="1.8"/>
-              <circle cx="240" cy="90" r="4" fill="#181715"/>
-              <text x="248" y="94" font-family="JetBrains Mono" font-size="10" fill="#181715" font-weight="700">BODY (0ms REF)</text>
-              <!-- Air Refracted Ray -->
-              <line x1="90" y1="90" x2="240" y2="135" stroke="#E89830" stroke-width="1.8"/>
-              <circle cx="240" cy="135" r="4" fill="#E89830"/>
-              <text x="248" y="139" font-family="JetBrains Mono" font-size="10" fill="#E89830" font-weight="700">AIR (+16ms)</text>
+            <svg width="280" height="200" viewBox="0 0 280 200" fill="none" aria-label="Schéma optique PRISM" style="margin:0 auto; display:block;">
+              <polygon points="120,30 60,150 180,150" stroke="#121212" stroke-width="2" fill="none"/>
+              <line x1="20" y1="95" x2="90" y2="90" stroke="#121212" stroke-width="1.8"/>
+              <line x1="90" y1="90" x2="240" y2="45" stroke="#E65100" stroke-width="2"/>
+              <circle cx="240" cy="45" r="4" fill="#E65100"/>
+              <text x="248" y="49" font-family="'JetBrains Mono', monospace" font-size="10" fill="#E65100" font-weight="700">IMPACT (-6ms)</text>
+              <line x1="90" y1="90" x2="240" y2="90" stroke="#121212" stroke-width="1.8"/>
+              <circle cx="240" cy="90" r="4" fill="#121212"/>
+              <text x="248" y="94" font-family="'JetBrains Mono', monospace" font-size="10" fill="#121212" font-weight="700">BODY (0ms REF)</text>
+              <line x1="90" y1="90" x2="240" y2="135" stroke="#8A8A8A" stroke-width="1.8"/>
+              <circle cx="240" cy="135" r="4" fill="#8A8A8A"/>
+              <text x="248" y="139" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8A8A8A" font-weight="700">AIR (+16ms)</text>
             </svg>
-            <div style="font-family:var(--font-mono); font-size:10px; color:var(--ink-dim); margin-top:12px;">
-              FIG 1.0 — DÉCOMPOSITION OPTIQUE & MICRO-DISPERSION TEMPORELLE
+            <div style="font-size:11px; color:var(--color-ink-secondary); margin-top:16px; font-weight:600;">
+              Fig. 1.0 — Décomposition optique et micro-dispersion temporelle
             </div>
           </div>
 
@@ -1824,24 +1391,24 @@
             <div class="blueprint-bullet">
               <span class="bullet-marker">•</span>
               <div>
-                <div class="bullet-title">TRANSIENT SHAPING</div>
-                <div class="bullet-desc" id="bpNote1">Extraction de l'attaque d'un son avec précision chirurgicale sans altérer la phase ni introduire d'artefacts audibles.</div>
+                <div class="bullet-title">Transient shaping</div>
+                <div class="bullet-desc" id="bpNote1">Extraction de l’attaque d’un son avec précision chirurgicale sans altérer la phase ni introduire d’artefacts audibles.</div>
               </div>
             </div>
 
             <div class="blueprint-bullet">
               <span class="bullet-marker">•</span>
               <div>
-                <div class="bullet-title">MICRO DISPERSION</div>
-                <div class="bullet-desc" id="bpNote2">Glissement temporel microscopique des bandes d'harmoniques (-50ms à +50ms) pour faire respirer un arrangement saturé.</div>
+                <div class="bullet-title">Micro dispersion</div>
+                <div class="bullet-desc" id="bpNote2">Glissement temporel microscopique des bandes d’harmoniques (-50ms à +50ms) pour faire respirer un arrangement saturé.</div>
               </div>
             </div>
 
             <div class="blueprint-bullet">
               <span class="bullet-marker">•</span>
               <div>
-                <div class="bullet-title">TONE CONTROL</div>
-                <div class="bullet-desc" id="bpNote3">Génération analogique d'un sub-oscillateur à l'octave inférieure et brillance d'air naturelle pour un son fini et percutant.</div>
+                <div class="bullet-title">Tone control</div>
+                <div class="bullet-desc" id="bpNote3">Génération analogique d’un sub-oscillateur à l’octave inférieure et brillance d’air naturelle pour un son fini et percutant.</div>
               </div>
             </div>
           </div>
@@ -1850,15 +1417,13 @@
     </div>
   </section>
 
-  <!-- Bespoke Plugin Service (KERBERG CUSTOM) -->
+  <!-- Bespoke Plugin Service -->
   <section class="custom-order" id="sur-mesure">
     <div class="container custom-box-grid">
       <div>
-        <span class="section-eyebrow">SERVICE SUR MESURE</span>
         <h2 class="section-title" id="customTitle">Votre plugin propriétaire, conçu et développé dans notre atelier.</h2>
         <p class="section-desc" id="customDesc">
-          Vous êtes musicien, producteur ou studio d'enregistrement et vous cherchez une chaîne de traitement ou un instrument virtuel unique, introuvable sur le marché ?
-          Nous créons vos plugins sur-mesure en code Rust optimisé.
+          Vous êtes musicien, producteur ou studio d’enregistrement et vous cherchez une chaîne de traitement ou un instrument virtuel unique, introuvable sur le marché ? Nous créons vos plugins sur-mesure en code Rust optimisé.
         </p>
 
         <div class="custom-steps">
@@ -1866,7 +1431,7 @@
             <div class="step-num">1</div>
             <div>
               <div class="step-title" id="st1Title">Cahier des charges sonore</div>
-              <div class="step-text" id="st1Text">Échange autour de vos besoins d'artiste, de vos machines de référence et de votre chaîne idéale.</div>
+              <div class="step-text" id="st1Text">Échange autour de vos besoins d’artiste, de vos machines de référence et de votre chaîne idéale.</div>
             </div>
           </div>
 
@@ -1881,8 +1446,8 @@
           <div class="step-item">
             <div class="step-num">3</div>
             <div>
-              <div class="step-title" id="st3Title">Design d'Interface Signature</div>
-              <div class="step-text" id="st3Text">Une interface épurée, tactile et lisible dessinée dans l'esprit du design industriel fonctionnel.</div>
+              <div class="step-title" id="st3Title">Design d’Interface Signature</div>
+              <div class="step-text" id="st3Text">Une interface épurée, tactile et lisible dessinée dans l’esprit du design industriel fonctionnel.</div>
             </div>
           </div>
 
@@ -1898,8 +1463,8 @@
 
       <!-- Contact Form -->
       <div class="contact-atelier-card">
-        <h3 style="font-size:22px; font-weight:800; margin-bottom:8px;" id="formTitle">Demander un projet sur mesure</h3>
-        <p style="font-size:13.5px; color:var(--ink-dim); margin-bottom:24px;" id="formSub">
+        <h3 style="font-size:22px; font-weight:800; margin-bottom:8px; line-height:1.2;" id="formTitle">Demander un projet sur mesure</h3>
+        <p style="font-size:14px; color:var(--color-ink-secondary); margin-bottom:24px;" id="formSub">
           Décrivez-nous votre vision. Nous vous répondrons sous 24 à 48 heures.
         </p>
 
@@ -1915,7 +1480,7 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label" id="lblType">Type d'Instrument / Effet</label>
+            <label class="form-label" id="lblType">Type d’Instrument / Effet</label>
             <select class="form-select" id="inType" name="project_type">
               <option value="instrument">Instrument virtuel / Synthétiseur MIDI</option>
               <option value="transient">Traitement dynamique & Transitoires</option>
@@ -1926,17 +1491,17 @@
 
           <div class="form-group">
             <label class="form-label" id="lblMsg">Description de votre idée</label>
-            <textarea class="form-textarea" id="inMsg" name="message" placeholder="Parlez-nous de l'ergonomie souhaitée, du son recherché ou de votre workflow..." required></textarea>
+            <textarea class="form-textarea" id="inMsg" name="message" placeholder="Parlez-nous de l’ergonomie souhaitée, du son recherché ou de votre workflow..." required></textarea>
           </div>
 
           <button type="submit" class="btn-submit-form" id="btnSubmit">
-            Envoyer ma demande à l'Atelier →
+            Envoyer ma demande à l’Atelier
           </button>
-          <div id="formSuccess" style="display:none; font-family:var(--font-mono); font-size:12px; color:var(--te-orange); font-weight:700; text-align:center; margin-top:14px; line-height:1.5;">
-            ✓ Votre demande a bien été transmise à l'Atelier ! Nous vous recontacterons sous 24 à 48 heures.
+          <div id="formSuccess" class="form-feedback-success">
+            ✓ Votre demande a bien été transmise à l’Atelier. Nous vous recontacterons sous 24 à 48 heures.
           </div>
-          <div id="formError" style="display:none; font-family:var(--font-mono); font-size:12px; color:#e06a55; font-weight:700; text-align:center; margin-top:14px; line-height:1.5;">
-            Une erreur est survenue lors de l'envoi. Vous pouvez nous écrire directement à <a href="mailto:laurentcabon@gmail.com" style="color:var(--te-orange); text-decoration:underline;">laurentcabon@gmail.com</a>.
+          <div id="formError" class="form-feedback-error">
+            Une erreur est survenue lors de l’envoi. Vous pouvez nous écrire directement à <a href="mailto:laurentcabon@gmail.com" style="color:var(--color-accent); text-decoration:underline;">laurentcabon@gmail.com</a>.
           </div>
         </form>
       </div>
@@ -1948,15 +1513,15 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="kerberg-nav-logo-dark.svg" alt="KERBERG AUDIO" width="190" height="34" style="display:block; height:34px; width:auto; margin-bottom:14px;" />
+          <img src="kerberg-nav-logo-dark.svg" alt="KERBERG AUDIO" width="190" height="34" style="display:block; height:32px; width:auto; margin-bottom:16px;" />
           <p id="ftBio">
-            L'atelier de lutherie numérique et d'ingénierie audio sur mesure.<br/>
+            L’atelier de lutherie numérique et d’ingénierie audio sur mesure.<br/>
             De la première idée au dernier réglage.
           </p>
         </div>
 
         <div class="footer-links-col">
-          <h5 id="ftColInst">Instruments</h5>
+          <h4 id="ftColInst">Instruments</h4>
           <ul>
             <li><a href="#showcase">Démonstration Suite</a></li>
             <li><a href="#catalogue">GRAVITON (GV-01)</a></li>
@@ -1967,7 +1532,7 @@
         </div>
 
         <div class="footer-links-col">
-          <h5 id="ftColAtelier">L'Atelier</h5>
+          <h4 id="ftColAtelier">L’Atelier</h4>
           <ul>
             <li><a href="#atelier">Notre Philosophie</a></li>
             <li><a href="#recherche">Carnet de Recherche</a></li>
@@ -1977,7 +1542,7 @@
         </div>
 
         <div class="footer-links-col">
-          <h5>Formats & Standards</h5>
+          <h4>Formats & Standards</h4>
           <ul>
             <li><span>VST3® (Steinberg)</span></li>
             <li><span>CLAP (Open Audio)</span></li>
@@ -1987,8 +1552,8 @@
       </div>
 
       <div class="footer-bottom">
-        <span>© 2026 KERBERG AUDIO · Tous droits réservés.</span>
-        <span>RENNES · PARIS</span>
+        <span>© 2026 KERBERG AUDIO. Tous droits réservés.</span>
+        <span>Rennes / Paris</span>
       </div>
     </div>
   </footer>
@@ -2011,12 +1576,12 @@
         src.src = 'videos/KERBERG-Presentation-16x9-FR.mp4';
         btnFR.classList.add('active');
         btnEN.classList.remove('active');
-        status.textContent = 'AUDIO : FRANÇAIS (1080P HD · STÉRÉO 48 KHZ)';
+        status.textContent = 'Audio : Français (1080p HD, stéréo 48 kHz)';
       } else {
         src.src = 'videos/KERBERG-Presentation-16x9-EN.mp4';
         btnEN.classList.add('active');
         btnFR.classList.remove('active');
-        status.textContent = 'AUDIO : ENGLISH (1080P HD · 48 KHZ STEREO)';
+        status.textContent = 'Audio : English (1080p HD, 48 kHz stereo)';
       }
 
       vid.load();
@@ -2031,7 +1596,7 @@
     }
 
     // ----------------------------------------------------
-    // Responsive Mobile Menu Navigation (Overlay Over Everything)
+    // Responsive Mobile Menu Navigation
     // ----------------------------------------------------
     function toggleMobileMenu() {
       const btn = document.getElementById('mobileMenuBtn');
@@ -2059,12 +1624,8 @@
       if (e.key === 'Escape') closeMobileMenu();
     });
 
-    if (new URLSearchParams(window.location.search).get('menu') === 'open') {
-      setTimeout(toggleMobileMenu, 80);
-    }
-
     // ----------------------------------------------------
-    // Bespoke Contact Form — Direct Submission to Atelier
+    // Bespoke Contact Form Submission
     // ----------------------------------------------------
     async function submitBespokeForm() {
       const btn = document.getElementById('btnSubmit');
@@ -2079,8 +1640,7 @@
       if (!name || !email || !message) return;
 
       btn.disabled = true;
-      btn.style.opacity = '0.6';
-      btn.textContent = (lang === 'fr') ? 'Transmission à l\'Atelier...' : 'Transmitting to Atelier...';
+      btn.textContent = (lang === 'fr') ? 'Transmission à l’Atelier...' : 'Transmitting to Atelier...';
       if (err) err.style.display = 'none';
 
       try {
@@ -2110,10 +1670,8 @@
         }
       } catch (e) {
         console.error('Submission error:', e);
-        // Fallback: If network blocks or fails, direct email prompt
         btn.disabled = false;
-        btn.style.opacity = '1';
-        btn.textContent = (lang === 'fr') ? 'Envoyer ma demande à l\'Atelier →' : 'Send Request to Atelier →';
+        btn.textContent = (lang === 'fr') ? 'Envoyer ma demande à l’Atelier' : 'Send Request to Atelier';
         if (err) {
           err.style.display = 'block';
         } else {
@@ -2130,40 +1688,40 @@
 
     const i18n = {
       fr: {
-        navAtelier: "L'Atelier",
+        navAtelier: "L’Atelier",
         navShowcase: "Démonstration",
         navPlugins: "Instruments",
         navResearch: "Recherche",
         navBespoke: "Sur-Mesure",
-        headerCta: "Projet sur mesure →",
+        headerCta: "Projet sur mesure",
         heroTitle: "L’atelier audio",
         heroLead: "Des plugins audio conçus et développés sur mesure, pour les musiciens et les producteurs.",
         heroSub: "De la première idée au dernier réglage.",
-        heroMetaTags: "RECHERCHE · CONCEPTION · DÉVELOPPEMENT<br/>RENNES · PARIS",
-        btnHeroShowcase: "Voir la démonstration ↓",
+        heroMetaTags: "Recherche, conception et développement<br/>Rennes / Paris",
+        btnHeroShowcase: "Voir la démonstration",
         btnHeroCustom: "Commander un plugin",
         filmTitle: "Les Instruments en Action",
         filmDesc: "Visionnez la présentation haute fidélité de notre suite d’instruments audio : architecture gravitationnelle, shaper de transitoires et saturation analogique.",
         discTitle: "Les Trois Domaines de l’Atelier",
-        discDesc: "Chaque instrument que nous concevons répond à une exigence musicale précise, incarnée par les ouvrages de référence de notre atelier.",
+        discDesc: "Chaque instrument que nous concevons répond à une exigence musicale précise, incarnée par les principes fonctionnels de notre atelier.",
         bookTitle: "Le Carnet de l’Atelier",
-        bookDesc: "Extrait des notes manuscrites et schémas d'architecture DSP posés sur notre table de travail.",
+        bookDesc: "Extrait des notes manuscrites et schémas d’architecture DSP posés sur notre table de travail.",
         customTitle: "Votre plugin propriétaire, conçu et développé dans notre atelier.",
-        customDesc: "Vous êtes musicien, producteur ou studio d'enregistrement et vous cherchez une chaîne de traitement ou un instrument virtuel unique, introuvable sur le marché ? Nous créons vos plugins sur-mesure en code Rust optimisé.",
+        customDesc: "Vous êtes musicien, producteur ou studio d’enregistrement et vous cherchez une chaîne de traitement ou un instrument virtuel unique, introuvable sur le marché ? Nous créons vos plugins sur-mesure en code Rust optimisé.",
         st1Title: "Cahier des charges sonore",
-        st1Text: "Échange autour de vos besoins d'artiste, de vos machines de référence et de votre chaîne idéale.",
+        st1Text: "Échange autour de vos besoins d’artiste, de vos machines de référence et de votre chaîne idéale.",
         st2Title: "Algorithmes DSP en Rust",
         st2Text: "Développement bas niveau 64-bit SIMD garantissant une latence nulle et une stabilité absolue en session.",
-        st3Title: "Design d'Interface Signature",
-        st3Text: "Une interface épurée, tactile et lisible dessinée dans l'esprit du design industriel fonctionnel.",
+        st3Title: "Design d’Interface Signature",
+        st3Text: "Une interface épurée, tactile et lisible dessinée dans l’esprit du design industriel fonctionnel.",
         st4Title: "Déploiement Universel",
         st4Text: "Livraison de vos installeurs VST3, CLAP, AU et applications autonomes compatibles macOS et Windows.",
-        mNavAtelier: "L'Atelier",
+        mNavAtelier: "L’Atelier",
         mNavShowcase: "Démonstration",
         mNavPlugins: "Instruments",
         mNavResearch: "Recherche",
         mNavBespoke: "Sur-Mesure",
-        mHeaderCta: "Projet sur mesure →"
+        mHeaderCta: "Projet sur mesure"
       },
       en: {
         navAtelier: "The Workshop",
@@ -2171,23 +1729,23 @@
         navPlugins: "Instruments",
         navResearch: "Research",
         navBespoke: "Custom Shop",
-        headerCta: "Bespoke Project →",
+        headerCta: "Bespoke Project",
         mNavAtelier: "The Workshop",
         mNavShowcase: "Showcase",
         mNavPlugins: "Instruments",
         mNavResearch: "Research",
         mNavBespoke: "Custom Shop",
-        mHeaderCta: "Bespoke Project →",
+        mHeaderCta: "Bespoke Project",
         heroTitle: "The audio workshop",
         heroLead: "Custom-crafted audio plugins designed and engineered for musicians and producers.",
         heroSub: "From the initial sketch to the final knob adjustment.",
-        heroMetaTags: "RESEARCH · DESIGN · ENGINEERING<br/>RENNES · PARIS",
-        btnHeroShowcase: "Watch demonstration ↓",
+        heroMetaTags: "Research, design and engineering<br/>Rennes / Paris",
+        btnHeroShowcase: "Watch demonstration",
         btnHeroCustom: "Commission a plugin",
         filmTitle: "Instruments in Action",
         filmDesc: "Watch the high-fidelity presentation of our audio instrument suite: gravitational sequencing, transient shaping, and analog saturation.",
         discTitle: "The Three Workshop Disciplines",
-        discDesc: "Every instrument we design and develop responds to a distinct musical requirement, inspired by the foundational books on our studio desk.",
+        discDesc: "Every instrument we design and develop responds to a distinct musical requirement, inspired by the foundational principles of our atelier.",
         bookTitle: "The Workshop Notebook",
         bookDesc: "An excerpt of handwritten formulas and DSP blueprints resting on our drafting desk.",
         customTitle: "Your bespoke plugin, designed and engineered in our atelier.",
