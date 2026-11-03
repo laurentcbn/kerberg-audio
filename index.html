@@ -1471,6 +1471,24 @@
           <div>
             <h3 class="discipline-title">GRAVITON</h3>
             <div class="discipline-plugin">GV-01 // Synthétiseur orbital / Production</div>
+
+            <!-- Real UI Showcase -->
+            <div class="discipline-preview-frame">
+              <img src="images/plugins/graviton-preview.jpg" alt="Interface graphique de GRAVITON" width="600" height="340" />
+            </div>
+
+            <!-- Interactive Audio Demo -->
+            <div class="audio-demo-player">
+              <button class="btn-audio-toggle" id="btnAudioGraviton" onclick="togglePluginAudio('graviton')" aria-label="Écouter le synthétiseur GRAVITON">
+                <svg id="svgAudioGraviton" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <polygon points="3,2 10,6 3,10" fill="currentColor" />
+                </svg>
+                <span id="lblAudioGraviton">Écouter la démo</span>
+              </button>
+              <span class="audio-status-label" id="statusAudioGraviton">Nappes & Orbites</span>
+              <audio id="audioGraviton" preload="none" src="audio/graviton_demo.mp3"></audio>
+            </div>
+
             <p class="discipline-text" id="gvCardText">
               Projetez vos accords au clavier MIDI en orbite autour de 3 pôles d’attraction gravitationnels. Naissance de nappes vivantes, résonateurs harmoniques et textures spatiales à 4 voix.
             </p>
@@ -1500,14 +1518,14 @@
 
             <!-- Interactive Audio Demo -->
             <div class="audio-demo-player">
-              <button class="btn-audio-toggle" id="btnAudioPrism" onclick="togglePrismAudio()" aria-label="Écouter le rendu audio de PRISM">
-                <svg id="audioIconSvg" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <button class="btn-audio-toggle" id="btnAudioPrism" onclick="togglePluginAudio('prism')" aria-label="Écouter le rendu audio de PRISM">
+                <svg id="svgAudioPrism" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                   <polygon points="3,2 10,6 3,10" fill="currentColor" />
                 </svg>
-                <span id="audioLabel">Écouter la démo</span>
+                <span id="lblAudioPrism">Écouter la démo</span>
               </button>
-              <span class="audio-status-label" id="audioStatus">Mastering groove (MP3)</span>
-              <audio id="prismAudioEl" preload="none" src="audio/morceau_apres_prism.mp3"></audio>
+              <span class="audio-status-label" id="statusAudioPrism">Mastering groove</span>
+              <audio id="audioPrism" preload="none" src="audio/morceau_apres_prism.mp3"></audio>
             </div>
 
             <p class="discipline-text" id="prCardText">
@@ -1531,6 +1549,24 @@
           <div>
             <h3 class="discipline-title">KELVIN</h3>
             <div class="discipline-plugin">KV-03 // Chaleur analogique / Saturation</div>
+
+            <!-- Real UI Showcase -->
+            <div class="discipline-preview-frame">
+              <img src="images/plugins/kelvin-preview.jpg" alt="Interface graphique de KELVIN" width="600" height="340" />
+            </div>
+
+            <!-- Interactive Audio Demo -->
+            <div class="audio-demo-player">
+              <button class="btn-audio-toggle" id="btnAudioKelvin" onclick="togglePluginAudio('kelvin')" aria-label="Écouter la saturation KELVIN">
+                <svg id="svgAudioKelvin" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <polygon points="3,2 10,6 3,10" fill="currentColor" />
+                </svg>
+                <span id="lblAudioKelvin">Écouter la démo</span>
+              </button>
+              <span class="audio-status-label" id="statusAudioKelvin">Chaleur à lampes</span>
+              <audio id="audioKelvin" preload="none" src="audio/kelvin_demo.mp3"></audio>
+            </div>
+
             <p class="discipline-text" id="kvCardText">
               Un circuit dynamique à mémoire d’hystérésis thermique qui épaissit les harmoniques en fonction de l’intensité du jeu. La rondeur imprévisible des consoles à lampes et bandes magnétiques.
             </p>
@@ -1796,36 +1832,42 @@
     }
 
     // ----------------------------------------------------
-    // Interactive PRISM Audio Demo Player
+    // Multi-Plugin Interactive Audio Demo Player
     // ----------------------------------------------------
-    function togglePrismAudio() {
-      const audio = document.getElementById('prismAudioEl');
-      const iconSvg = document.getElementById('audioIconSvg');
-      const label = document.getElementById('audioLabel');
-      const status = document.getElementById('audioStatus');
+    const pluginAudioList = ['graviton', 'prism', 'kelvin'];
 
-      if (!audio) return;
+    function togglePluginAudio(targetPlugin) {
+      pluginAudioList.forEach(id => {
+        const audio = document.getElementById('audio' + id.charAt(0).toUpperCase() + id.slice(1));
+        const svg = document.getElementById('svgAudio' + id.charAt(0).toUpperCase() + id.slice(1));
+        const lbl = document.getElementById('lblAudio' + id.charAt(0).toUpperCase() + id.slice(1));
+        const status = document.getElementById('statusAudio' + id.charAt(0).toUpperCase() + id.slice(1));
 
-      if (audio.paused) {
-        audio.play().then(() => {
-          if (iconSvg) iconSvg.innerHTML = '<rect x="2" y="2" width="3" height="8" fill="currentColor"/><rect x="7" y="2" width="3" height="8" fill="currentColor"/>';
-          label.textContent = (lang === 'fr') ? 'Pause' : 'Pause';
-          status.textContent = (lang === 'fr') ? 'Lecture en cours...' : 'Playing...';
-        }).catch(err => {
-          console.error('Audio play error:', err);
-        });
-      } else {
-        audio.pause();
-        if (iconSvg) iconSvg.innerHTML = '<polygon points="3,2 10,6 3,10" fill="currentColor" />';
-        label.textContent = (lang === 'fr') ? 'Écouter la démo' : 'Play demo';
-        status.textContent = (lang === 'fr') ? 'En pause' : 'Paused';
-      }
+        if (!audio) return;
 
-      audio.onended = () => {
-        if (iconSvg) iconSvg.innerHTML = '<polygon points="3,2 10,6 3,10" fill="currentColor" />';
-        label.textContent = (lang === 'fr') ? 'Écouter la démo' : 'Play demo';
-        status.textContent = (lang === 'fr') ? 'Terminé' : 'Completed';
-      };
+        if (id === targetPlugin) {
+          if (audio.paused) {
+            audio.play().then(() => {
+              if (svg) svg.innerHTML = '<rect x="2" y="2" width="3" height="8" fill="currentColor"/><rect x="7" y="2" width="3" height="8" fill="currentColor"/>';
+              if (lbl) lbl.textContent = 'Pause';
+            }).catch(e => console.error('Play error:', e));
+          } else {
+            audio.pause();
+            if (svg) svg.innerHTML = '<polygon points="3,2 10,6 3,10" fill="currentColor" />';
+            if (lbl) lbl.textContent = (lang === 'fr') ? 'Écouter la démo' : 'Play demo';
+          }
+        } else {
+          audio.pause();
+          audio.currentTime = 0;
+          if (svg) svg.innerHTML = '<polygon points="3,2 10,6 3,10" fill="currentColor" />';
+          if (lbl) lbl.textContent = (lang === 'fr') ? 'Écouter la démo' : 'Play demo';
+        }
+
+        audio.onended = () => {
+          if (svg) svg.innerHTML = '<polygon points="3,2 10,6 3,10" fill="currentColor" />';
+          if (lbl) lbl.textContent = (lang === 'fr') ? 'Écouter la démo' : 'Play demo';
+        };
+      });
     }
 
     // ----------------------------------------------------
