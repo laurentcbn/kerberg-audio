@@ -62,27 +62,37 @@
         },
         "serviceType": "Custom Audio Plugin Development",
         "areaServed": "Worldwide",
-        "description": "Recherche, conception et développement de plugins audio sur mesure. Custom VST3 and CLAP plugin engineering, discrete analogue modeling, real-time 32-bit float DSP.",
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Audio Engineering Services",
-          "itemListElement": [
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Custom Audio Plugin Development (VST3, CLAP, Standalone)"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Bespoke DSP Algorithm Design & Embedded Modeling"
-              }
-            }
-          ]
-        }
+        "description": "Recherche, conception et développement de plugins audio sur mesure. Custom VST3 and CLAP plugin engineering, discrete analogue modeling, real-time 32-bit float DSP."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://kerberg-audio.com/#graviton",
+        "name": "GRAVITON (GV-01)",
+        "operatingSystem": "macOS",
+        "applicationCategory": "MultimediaApplication",
+        "softwareRequirements": "VST3, CLAP, or Standalone host",
+        "description": "Orbital polyphonic synthesizer projecting chords around three gravitational poles.",
+        "downloadUrl": "https://kerberg-audio.com/downloads/GRAVITON-macOS-Universal.zip"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://kerberg-audio.com/#prism",
+        "name": "PRISM (PR-02)",
+        "operatingSystem": "macOS",
+        "applicationCategory": "MultimediaApplication",
+        "softwareRequirements": "VST3, CLAP, or Standalone host",
+        "description": "Optical groove shaper separating impact, body and air with micro-temporal dispersion.",
+        "downloadUrl": "https://kerberg-audio.com/downloads/PRISM-macOS-Universal.zip"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://kerberg-audio.com/#kelvin",
+        "name": "KELVIN (KV-03)",
+        "operatingSystem": "macOS",
+        "applicationCategory": "MultimediaApplication",
+        "softwareRequirements": "VST3, CLAP, or Standalone host",
+        "description": "Analog tube warmth and magnetic tape hysteresis dynamic processor.",
+        "downloadUrl": "https://kerberg-audio.com/downloads/KELVIN-macOS-Universal.zip"
       }
     ]
   }
@@ -216,7 +226,7 @@
     nav.main-nav {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 28px;
     }
 
     nav.main-nav a {
@@ -544,6 +554,83 @@
       }
     }
 
+    /* Brand Manifesto Section */
+    section.manifesto-section {
+      padding: 96px 0 112px;
+      background: var(--color-dark-panel);
+      color: var(--color-dark-text);
+      border-bottom: 1px solid var(--color-dark-border);
+    }
+
+    .manifesto-header {
+      border-bottom: 1px solid var(--color-dark-border);
+      padding-bottom: 24px;
+      margin-bottom: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .manifesto-tag {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-accent);
+    }
+
+    .manifesto-lead {
+      font-size: clamp(26px, 3.6vw, 42px);
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--color-dark-text);
+      max-width: 32ch;
+      margin-bottom: 56px;
+      text-wrap: balance;
+    }
+
+    .manifesto-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--grid-gap);
+      border-top: 1px solid var(--color-dark-border);
+      padding-top: 48px;
+    }
+
+    @media (max-width: 860px) {
+      .manifesto-pillars {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+      }
+    }
+
+    .pillar-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pillar-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-accent);
+    }
+
+    .pillar-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-dark-text);
+      letter-spacing: -0.01em;
+    }
+
+    .pillar-text {
+      font-size: 14.5px;
+      color: var(--color-dark-muted);
+      line-height: 1.6;
+    }
+
     /* Section Headings */
     .section-head {
       margin-bottom: 48px;
@@ -737,14 +824,14 @@
 
     .disciplines-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: var(--grid-gap);
       margin-top: 40px;
     }
 
     @media (max-width: 960px) {
       .disciplines-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
     }
 
@@ -779,11 +866,66 @@
       margin-bottom: 20px;
     }
 
+    .discipline-preview-frame {
+      border: 1px solid var(--color-line-subtle);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      background: var(--color-paper-subtle);
+    }
+
+    .discipline-preview-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
     .discipline-text {
       font-size: 14.5px;
       color: var(--color-ink-secondary);
       line-height: 1.6;
       margin-bottom: 24px;
+    }
+
+    /* Audio Demo Player */
+    .audio-demo-player {
+      border: 1px solid var(--color-line-subtle);
+      border-radius: 4px;
+      padding: 12px 16px;
+      background: var(--color-paper);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .btn-audio-toggle {
+      background: var(--color-accent);
+      color: var(--color-accent-ink);
+      border: 1px solid var(--color-accent);
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: background-color 0.15s ease;
+    }
+
+    .btn-audio-toggle:hover {
+      background: var(--color-accent-hover);
+    }
+
+    .audio-status-label {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--color-ink-secondary);
     }
 
     .discipline-specs {
@@ -859,14 +1001,14 @@
 
     .blueprint-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: var(--grid-gap);
       align-items: center;
     }
 
     @media (max-width: 840px) {
       .blueprint-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
       .notebook-card {
         padding: 24px;
@@ -921,13 +1063,13 @@
 
     .custom-box-grid {
       display: grid;
-      grid-template-columns: 1fr 1.05fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
       gap: var(--grid-gap);
     }
 
     @media (max-width: 960px) {
       .custom-box-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
     }
 
@@ -1148,6 +1290,7 @@
 
       <nav class="main-nav">
         <a href="#atelier" id="navAtelier">L’Atelier</a>
+        <a href="#manifeste" id="navManifeste">Philosophie</a>
         <a href="#showcase" id="navShowcase">Démonstration</a>
         <a href="#catalogue" id="navPlugins">Instruments</a>
         <a href="#recherche" id="navResearch">Recherche</a>
@@ -1169,6 +1312,7 @@
     <div class="mobile-menu-drawer" id="mobileMenuDrawer" role="dialog" aria-modal="true" aria-label="Menu principal">
       <nav class="mobile-nav-links">
         <a href="#atelier" onclick="closeMobileMenu()" id="mNavAtelier">L’Atelier</a>
+        <a href="#manifeste" onclick="closeMobileMenu()" id="mNavManifeste">Philosophie</a>
         <a href="#showcase" onclick="closeMobileMenu()" id="mNavShowcase">Démonstration</a>
         <a href="#catalogue" onclick="closeMobileMenu()" id="mNavPlugins">Instruments</a>
         <a href="#recherche" onclick="closeMobileMenu()" id="mNavResearch">Recherche</a>
@@ -1218,6 +1362,43 @@
         <div class="hero-badge-floating">
           <div class="meter-indicator"></div>
           <span>macOS Universal (VST3, CLAP, Standalone)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Manifesto Section -->
+  <section class="manifesto-section" id="manifeste">
+    <div class="container">
+      <div class="manifesto-header">
+        <h2 style="font-size: 13px; font-weight: 700; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.12em;" id="manifTag">Philosophie & Manifeste</h2>
+        <span style="font-size: 11px; color: var(--color-dark-muted); font-family: var(--font-mono);">Dieter Rams / Bauhaus Heritage</span>
+      </div>
+
+      <p class="manifesto-lead" id="manifQuote">
+        « Le monde est saturé de bruit. Nous croyons en ce qui compte. Chaque contrôle. Chaque courbe. Chaque son. »
+      </p>
+
+      <div class="manifesto-pillars">
+        <div class="pillar-card">
+          <h3 class="pillar-title" id="pil1Title">01. Moins de distraction</h3>
+          <p class="pillar-text" id="pil1Text">
+            Les outils ne doivent jamais s’interposer entre une idée et son timbre. Conçus avec intention, bâtis pour l’exploration sonore.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <h3 class="pillar-title" id="pil2Title">02. Plus de signal</h3>
+          <p class="pillar-text" id="pil2Text">
+            Une interface tactile et lisible inspirée du design industriel européen. Moins de bruit visuel, plus de présence acoustique.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <h3 class="pillar-title" id="pil3Title">03. Faire place au son</h3>
+          <p class="pillar-text" id="pil3Text">
+            Algorithmes DSP en Rust 64-bit garantissant une latence zéro, une précision chirurgicale et une stabilité absolue en session.
+          </p>
         </div>
       </div>
     </div>
@@ -1306,11 +1487,29 @@
           </div>
         </div>
 
-        <!-- Card 2: PRISM -->
-        <div class="discipline-card">
+        <!-- Card 2: PRISM (with Real UI & Audio Demo) -->
+        <div class="discipline-card" style="border-color: var(--color-accent);">
           <div>
             <h3 class="discipline-title">PRISM</h3>
             <div class="discipline-plugin">PR-02 // Sculpteur de groove / Sound design</div>
+
+            <!-- Real UI Showcase -->
+            <div class="discipline-preview-frame">
+              <img src="images/prism/prism_chassis_clean.png" alt="Interface graphique réelle de PRISM" width="600" height="340" />
+            </div>
+
+            <!-- Interactive Audio Demo -->
+            <div class="audio-demo-player">
+              <button class="btn-audio-toggle" id="btnAudioPrism" onclick="togglePrismAudio()" aria-label="Écouter le rendu audio de PRISM">
+                <svg id="audioIconSvg" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <polygon points="3,2 10,6 3,10" fill="currentColor" />
+                </svg>
+                <span id="audioLabel">Écouter la démo</span>
+              </button>
+              <span class="audio-status-label" id="audioStatus">Mastering groove (MP3)</span>
+              <audio id="prismAudioEl" preload="none" src="audio/morceau_apres_prism.mp3"></audio>
+            </div>
+
             <p class="discipline-text" id="prCardText">
               Séparez l’attaque percussive (Impact), le corps harmonique (Body) et l’air cristallin (Air) puis décalez-les dans le temps (-50 ms à +50 ms) pour faire respirer vos pistes rythmiques.
             </p>
@@ -1535,6 +1734,7 @@
           <h4 id="ftColAtelier">L’Atelier</h4>
           <ul>
             <li><a href="#atelier">Notre Philosophie</a></li>
+            <li><a href="#manifeste">Manifeste</a></li>
             <li><a href="#recherche">Carnet de Recherche</a></li>
             <li><a href="#sur-mesure">Projet Sur Mesure</a></li>
             <li><a href="mailto:contact@kerberg-audio.com">contact@kerberg-audio.com</a></li>
@@ -1558,7 +1758,7 @@
     </div>
   </footer>
 
-  <!-- Interactive Scripts (Video Showcase + Bespoke Form + i18n) -->
+  <!-- Interactive Scripts (Video Showcase + Audio Demo + Bespoke Form + i18n) -->
   <script>
     // ----------------------------------------------------
     // Video Language Switching & Chapter Seeking
@@ -1593,6 +1793,39 @@
       const vid = document.getElementById('mainAtelierVideo');
       vid.currentTime = seconds;
       if (vid.paused) vid.play();
+    }
+
+    // ----------------------------------------------------
+    // Interactive PRISM Audio Demo Player
+    // ----------------------------------------------------
+    function togglePrismAudio() {
+      const audio = document.getElementById('prismAudioEl');
+      const iconSvg = document.getElementById('audioIconSvg');
+      const label = document.getElementById('audioLabel');
+      const status = document.getElementById('audioStatus');
+
+      if (!audio) return;
+
+      if (audio.paused) {
+        audio.play().then(() => {
+          if (iconSvg) iconSvg.innerHTML = '<rect x="2" y="2" width="3" height="8" fill="currentColor"/><rect x="7" y="2" width="3" height="8" fill="currentColor"/>';
+          label.textContent = (lang === 'fr') ? 'Pause' : 'Pause';
+          status.textContent = (lang === 'fr') ? 'Lecture en cours...' : 'Playing...';
+        }).catch(err => {
+          console.error('Audio play error:', err);
+        });
+      } else {
+        audio.pause();
+        if (iconSvg) iconSvg.innerHTML = '<polygon points="3,2 10,6 3,10" fill="currentColor" />';
+        label.textContent = (lang === 'fr') ? 'Écouter la démo' : 'Play demo';
+        status.textContent = (lang === 'fr') ? 'En pause' : 'Paused';
+      }
+
+      audio.onended = () => {
+        if (iconSvg) iconSvg.innerHTML = '<polygon points="3,2 10,6 3,10" fill="currentColor" />';
+        label.textContent = (lang === 'fr') ? 'Écouter la démo' : 'Play demo';
+        status.textContent = (lang === 'fr') ? 'Terminé' : 'Completed';
+      };
     }
 
     // ----------------------------------------------------
@@ -1689,6 +1922,7 @@
     const i18n = {
       fr: {
         navAtelier: "L’Atelier",
+        navManifeste: "Philosophie",
         navShowcase: "Démonstration",
         navPlugins: "Instruments",
         navResearch: "Recherche",
@@ -1700,6 +1934,14 @@
         heroMetaTags: "Recherche, conception et développement<br/>Rennes / Paris",
         btnHeroShowcase: "Voir la démonstration",
         btnHeroCustom: "Commander un plugin",
+        manifTag: "Manifeste de Marque",
+        manifQuote: "« Le monde est saturé de bruit. Nous croyons en ce qui compte. Chaque contrôle. Chaque courbe. Chaque son. »",
+        pil1Title: "Moins de distraction",
+        pil1Text: "Les outils ne doivent jamais s’interposer entre une idée et son timbre. Conçus avec intention, bâtis pour l’exploration sonore.",
+        pil2Title: "Plus de signal",
+        pil2Text: "Une interface tactile et lisible inspirée du design industriel européen. Moins de bruit visuel, plus de présence acoustique.",
+        pil3Title: "Faire place au son",
+        pil3Text: "Algorithmes DSP en Rust 64-bit garantissant une latence zéro, une précision chirurgicale et une stabilité absolue en session.",
         filmTitle: "Les Instruments en Action",
         filmDesc: "Visionnez la présentation haute fidélité de notre suite d’instruments audio : architecture gravitationnelle, shaper de transitoires et saturation analogique.",
         discTitle: "Les Trois Domaines de l’Atelier",
@@ -1717,6 +1959,7 @@
         st4Title: "Déploiement Universel",
         st4Text: "Livraison de vos installeurs VST3, CLAP, AU et applications autonomes compatibles macOS et Windows.",
         mNavAtelier: "L’Atelier",
+        mNavManifeste: "Philosophie",
         mNavShowcase: "Démonstration",
         mNavPlugins: "Instruments",
         mNavResearch: "Recherche",
@@ -1725,12 +1968,14 @@
       },
       en: {
         navAtelier: "The Workshop",
+        navManifeste: "Philosophy",
         navShowcase: "Showcase",
         navPlugins: "Instruments",
         navResearch: "Research",
         navBespoke: "Custom Shop",
         headerCta: "Bespoke Project",
         mNavAtelier: "The Workshop",
+        mNavManifeste: "Philosophy",
         mNavShowcase: "Showcase",
         mNavPlugins: "Instruments",
         mNavResearch: "Research",
@@ -1742,6 +1987,14 @@
         heroMetaTags: "Research, design and engineering<br/>Rennes / Paris",
         btnHeroShowcase: "Watch demonstration",
         btnHeroCustom: "Commission a plugin",
+        manifTag: "Brand Manifesto",
+        manifQuote: "“The world is full of noise. We believe in what matters. Every control. Every curve. Every sound.”",
+        pil1Title: "Less Distraction",
+        pil1Text: "Tools should never stand between an idea and its sound. Designed with intention, engineered for deep exploration.",
+        pil2Title: "More Signal",
+        pil2Text: "A tactile, legible interface inspired by European industrial design. Less visual noise, more acoustic substance.",
+        pil3Title: "Make Room for Sound",
+        pil3Text: "64-bit real-time Rust DSP algorithms providing zero-latency throughput and surgical stability in session.",
         filmTitle: "Instruments in Action",
         filmDesc: "Watch the high-fidelity presentation of our audio instrument suite: gravitational sequencing, transient shaping, and analog saturation.",
         discTitle: "The Three Workshop Disciplines",
